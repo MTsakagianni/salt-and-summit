@@ -247,6 +247,45 @@ body {
     border-radius: 6px;
 }
 
+/* Contact location */
+.location-section {
+    margin-bottom: 40px;
+}
+
+.location-section h2 {
+    color: #175e63;
+    font-size: 28px;
+}
+
+.location-map {
+    display: block;
+    width: 100%;
+    height: 350px;
+    border: 0;
+    border-radius: 8px;
+}
+
+/* Contact layout */
+.contact-layout {
+    padding: 40px 0;
+}
+
+.contact-form-section h1 {
+    margin-bottom: 12px;
+    color: #175e63;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.contact-form-section > p {
+    margin-bottom: 24px;
+    line-height: 1.8;
+}
+
+.contact-layout .location-section {
+    margin-bottom: 0;
+}
+
 /* Navigation on smaller screens */
 @media (max-width: 767.98px) {
     .brand-name {
