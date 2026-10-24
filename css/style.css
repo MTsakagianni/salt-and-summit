@@ -195,6 +195,32 @@ body {
     background-size: 60%;
 }
 
+/* About introduction */
+.about-intro {
+    padding: 40px 0;
+}
+
+.about-intro h1 {
+    margin-bottom: 12px;
+    color: #175e63;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.about-intro p {
+    line-height: 1.8;
+}
+
+.about-intro .welcome-tagline {
+    color: #175e63;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.about-intro .activities-section {
+    margin-bottom: 0;
+}
+
 /* Navigation on smaller screens */
 @media (max-width: 767.98px) {
     .brand-name {
