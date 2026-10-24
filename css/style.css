@@ -16,6 +16,9 @@ body {
 }
 
 .site-header .navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     color: #175e63;
     text-decoration: none;
 }
@@ -219,6 +222,29 @@ body {
 
 .about-intro .activities-section {
     margin-bottom: 0;
+}
+
+/* Brand logo */
+.brand-logo {
+    width: 56px;
+    height: auto;
+}
+
+.footer-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer-logo {
+    width: 48px;
+    height: auto;
+    padding: 4px;
+    background-color: #faf8f5;
+    border-radius: 6px;
 }
 
 /* Navigation on smaller screens */
