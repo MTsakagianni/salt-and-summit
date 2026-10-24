@@ -5,59 +5,116 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Plan outdoor activities with friends and keep track of what needs to get done.">
+    <meta name="keywords" content="outdoor activities, hiking, SUP, cycling, task management">
+    <meta name="author" content="Maria Tsakagianni">
+
     <title>Salt &amp; Summit | Home</title>
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <header>
-        <a href="index.html">Salt &amp; Summit</a>
+    <header class="site-header sticky-top">
+        <nav class="navbar navbar-expand-md" aria-label="Main navigation">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <span class="brand-name">
+                        SALT <span class="brand-symbol">&amp;</span> SUMMIT
+                    </span>
+                    <span class="brand-description">OUTDOOR ADVENTURES</span>
+                </a>
 
-        <nav aria-label="Main navigation">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="tasks.html">Tasks</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="analytics.html">Analytics</a></li>
-            </ul>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-menu"
+                    aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html" aria-current="page">
+                                Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="tasks.html">Tasks</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="analytics.html">
+                                Analytics
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </nav>
     </header>
-    <main>
-        <section aria-labelledby="welcome-title">
-            <h1 id="welcome-title">Less planning. More outdoors.</h1>
 
-            <p>
-                Salt &amp; Summit is all about getting outside with good
-                company — from mountain trails to afternoons on the water.
-            </p>
+    <main class="container">
+        <section class="welcome" aria-labelledby="welcome-title">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-5">
+                    <h1 id="welcome-title">Salt &amp; Summit</h1>
 
-            <p>
-                Planning a day out? Keep track of what needs to get done,
-                from booking equipment to packing the essentials.
-            </p>
+                    <p class="welcome-tagline">
+                        Less planning. More outdoors.
+                    </p>
 
-            <a href="tasks.html">Get organised</a>
+                    <p>
+                        Salt &amp; Summit is all about getting outside
+                        with good company, from mountain trails to
+                        afternoons on the water.
+                    </p>
+
+                    <p>
+                        Keep track of what needs to get done, from
+                        booking equipment to packing the essentials.
+                    </p>
+
+                    <a class="btn adventure-button" href="tasks.html">
+                        Get organised
+                    </a>
+                </div>
+
+                <div class="col-lg-7">
+                    <img class="landscape" src="coast.png"
+                        alt="A coastal hiking trail overlooking the sea and mountains">
+                </div>
+            </div>
         </section>
-        <section aria-labelledby="activity-title">
+
+        <section class="activity-section" aria-labelledby="activity-title">
             <h2 id="activity-title">Latest activity</h2>
             <p>No activity yet. Add your first task to get started.</p>
         </section>
     </main>
-    <footer>
+
+    <footer class="site-footer">
         <a href="index.html">Salt &amp; Summit</a>
         <p>Get outside. Go together.</p>
+
         <p>
             Contact us:
             <a href="mailto:hello@saltandsummit.example">
                 hello@saltandsummit.example
             </a>
         </p>
+
         <p>&copy; 2026 Salt &amp; Summit</p>
     </footer>
 
-
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
