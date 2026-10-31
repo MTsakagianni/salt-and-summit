@@ -76,49 +76,46 @@
 
     <main class="container">
         <section class="welcome" aria-labelledby="tasks-title">
-    <h1 id="tasks-title">Your tasks</h1>
-    <p>A little preparation for your next adventure.</p>
+            <h1 id="tasks-title">Your tasks</h1>
+            <p>A little preparation for your next adventure.</p>
 
-    <div class="row g-4 align-items-center">
-        <div class="col-lg-6">
-            <form id="task-form">
-                <div class="mb-3">
-                    <label class="form-label" for="task-name">
-                        Task name
-                    </label>
-                    <input class="form-control" type="text" id="task-name"
-                        name="name" maxlength="100" required>
+            <div class="row g-4 align-items-center">
+                <div class="col-lg-6">
+                    <form id="task-form">
+                        <div class="mb-3">
+                            <label class="form-label" for="task-name">
+                                Task name
+                            </label>
+                            <input class="form-control" type="text" id="task-name" name="name" maxlength="100" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="task-description">
+                                Description
+                            </label>
+                            <textarea class="form-control" id="task-description" name="description" rows="3"
+                                maxlength="1000" required></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="task-date">
+                                Due date
+                            </label>
+                            <input class="form-control" type="date" id="task-date" name="dueDate" required>
+                        </div>
+
+                        <button class="btn adventure-button" type="submit">
+                            Add task
+                        </button>
+                    </form>
                 </div>
 
-                <div class="mb-3">
-                    <label class="form-label" for="task-description">
-                        Description
-                    </label>
-                    <textarea class="form-control" id="task-description"
-                        name="description" rows="3" maxlength="1000"
-                        required></textarea>
+                <div class="col-lg-6 d-none d-lg-block">
+                    <img class="landscape" src="images/hiking.png"
+                        alt="Three friends hiking on a mountain trail above the sea">
                 </div>
-
-                <div class="mb-3">
-                    <label class="form-label" for="task-date">
-                        Due date
-                    </label>
-                    <input class="form-control" type="date" id="task-date"
-                        name="dueDate" required>
-                </div>
-
-                <button class="btn adventure-button" type="submit">
-                    Add task
-                </button>
-            </form>
-        </div>
-
-        <div class="col-lg-6 d-none d-lg-block">
-            <img class="landscape" src="images/hiking.png"
-                alt="Three friends hiking on a mountain trail above the sea">
-        </div>
-    </div>
-</section>
+            </div>
+        </section>
         <section class="activity-section" aria-labelledby="task-list-title">
             <h2 id="task-list-title">Task list</h2>
 
@@ -133,6 +130,7 @@
                             <th scope="col">Description</th>
                             <th scope="col">Due date</th>
                             <th scope="col">Status</th>
+                            <th scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody id="task-list">

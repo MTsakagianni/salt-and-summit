@@ -399,3 +399,21 @@ body.dark-mode {
     outline: 3px solid #b85c38;
     outline-offset: 3px;
 }
+/* Task status labels */
+.task-status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 16px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.status-completed {
+    background-color: #175e63;
+    color: #ffffff;
+}
+
+.status-pending {
+    background-color: #f5e4cf;
+    color: #704315;
+}
