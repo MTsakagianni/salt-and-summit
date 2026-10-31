@@ -116,8 +116,57 @@
                 </div>
             </div>
         </section>
+
+                <section class="activity-section" aria-labelledby="summary-title">
+            <h2 id="summary-title">Task summary</h2>
+
+            <div class="row g-3">
+                <div class="col-sm-4">
+                    <p>Total: <strong id="total-tasks">0</strong></p>
+                </div>
+
+                <div class="col-sm-4">
+                    <p>Pending: <strong id="pending-tasks">0</strong></p>
+                </div>
+
+                <div class="col-sm-4">
+                    <p>Completed: <strong id="completed-tasks">0</strong></p>
+                </div>
+            </div>
+        </section>
+
         <section class="activity-section" aria-labelledby="task-list-title">
             <h2 id="task-list-title">Task list</h2>
+
+            <div class="mb-3">
+                <label class="form-label" for="task-search">
+                    Search tasks
+                </label>
+                <input class="form-control" type="search" id="task-search"
+                    placeholder="Search by task name or description">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="status-filter">
+                    Filter by status
+                </label>
+                <select class="form-select" id="status-filter">
+                    <option value="all">All tasks</option>
+                    <option value="pending">Pending</option>
+                    <option value="completed">Completed</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="task-sort">
+                    Sort by
+                </label>
+                <select class="form-select" id="task-sort">
+                    <option value="default">Order added</option>
+                    <option value="name">Task name (A–Z)</option>
+                    <option value="date">Due date (earliest first)</option>
+                </select>
+            </div>
 
             <div class="table-responsive">
                 <table class="table">

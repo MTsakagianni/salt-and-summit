@@ -7,16 +7,58 @@ function initialiseTasks() {
     const descriptionInput = document.querySelector("#task-description");
     const dateInput = document.querySelector("#task-date");
     const submitButton = taskForm.querySelector('button[type="submit"]');
+    const searchInput = document.querySelector("#task-search");
+    const statusFilter = document.querySelector("#status-filter");
+    const sortSelect = document.querySelector("#task-sort");
+    const totalTasks = document.querySelector("#total-tasks");
+    const pendingTasks = document.querySelector("#pending-tasks");
+    const completedTasks = document.querySelector("#completed-tasks");
     let editingTask = null;
 
     function saveTasks() {
         localStorage.setItem("tasks", JSON.stringify(tasks));
     }
 
+    function updateSummary() {
+        const completedCount = tasks.filter(function (task) {
+            return task.status === "completed";
+        }).length;
+
+        totalTasks.textContent = tasks.length;
+        pendingTasks.textContent = tasks.length - completedCount;
+        completedTasks.textContent = completedCount;
+    }
+
     function renderTasks() {
+        updateSummary();
         taskList.textContent = "";
 
-        for (const task of tasks) {
+        const searchText = searchInput.value.trim().toLowerCase();
+
+        const selectedStatus = statusFilter.value;
+
+        const visibleTasks = tasks.filter(function (task) {
+            const matchesSearch =
+                task.name.toLowerCase().includes(searchText) ||
+                task.description.toLowerCase().includes(searchText);
+
+            const matchesStatus =
+                selectedStatus === "all" || task.status === selectedStatus;
+
+            return matchesSearch && matchesStatus;
+        });
+
+        if (sortSelect.value === "name") {
+            visibleTasks.sort(function (firstTask, secondTask) {
+                return firstTask.name.localeCompare(secondTask.name);
+            });
+        } else if (sortSelect.value === "date") {
+            visibleTasks.sort(function (firstTask, secondTask) {
+                return firstTask.dueDate.localeCompare(secondTask.dueDate);
+            });
+        }
+
+        for (const task of visibleTasks) {
             const row = document.createElement("tr");
             const formattedDate = new Date(task.dueDate + "T00:00:00")
                 .toLocaleDateString("en-GB", {
@@ -79,6 +121,11 @@ function initialiseTasks() {
                 const taskIndex = tasks.indexOf(task);
 
                 tasks.splice(taskIndex, 1);
+                if (editingTask === task) {
+                    editingTask = null;
+                    taskForm.reset();
+                    submitButton.textContent = "Add task";
+                }
                 saveTasks();
                 renderTasks();
             }
@@ -112,7 +159,7 @@ function initialiseTasks() {
         }
     }
 
-        function handleTaskSubmit(event) {
+    function handleTaskSubmit(event) {
         event.preventDefault();
 
         const name = nameInput.value.trim();
@@ -148,6 +195,10 @@ function initialiseTasks() {
     }
 
     taskForm.addEventListener("submit", handleTaskSubmit);
+    searchInput.addEventListener("input", renderTasks);
+    statusFilter.addEventListener("change", renderTasks);
+    sortSelect.addEventListener("change", renderTasks);
+    renderTasks();
     renderTasks();
 }
 

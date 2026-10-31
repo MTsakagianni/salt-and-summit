@@ -357,13 +357,15 @@ body.dark-mode {
     background-color: #faf8f5;
 }
 
-.dark-mode .form-control {
+.dark-mode .form-control,
+.dark-mode .form-select {
     background-color: #223235;
     border-color: #829597;
     color: #ffffff;
 }
 
-.dark-mode .form-control:focus {
+.dark-mode .form-control:focus,
+.dark-mode .form-select:focus {
     background-color: #223235;
     border-color: #a9d9d5;
     color: #ffffff;
@@ -399,6 +401,7 @@ body.dark-mode {
     outline: 3px solid #b85c38;
     outline-offset: 3px;
 }
+
 /* Task status labels */
 .task-status {
     display: inline-block;
@@ -440,4 +443,18 @@ body.dark-mode {
 .dark-mode .btn-outline-danger {
     --bs-btn-color: #ffabb3;
     --bs-btn-border-color: #ffabb3;
+}
+
+.dark-mode .form-select {
+    color-scheme: dark;
+    --bs-form-select-bg-img: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23f2f2ee' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+}
+
+.dark-mode .form-control {
+    color-scheme: dark;
+}
+
+.dark-mode .form-control::placeholder {
+    color: #bdcbcd;
+    opacity: 1;
 }
