@@ -14,6 +14,7 @@
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/contact.js" defer></script>
 </head>
 
 <body>
@@ -67,86 +68,76 @@
         </nav>
     </header>
 
-   <main class="container">
-    <div class="contact-layout">
-        <div class="row g-4">
-            <div class="col-lg-6">
-                <section class="contact-form-section"
-                    aria-labelledby="contact-title">
-                    <h1 id="contact-title">Contact us</h1>
+    <main class="container">
+        <div class="contact-layout">
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <section class="contact-form-section" aria-labelledby="contact-title">
+                        <h1 id="contact-title">Contact us</h1>
 
-                    <p>
-                        Have a question or an idea for your next adventure?
-                        We would love to hear from you.
-                    </p>
+                        <p>
+                            Have a question or an idea for your next adventure?
+                            We would love to hear from you.
+                        </p>
 
-                    <form id="contact-form">
-                        <div class="mb-3">
-                            <label class="form-label" for="contact-name">
-                                Your name
-                            </label>
-                            <input class="form-control" type="text"
-                                id="contact-name" name="name"
-                                autocomplete="name" maxlength="100" required>
-                        </div>
+                        <form id="contact-form">
+                            <div class="mb-3">
+                                <label class="form-label" for="contact-name">
+                                    Your name
+                                </label>
+                                <input class="form-control" type="text" id="contact-name" name="name"
+                                    autocomplete="name" maxlength="100" required>
+                            </div>
 
-                        <div class="mb-3">
-                            <label class="form-label" for="contact-email">
-                                Email
-                            </label>
-                            <input class="form-control" type="email"
-                                id="contact-email" name="email"
-                                autocomplete="email" maxlength="254" required>
-                        </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="contact-email">
+                                    Email
+                                </label>
+                                <input class="form-control" type="email" id="contact-email" name="email"
+                                    autocomplete="email" maxlength="254" required>
+                            </div>
 
-                        <div class="mb-3">
-                            <label class="form-label" for="contact-subject">
-                                Subject
-                            </label>
-                            <input class="form-control" type="text"
-                                id="contact-subject" name="subject"
-                                maxlength="150" required>
-                        </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="contact-subject">
+                                    Subject
+                                </label>
+                                <input class="form-control" type="text" id="contact-subject" name="subject"
+                                    maxlength="150" required>
+                            </div>
 
-                        <div class="mb-3">
-                            <label class="form-label" for="contact-message">
-                                Message
-                            </label>
-                            <textarea class="form-control"
-                                id="contact-message" name="message"
-                                rows="5" maxlength="2000" required></textarea>
-                        </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="contact-message">
+                                    Message
+                                </label>
+                                <textarea class="form-control" id="contact-message" name="message" rows="5"
+                                    maxlength="2000" required></textarea>
+                            </div>
 
-                        <button class="btn adventure-button" type="submit">
-                            Send message
-                        </button>
-                    </form>
-                </section>
-            </div>
+                            <button class="btn adventure-button" type="submit">
+                                Send message
+                            </button>
+                        </form>
+                    </section>
+                </div>
 
-            <div class="col-lg-6">
-                <section class="location-section"
-                    aria-labelledby="location-title">
-                    <h2 id="location-title">Find us by the river</h2>
+                <div class="col-lg-6">
+                    <section class="location-section" aria-labelledby="location-title">
+                        <h2 id="location-title">Find us by the river</h2>
 
-                    <p>
-                        Our base is in Glyki, near the springs
-                        of the Acheron River.
-                    </p>
+                        <p>
+                            Our base is in Glyki, near the springs
+                            of the Acheron River.
+                        </p>
 
-                    <iframe
-                        class="location-map"
-                        title="Map showing the Acheron Springs near Glyki"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3086.249191206566!2d20.618321726367615!3d39.327939371185295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x135c710039599505%3A0xb47273f8bce8c7e0!2zzqDOt86zzq3PgiDOkc-Hzq3Pgc6_zr3PhM6xIC0gzqbOsc-BzqzOs86zzrkgzpHPh86tz4HOv869z4TOsSAtIM6TzrvPhc66zq4!5e0!3m2!1sen!2sgr!4v1792870538757!5m2!1sen!2sgr"
-                        allowfullscreen
-                        loading="lazy"
-                        referrerpolicy="strict-origin-when-cross-origin">
-                    </iframe>
-                </section>
+                        <iframe class="location-map" title="Map showing the Acheron Springs near Glyki"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3086.249191206566!2d20.618321726367615!3d39.327939371185295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x135c710039599505%3A0xb47273f8bce8c7e0!2zzqDOt86zzq3PgiDOkc-Hzq3Pgc6_zr3PhM6xIC0gzqbOsc-BzqzOs86zzrkgzpHPh86tz4HOv869z4TOsSAtIM6TzrvPhc66zq4!5e0!3m2!1sen!2sgr!4v1792870538757!5m2!1sen!2sgr"
+                            allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin">
+                        </iframe>
+                    </section>
+                </div>
             </div>
         </div>
-    </div>
-</main>
+    </main>
 
     <footer class="site-footer">
         <a class="footer-brand" href="index.html">
