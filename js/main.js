@@ -24,3 +24,28 @@ function initialiseNavigation() {
 }
 
 initialiseNavigation();
+
+function initialiseTheme() {
+    const themeButton = document.querySelector("#theme-toggle");
+    const savedTheme = localStorage.getItem("theme");
+    const darkModeEnabled = savedTheme === "dark";
+
+    document.body.classList.toggle("dark-mode", darkModeEnabled);
+    themeButton.setAttribute("aria-pressed", darkModeEnabled);
+
+    function toggleTheme() {
+        const darkModeEnabled = document.body.classList.toggle("dark-mode");
+
+        themeButton.setAttribute("aria-pressed", darkModeEnabled);
+
+        if (darkModeEnabled) {
+            localStorage.setItem("theme", "dark");
+        } else {
+            localStorage.setItem("theme", "light");
+        }
+    }
+
+     themeButton.addEventListener("click", toggleTheme);
+}
+
+initialiseTheme();

@@ -277,7 +277,7 @@ body {
     font-weight: bold;
 }
 
-.contact-form-section > p {
+.contact-form-section>p {
     margin-bottom: 24px;
     line-height: 1.8;
 }
@@ -321,4 +321,81 @@ body {
     .site-header .nav-link.active {
         background-color: #edf3f2;
     }
+}
+
+/* Dark mode */
+body.dark-mode {
+    background-color: #182426;
+    color: #f2f2ee;
+}
+
+.dark-mode .site-header,
+.dark-mode .activity-section,
+.dark-mode .team-card {
+    background-color: #223235;
+    border-color: #526467;
+    color: #f2f2ee;
+}
+
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode .welcome .welcome-tagline,
+.dark-mode .about-intro .welcome-tagline,
+.dark-mode .team-role,
+.dark-mode .site-header .navbar-brand,
+.dark-mode .site-header .nav-link {
+    color: #a9d9d5;
+}
+
+.dark-mode .site-header .nav-link:hover,
+.dark-mode .site-header .nav-link.active {
+    background-color: #30484b;
+    color: #ffffff;
+}
+
+.dark-mode .navbar-toggler {
+    background-color: #faf8f5;
+}
+
+.dark-mode .form-control {
+    background-color: #223235;
+    border-color: #829597;
+    color: #ffffff;
+}
+
+.dark-mode .form-control:focus {
+    background-color: #223235;
+    border-color: #a9d9d5;
+    color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(169, 217, 213, 0.25);
+}
+
+@media (max-width: 767.98px) {
+    .dark-mode .site-header .navbar-collapse {
+        background-color: rgba(34, 50, 53, 0.95);
+        border-color: #526467;
+    }
+}
+
+.theme-toggle {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 1030;
+    padding: 10px 16px;
+    background-color: #175e63;
+    border: 1px solid #a9d9d5;
+    border-radius: 24px;
+    color: #ffffff;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.theme-toggle:hover {
+    background-color: #11474b;
+}
+
+.theme-toggle:focus-visible {
+    outline: 3px solid #b85c38;
+    outline-offset: 3px;
 }
