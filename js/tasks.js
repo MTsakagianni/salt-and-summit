@@ -3,6 +3,11 @@ function initialiseTasks() {
     const savedTasks = localStorage.getItem("tasks");
     const tasks = savedTasks ? JSON.parse(savedTasks) : [];
     const taskList = document.querySelector("#task-list");
+    const nameInput = document.querySelector("#task-name");
+    const descriptionInput = document.querySelector("#task-description");
+    const dateInput = document.querySelector("#task-date");
+    const submitButton = taskForm.querySelector('button[type="submit"]');
+    let editingTask = null;
 
     function saveTasks() {
         localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -64,18 +69,51 @@ function initialiseTasks() {
 
             completeButton.addEventListener("click", completeTask);
 
+            const deleteButton = document.createElement("button");
+
+            deleteButton.type = "button";
+            deleteButton.className = "btn btn-outline-danger btn-sm ms-2";
+            deleteButton.textContent = "Delete";
+
+            function deleteTask() {
+                const taskIndex = tasks.indexOf(task);
+
+                tasks.splice(taskIndex, 1);
+                saveTasks();
+                renderTasks();
+            }
+
+            deleteButton.addEventListener("click", deleteTask);
+
+            const editButton = document.createElement("button");
+
+            editButton.type = "button";
+            editButton.className = "btn btn-outline-secondary btn-sm me-2";
+            editButton.textContent = "Edit";
+
+            function editTask() {
+                editingTask = task;
+
+                nameInput.value = task.name;
+                descriptionInput.value = task.description;
+                dateInput.value = task.dueDate;
+
+                submitButton.textContent = "Save changes";
+                nameInput.focus();
+            }
+
+            editButton.addEventListener("click", editTask);
+
+            actionsCell.appendChild(editButton);
             actionsCell.appendChild(completeButton);
+            actionsCell.appendChild(deleteButton);
             row.appendChild(actionsCell);
             taskList.appendChild(row);
         }
     }
 
-    function handleTaskSubmit(event) {
+        function handleTaskSubmit(event) {
         event.preventDefault();
-
-        const nameInput = document.querySelector("#task-name");
-        const descriptionInput = document.querySelector("#task-description");
-        const dateInput = document.querySelector("#task-date");
 
         const name = nameInput.value.trim();
         const description = descriptionInput.value.trim();
@@ -86,16 +124,27 @@ function initialiseTasks() {
             return;
         }
 
-        const task = {
-            name: name,
-            description: description,
-            dueDate: dueDate,
-            status: "pending"
-        };
+        if (editingTask !== null) {
+            editingTask.name = name;
+            editingTask.description = description;
+            editingTask.dueDate = dueDate;
 
-        tasks.push(task);
+            editingTask = null;
+            submitButton.textContent = "Add task";
+        } else {
+            const task = {
+                name: name,
+                description: description,
+                dueDate: dueDate,
+                status: "pending"
+            };
+
+            tasks.push(task);
+        }
+
         saveTasks();
         renderTasks();
+        taskForm.reset();
     }
 
     taskForm.addEventListener("submit", handleTaskSubmit);

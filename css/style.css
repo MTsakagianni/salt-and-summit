@@ -417,3 +417,27 @@ body.dark-mode {
     background-color: #f5e4cf;
     color: #704315;
 }
+
+/* Bootstrap table colours in dark mode */
+.dark-mode .table {
+    --bs-table-bg: #223235;
+    --bs-table-color: #f2f2ee;
+    --bs-table-border-color: #526467;
+}
+
+.dark-mode .btn-outline-secondary {
+    --bs-btn-color: #d2dcdd;
+    --bs-btn-border-color: #a3b4b6;
+}
+
+.dark-mode .btn-outline-success {
+    --bs-btn-color: #a9d9b5;
+    --bs-btn-border-color: #a9d9b5;
+    --bs-btn-disabled-color: #a9d9b5;
+    --bs-btn-disabled-border-color: #a9d9b5;
+}
+
+.dark-mode .btn-outline-danger {
+    --bs-btn-color: #ffabb3;
+    --bs-btn-border-color: #ffabb3;
+}
