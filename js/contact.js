@@ -7,14 +7,14 @@ function handleContactSubmit(event) {
     const messageInput = document.querySelector("#contact-message");
 
     const name = nameInput.value.trim();
-const email = emailInput.value.trim();
-const subject = subjectInput.value.trim();
-const message = messageInput.value.trim();
+    const email = emailInput.value.trim();
+    const subject = subjectInput.value.trim();
+    const message = messageInput.value.trim();
 
-if (name === "" || subject === "" || message === "") {
-    alert("Please enter a name, subject and message, not just spaces.");
-    return;
-}
+    if (name === "" || subject === "" || message === "") {
+        alert("Please enter a name, subject and message, not just spaces.");
+        return;
+    }
 
     alert(
         "Your message details:\n\n" +
@@ -23,6 +23,8 @@ if (name === "" || subject === "" || message === "") {
         "Subject: " + subject + "\n" +
         "Message: " + message
     );
+
+    event.currentTarget.reset();
 }
 
 function initialiseContactForm() {

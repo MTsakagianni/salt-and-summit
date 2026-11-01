@@ -241,7 +241,7 @@ body {
 
 .footer-logo {
     width: 48px;
-    height: auto;
+    height: 48px;
     padding: 4px;
     background-color: #faf8f5;
     border-radius: 6px;
@@ -479,4 +479,83 @@ body.dark-mode {
     display: block;
     width: 100%;
     height: 28px;
+}
+
+.weather-overview {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 24px 0;
+}
+
+.weather-icon {
+    font-size: 64px;
+    line-height: 1;
+}
+
+.weather-overview .weather-temperature {
+    font-size: 40px;
+    line-height: 1.2;
+    margin-bottom: 4px;
+}
+
+.weather-description {
+    margin-bottom: 0;
+}
+
+.weather-wind {
+    padding-top: 16px;
+    border-top: 1px solid #d8dedd;
+}
+
+body.dark-mode .weather-wind {
+    border-color: #526467;
+}
+
+.social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    border: 1px solid currentColor;
+    border-radius: 8px;
+    color: #175e63;
+    text-decoration: none;
+}
+
+.social-links i {
+    font-size: 22px;
+}
+
+.social-links a:hover {
+    background-color: #175e63;
+    color: #fff;
+}
+
+.social-links a:focus-visible {
+    outline: 3px solid #b85c38;
+    outline-offset: 3px;
+}
+
+body.dark-mode .social-links a {
+    color: #a9d9d5;
+}
+
+body.dark-mode .social-links a:hover {
+    background-color: #a9d9d5;
+    color: #182426;
+}
+
+body.dark-mode main a:not(.btn) {
+    color: #a9d9d5;
+}
+
+body.dark-mode main a:not(.btn):hover {
+    color: #ffffff;
 }

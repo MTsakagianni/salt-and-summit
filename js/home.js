@@ -1,0 +1,91 @@
+function initialiseActivity() {
+    const activityList = document.querySelector("#activity-list");
+    const activityEmpty = document.querySelector("#activity-empty");
+    const savedActivity = localStorage.getItem("activity");
+    const activities = savedActivity ? JSON.parse(savedActivity) : [];
+
+    activityEmpty.hidden = activities.length > 0;
+
+    for (const activity of activities.slice(0, 5)) {
+        const item = document.createElement("li");
+
+        item.textContent = activity.message;
+        activityList.appendChild(item);
+    }
+}
+
+initialiseActivity();
+
+async function initialiseWeather() {
+    const weatherStatus = document.querySelector("#weather-status");
+    const weatherDetails = document.querySelector("#weather-details");
+    const temperature = document.querySelector("#weather-temperature");
+    const wind = document.querySelector("#weather-wind");
+    const weatherIcon = document.querySelector("#weather-icon");
+    const weatherDescription = document.querySelector("#weather-description");
+
+    const url = "https://api.open-meteo.com/v1/forecast"
+        + "?latitude=39.33&longitude=20.61"
+        + "&current=temperature_2m,wind_speed_10m,weather_code,is_day"
+        + "&temperature_unit=celsius&wind_speed_unit=kmh";
+
+    try {
+        const response = await fetch(url);
+
+        if (!response.ok) {
+            throw new Error("Weather request failed");
+        }
+
+        const data = await response.json();
+        const code = data.current.weather_code;
+        const isDay = data.current.is_day === 1;
+
+        let icon = "🌡️";
+        let description = "Current conditions";
+
+        if (code === 0 || code === 1) {
+            icon = isDay ? "☀️" : "🌙";
+            description = code === 0 ? "Clear sky" : "Mainly clear";
+        } else if (code === 2) {
+            icon = isDay ? "🌤️" : "☁️";
+            description = "Partly cloudy";
+        } else if (code === 3) {
+            icon = "☁️";
+            description = "Overcast";
+        } else if (code === 45 || code === 48) {
+            icon = "🌫️";
+            description = "Foggy";
+        } else if (code >= 51 && code <= 57) {
+            icon = "🌦️";
+            description = "Drizzle";
+        } else if (code >= 61 && code <= 67) {
+            icon = "🌧️";
+            description = "Rain";
+        } else if (code >= 71 && code <= 77) {
+            icon = "❄️";
+            description = "Snow";
+        } else if (code >= 80 && code <= 82) {
+            icon = "🌧️";
+            description = "Rain showers";
+        } else if (code === 85 || code === 86) {
+            icon = "🌨️";
+            description = "Snow showers";
+        } else if (code >= 95 && code <= 99) {
+            icon = "⛈️";
+            description = "Thunderstorm";
+        }
+
+        temperature.textContent = data.current.temperature_2m + " °C";
+        wind.textContent = data.current.wind_speed_10m + " km/h";
+        weatherIcon.textContent = icon;
+        weatherDescription.textContent = description;
+
+        weatherStatus.textContent = "";
+        weatherDetails.hidden = false;
+    } catch (error) {
+        weatherStatus.textContent =
+            "Weather is unavailable right now. Please try again later.";
+    }
+}
+
+initialiseWeather();

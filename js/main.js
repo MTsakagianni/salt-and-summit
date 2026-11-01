@@ -45,7 +45,20 @@ function initialiseTheme() {
         }
     }
 
-     themeButton.addEventListener("click", toggleTheme);
+    themeButton.addEventListener("click", toggleTheme);
 }
 
 initialiseTheme();
+
+function recordActivity(message) {
+    const savedActivity = localStorage.getItem("activity");
+    const activities = savedActivity ? JSON.parse(savedActivity) : [];
+
+    const activity = {
+        message: message
+    };
+
+    activities.unshift(activity);
+
+    localStorage.setItem("activity", JSON.stringify(activities.slice(0, 5)));
+}

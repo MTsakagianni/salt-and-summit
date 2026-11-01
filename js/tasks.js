@@ -12,6 +12,7 @@ function initialiseTasks() {
     const sortSelect = document.querySelector("#task-sort");
     const totalTasks = document.querySelector("#total-tasks");
     const pendingTasks = document.querySelector("#pending-tasks");
+    const progressTasks = document.querySelector("#progress-tasks");
     const completedTasks = document.querySelector("#completed-tasks");
     let editingTask = null;
 
@@ -20,12 +21,21 @@ function initialiseTasks() {
     }
 
     function updateSummary() {
+        const pendingCount = tasks.filter(function (task) {
+            return task.status === "pending";
+        }).length;
+
+        const progressCount = tasks.filter(function (task) {
+            return task.status === "in-progress";
+        }).length;
+
         const completedCount = tasks.filter(function (task) {
             return task.status === "completed";
         }).length;
 
         totalTasks.textContent = tasks.length;
-        pendingTasks.textContent = tasks.length - completedCount;
+        pendingTasks.textContent = pendingCount;
+        progressTasks.textContent = progressCount;
         completedTasks.textContent = completedCount;
     }
 
@@ -74,10 +84,11 @@ function initialiseTasks() {
                 task.status
             ];
 
-            for (const value of values) {
+            for (let index = 0; index < values.length; index++) {
+                const value = values[index];
                 const cell = document.createElement("td");
 
-                if (value === task.status) {
+                if (index === 3) {
                     const statusLabel = document.createElement("span");
 
                     if (task.status === "completed") {
@@ -109,6 +120,7 @@ function initialiseTasks() {
             function completeTask() {
                 task.status = "completed";
                 saveTasks();
+                recordActivity("Completed task: " + task.name);
                 renderTasks();
             }
 
@@ -130,6 +142,7 @@ function initialiseTasks() {
                     submitButton.textContent = "Add task";
                 }
                 saveTasks();
+                recordActivity("Deleted task: " + task.name);
                 renderTasks();
             }
 
@@ -179,6 +192,8 @@ function initialiseTasks() {
             editingTask.description = description;
             editingTask.dueDate = dueDate;
 
+            recordActivity("Updated task: " + editingTask.name);
+
             editingTask = null;
             submitButton.textContent = "Add task";
         } else {
@@ -190,6 +205,7 @@ function initialiseTasks() {
             };
 
             tasks.push(task);
+            recordActivity("Added task: " + task.name);
         }
 
         saveTasks();
@@ -202,7 +218,7 @@ function initialiseTasks() {
     statusFilter.addEventListener("change", renderTasks);
     sortSelect.addEventListener("change", renderTasks);
     renderTasks();
-   
+
 }
 
 initialiseTasks();

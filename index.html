@@ -14,7 +14,13 @@
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
     <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"
+        defer></script>
+
     <script src="js/main.js" defer></script>
+    <script src="js/home.js" defer></script>
 </head>
 
 <body>
@@ -22,7 +28,7 @@
         <nav class="navbar navbar-expand-md" aria-label="Main navigation">
             <div class="container">
                 <a class="navbar-brand" href="index.html">
-                    <img class="brand-logo" src="images/logo.png" alt="">
+                    <img class="brand-logo" src="images/logo.webp" width="168" height="168" alt="">
 
                     <span class="brand-text">
                         <span class="brand-name">
@@ -60,17 +66,16 @@
                                 Analytics
                             </a>
                         </li>
-                        
+
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
 
-    <button class="theme-toggle" id="theme-toggle" type="button"
-    aria-pressed="false">
-    Dark mode
-</button>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false">
+        Dark mode
+    </button>
 
     <main class="container">
         <section class="welcome" aria-labelledby="welcome-title">
@@ -99,7 +104,7 @@
                 </div>
 
                 <div class="col-lg-7">
-                    <img class="landscape" src="images/coast.png"
+                    <img class="landscape" src="images/coast.webp" width="1672" height="941" fetchpriority="high"
                         alt="A coastal hiking trail overlooking the sea and mountains">
                 </div>
             </div>
@@ -107,13 +112,49 @@
 
         <section class="activity-section" aria-labelledby="activity-title">
             <h2 id="activity-title">Latest activity</h2>
-            <p>No activity yet. Add your first task to get started.</p>
+
+            <ul id="activity-list"></ul>
+
+            <p id="activity-empty">
+                No activity yet. Add your first task to get started.
+            </p>
+        </section>
+
+        <section class="activity-section" aria-labelledby="weather-title">
+            <h2 id="weather-title">Weather in Acheron</h2>
+            <p>Check the current conditions before heading outdoors.</p>
+
+            <p id="weather-status" role="status">Loading weather...</p>
+
+            <div id="weather-details" hidden>
+                <div class="weather-overview">
+                    <span id="weather-icon" class="weather-icon" aria-hidden="true"></span>
+
+                    <div>
+                        <p class="weather-temperature">
+                            <span class="visually-hidden">Temperature:</span>
+                            <strong id="weather-temperature"></strong>
+                        </p>
+                        <p id="weather-description" class="weather-description"></p>
+                    </div>
+                </div>
+
+                <p class="weather-wind">
+                    <span aria-hidden="true">🍃</span>
+                    Wind speed: <strong id="weather-wind"></strong>
+                </p>
+            </div>
+
+            <p>
+                Weather data by
+                <a href="https://open-meteo.com/">Open-Meteo</a>
+            </p>
         </section>
     </main>
 
     <footer class="site-footer">
         <a class="footer-brand" href="index.html">
-            <img class="footer-logo" src="images/logo.png" alt="">
+            <img class="footer-logo" src="images/logo.webp" width="168" height="168" alt="">
             <span>Salt &amp; Summit</span>
         </a>
         <p>Get outside. Go together.</p>
@@ -128,9 +169,7 @@
         <p>&copy; 2026 Salt &amp; Summit</p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
+
 </body>
 
 </html>

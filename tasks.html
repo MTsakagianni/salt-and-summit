@@ -16,6 +16,10 @@
 
     <link rel="stylesheet" href="css/style.css">
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"
+        defer></script>
+
     <script src="js/main.js" defer></script>
     <script src="js/tasks.js" defer></script>
 </head>
@@ -25,7 +29,7 @@
         <nav class="navbar navbar-expand-md" aria-label="Main navigation">
             <div class="container">
                 <a class="navbar-brand" href="index.html">
-                    <img class="brand-logo" src="images/logo.png" alt="">
+                    <img class="brand-logo" src="images/logo.webp" width="168" height="168" alt="">
 
                     <span class="brand-text">
                         <span class="brand-name">
@@ -111,7 +115,7 @@
                 </div>
 
                 <div class="col-lg-6 d-none d-lg-block">
-                    <img class="landscape" src="images/hiking.png"
+                    <img class="landscape" src="images/hiking.webp" width="1672" height="941"
                         alt="Three friends hiking on a mountain trail above the sea">
                 </div>
             </div>
@@ -121,15 +125,19 @@
             <h2 id="summary-title">Task summary</h2>
 
             <div class="row g-3">
-                <div class="col-sm-4">
+                <div class="col-6 col-lg-3">
                     <p>Total: <strong id="total-tasks">0</strong></p>
                 </div>
 
-                <div class="col-sm-4">
+                <div class="col-6 col-lg-3">
                     <p>Pending: <strong id="pending-tasks">0</strong></p>
                 </div>
 
-                <div class="col-sm-4">
+                <div class="col-6 col-lg-3">
+                    <p>In progress: <strong id="progress-tasks">0</strong></p>
+                </div>
+
+                <div class="col-6 col-lg-3">
                     <p>Completed: <strong id="completed-tasks">0</strong></p>
                 </div>
             </div>
@@ -192,7 +200,7 @@
 
     <footer class="site-footer">
         <a class="footer-brand" href="index.html">
-            <img class="footer-logo" src="images/logo.png" alt="">
+            <img class="footer-logo" src="images/logo.webp" width="168" height="168" alt="">
             <span>Salt &amp; Summit</span>
         </a>
         <p>Get outside. Go together.</p>
@@ -207,9 +215,7 @@
         <p>&copy; 2026 Salt &amp; Summit</p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
+
 </body>
 
 </html>

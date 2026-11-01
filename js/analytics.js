@@ -45,37 +45,37 @@ function initialiseAnalytics() {
     }
 
     function renderDeadlines() {
-    upcomingTasks.textContent = "";
+        upcomingTasks.textContent = "";
 
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
 
-    const upcoming = tasks.filter(function (task) {
-        const dueDate = new Date(task.dueDate + "T00:00:00");
+        const upcoming = tasks.filter(function (task) {
+            const dueDate = new Date(task.dueDate + "T00:00:00");
 
-        return task.status !== "completed" && dueDate >= today;
-    });
+            return task.status !== "completed" && dueDate >= today;
+        });
 
-    upcoming.sort(function (firstTask, secondTask) {
-        return firstTask.dueDate.localeCompare(secondTask.dueDate);
-    });
+        upcoming.sort(function (firstTask, secondTask) {
+            return firstTask.dueDate.localeCompare(secondTask.dueDate);
+        });
 
-    deadlinesEmpty.hidden = upcoming.length > 0;
+        deadlinesEmpty.hidden = upcoming.length > 0;
 
-    for (const task of upcoming) {
-        const item = document.createElement("li");
+        for (const task of upcoming) {
+            const item = document.createElement("li");
 
-        const formattedDate = new Date(task.dueDate + "T00:00:00")
-            .toLocaleDateString("en-GB", {
-                day: "2-digit",
-                month: "short",
-                year: "numeric"
-            });
+            const formattedDate = new Date(task.dueDate + "T00:00:00")
+                .toLocaleDateString("en-GB", {
+                    day: "2-digit",
+                    month: "short",
+                    year: "numeric"
+                });
 
-        item.textContent = task.name + " — " + formattedDate;
-        upcomingTasks.appendChild(item);
+            item.textContent = task.name + " — " + formattedDate;
+            upcomingTasks.appendChild(item);
+        }
     }
-}
 
     function renderBoard() {
         renderChart();
@@ -116,9 +116,13 @@ function initialiseAnalytics() {
             function changeTaskStatus() {
                 task.status = statusSelect.value;
                 localStorage.setItem("tasks", JSON.stringify(tasks));
+
+                const selectedLabel = statusSelect.options[statusSelect.selectedIndex].textContent;
+
+                recordActivity("Changed task status: " + task.name + " → " + selectedLabel);
+
                 renderBoard();
             }
-
             statusSelect.addEventListener("change", changeTaskStatus);
             card.appendChild(statusSelect);
 
