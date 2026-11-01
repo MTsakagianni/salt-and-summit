@@ -463,3 +463,20 @@ body.dark-mode {
     background-color: #dcecf8;
     color: #234e70;
 }
+
+/* Task status chart */
+.chart-row {
+    margin-top: 20px;
+}
+
+.chart-row label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.chart-row meter {
+    display: block;
+    width: 100%;
+    height: 28px;
+}

@@ -79,6 +79,13 @@
             <p>See how your plans are coming together.</p>
         </section>
 
+        <section class="activity-section" aria-labelledby="chart-title">
+            <h2 id="chart-title">Tasks by status</h2>
+            <p>The number of tasks at each stage.</p>
+
+            <div id="task-chart" class="task-chart"></div>
+        </section>
+
         <section class="activity-section" aria-labelledby="board-title">
             <h2 id="board-title">Task board</h2>
             <p>Keep track of each step of your preparation.</p>
@@ -99,6 +106,17 @@
                     <div id="done-tasks"></div>
                 </div>
             </div>
+        </section>
+
+        <section class="activity-section" aria-labelledby="deadlines-title">
+            <h2 id="deadlines-title">Upcoming deadlines</h2>
+            <p>What needs to be ready next.</p>
+
+            <ul id="upcoming-tasks" class="deadline-list"></ul>
+
+            <p id="deadlines-empty">
+                No upcoming deadlines.
+            </p>
         </section>
 
         <span hidden>666</span>
