@@ -83,6 +83,9 @@ function initialiseTasks() {
                     if (task.status === "completed") {
                         statusLabel.className = "task-status status-completed";
                         statusLabel.textContent = "Completed";
+                    } else if (task.status === "in-progress") {
+                        statusLabel.className = "task-status status-progress";
+                        statusLabel.textContent = "In progress";
                     } else {
                         statusLabel.className = "task-status status-pending";
                         statusLabel.textContent = "Pending";
@@ -199,7 +202,7 @@ function initialiseTasks() {
     statusFilter.addEventListener("change", renderTasks);
     sortSelect.addEventListener("change", renderTasks);
     renderTasks();
-    renderTasks();
+   
 }
 
 initialiseTasks();

@@ -458,3 +458,8 @@ body.dark-mode {
     color: #bdcbcd;
     opacity: 1;
 }
+
+.status-progress {
+    background-color: #dcecf8;
+    color: #234e70;
+}
