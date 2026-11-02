@@ -589,12 +589,10 @@ body.dark-mode main a:not(.btn):hover {
     position: absolute;
     inset: 0;
     z-index: -1;
-    background: linear-gradient(
-        90deg,
-        rgba(9, 31, 34, 0.88) 0%,
-        rgba(9, 31, 34, 0.65) 48%,
-        rgba(9, 31, 34, 0.12) 100%
-    );
+    background: linear-gradient(90deg,
+            rgba(9, 31, 34, 0.88) 0%,
+            rgba(9, 31, 34, 0.65) 48%,
+            rgba(9, 31, 34, 0.12) 100%);
 }
 
 .home-hero-content {
@@ -717,7 +715,7 @@ body.dark-mode main a:not(.btn):hover {
     letter-spacing: -1px;
 }
 
-.home-introduction > p {
+.home-introduction>p {
     max-width: 480px;
     margin: 0;
     color: #626660;
@@ -733,7 +731,7 @@ body.dark-mode .home-introduction h2 {
     color: #a9d9d5;
 }
 
-body.dark-mode .home-introduction > p {
+body.dark-mode .home-introduction>p {
     color: #c4cecb;
 }
 
@@ -745,11 +743,9 @@ body.dark-mode .home-introduction > p {
     }
 
     .home-hero::before {
-        background: linear-gradient(
-            90deg,
-            rgba(9, 31, 34, 0.88),
-            rgba(9, 31, 34, 0.55)
-        );
+        background: linear-gradient(90deg,
+                rgba(9, 31, 34, 0.88),
+                rgba(9, 31, 34, 0.55));
     }
 
     .home-hero-content {
@@ -796,7 +792,7 @@ body.dark-mode .home-introduction > p {
     background-color: #ffffff;
 }
 
-.collection-card > img {
+.collection-card>img {
     display: block;
     width: 100%;
     aspect-ratio: 4 / 3;
@@ -826,7 +822,7 @@ body.dark-mode .home-introduction > p {
     letter-spacing: -0.5px;
 }
 
-.collection-card-content > p:not(.collection-label) {
+.collection-card-content>p:not(.collection-label) {
     margin-bottom: 24px;
     color: #626660;
     font-size: 14px;
@@ -857,7 +853,7 @@ body.dark-mode .collection-activities {
     color: #a9d9d5;
 }
 
-body.dark-mode .collection-card-content > p:not(.collection-label) {
+body.dark-mode .collection-card-content>p:not(.collection-label) {
     color: #c4cecb;
 }
 
@@ -945,7 +941,7 @@ body.dark-mode .home-dashboard h2 {
     background-color: #ffffff;
 }
 
-.adventure-toolbar > div {
+.adventure-toolbar>div {
     min-width: 0;
 }
 
@@ -980,7 +976,7 @@ body.dark-mode .home-dashboard h2 {
     background-color: #ffffff;
 }
 
-.adventure-card > img {
+.adventure-card>img {
     display: block;
     width: 100%;
     height: auto;
@@ -1170,7 +1166,7 @@ body.dark-mode .adventure-save[aria-pressed="true"] {
     font-weight: bold;
 }
 
-.adventure-modal-content .modal-body > p {
+.adventure-modal-content .modal-body>p {
     line-height: 1.8;
 }
 
@@ -1306,4 +1302,518 @@ body.dark-mode .collection-link {
 
 body.dark-mode .collection-link:hover {
     color: #ffffff;
+}
+
+/* Separate the practical information from the adventure planning form. */
+.adventure-guide {
+    display: grid;
+    gap: 24px;
+    margin: 28px 0;
+    padding-bottom: 28px;
+    border-bottom: 1px solid #ded8d2;
+}
+
+.adventure-guide h3 {
+    margin-bottom: 12px;
+}
+
+.adventure-guide p {
+    margin-bottom: 0;
+}
+
+.adventure-guide ul {
+    margin-bottom: 0;
+    padding-left: 20px;
+}
+
+.adventure-guide li {
+    margin-bottom: 8px;
+    line-height: 1.7;
+}
+
+.adventure-guide li:last-child {
+    margin-bottom: 0;
+}
+
+.dark-mode .adventure-guide {
+    border-color: #526769;
+}
+
+/* Tasks: show the overview before the form and detailed preparation list. */
+.tasks-page {
+    padding-bottom: 64px;
+}
+
+.tasks-introduction {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.tasks-introduction>div {
+    max-width: 740px;
+}
+
+.tasks-introduction>div>p:last-child {
+    margin-bottom: 0;
+    color: #626660;
+}
+
+.tasks-progress-link {
+    flex-shrink: 0;
+    padding: 12px 18px;
+    border: 1px solid #175e63;
+    color: #175e63;
+    font-weight: bold;
+}
+
+.tasks-progress-link:hover {
+    background-color: #175e63;
+    border-color: #175e63;
+    color: #ffffff;
+}
+
+.tasks-progress-link:focus-visible {
+    outline: 3px solid #b85c38;
+    outline-offset: 3px;
+}
+
+/* Each summary card pairs a count with a readable status label. */
+.task-summary-section {
+    margin-bottom: 32px;
+}
+
+.task-stat {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 24px;
+    border: 1px solid #dedbd5;
+    border-top: 3px solid #175e63;
+    border-radius: 14px;
+    background-color: #ffffff;
+}
+
+.task-stat-label {
+    color: #175e63;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.task-stat strong {
+    margin: 12px 0 8px;
+    color: #175e63;
+    font-size: 40px;
+    line-height: 1;
+}
+
+.task-stat-note {
+    color: #626660;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.task-stat-pending {
+    border-top-color: #b85c38;
+}
+
+.task-stat-progress {
+    border-top-color: #527f9b;
+}
+
+.task-stat-completed {
+    border-top-color: #548167;
+}
+
+/* Keep the form and inspiration card balanced without fixed heights. */
+.task-planning-layout {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    align-items: stretch;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.task-panel {
+    min-width: 0;
+    padding: 32px;
+    border: 1px solid #dedbd5;
+    border-radius: 14px;
+    background-color: #ffffff;
+}
+
+.task-panel h2,
+.task-inspiration h2 {
+    margin-bottom: 12px;
+    color: #175e63;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+}
+
+.task-panel-intro {
+    margin-bottom: 24px;
+    color: #626660;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.tasks-page .form-label {
+    color: #175e63;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.tasks-page .form-control,
+.tasks-page .form-select {
+    min-height: 46px;
+}
+
+.task-inspiration {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid #dedbd5;
+    border-radius: 14px;
+    background-color: #edf3ef;
+}
+
+.task-inspiration>img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.task-inspiration-content {
+    padding: 28px;
+}
+
+.task-inspiration-content>p:not(.section-eyebrow) {
+    margin-bottom: 0;
+    color: #52635c;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* Group list controls together, then stack them on smaller screens. */
+.task-list-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 28px;
+}
+
+.task-list-heading h2 {
+    margin-bottom: 0;
+}
+
+.task-list-heading>p {
+    max-width: 260px;
+    margin: 0;
+    color: #626660;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.task-toolbar {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.task-toolbar>div {
+    min-width: 0;
+}
+
+
+
+.task-table>thead>tr>th {
+    padding: 14px 12px;
+    background-color: #edf3ef;
+    color: #175e63;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.task-table>tbody>tr>td {
+    padding: 18px 12px;
+    font-size: 14px;
+    line-height: 1.7;
+    vertical-align: middle;
+    overflow-wrap: anywhere;
+}
+
+.task-table th:first-child {
+    width: 21%;
+}
+
+.task-table th:nth-child(2) {
+    width: 35%;
+}
+
+.task-table th:nth-child(3) {
+    width: 13%;
+}
+
+.task-table th:nth-child(4) {
+    width: 13%;
+}
+
+.task-table th:last-child {
+    width: 18%;
+}
+
+.task-table td:first-child {
+    color: #175e63;
+    font-weight: bold;
+}
+
+.task-table td:last-child .btn {
+    margin: 4px;
+}
+
+/* Keep the same visual hierarchy and readable contrast in dark mode. */
+body.dark-mode .task-stat,
+body.dark-mode .task-panel,
+body.dark-mode .task-inspiration {
+    border-color: #526467;
+    background-color: #223235;
+}
+
+body.dark-mode .task-stat {
+    border-top-color: #a9d9d5;
+}
+
+body.dark-mode .task-stat-pending {
+    border-top-color: #f0b58c;
+}
+
+body.dark-mode .task-stat-progress {
+    border-top-color: #91bdd9;
+}
+
+body.dark-mode .task-stat-completed {
+    border-top-color: #9cccae;
+}
+
+body.dark-mode .task-stat-label,
+body.dark-mode .task-stat strong,
+body.dark-mode .task-panel h2,
+body.dark-mode .task-inspiration h2,
+body.dark-mode .tasks-page .form-label,
+body.dark-mode .task-table td:first-child {
+    color: #a9d9d5;
+}
+
+body.dark-mode .tasks-introduction>div>p:last-child,
+body.dark-mode .task-stat-note,
+body.dark-mode .task-panel-intro,
+body.dark-mode .task-inspiration-content>p:not(.section-eyebrow),
+body.dark-mode .task-list-heading>p {
+    color: #c4cecb;
+}
+
+body.dark-mode .tasks-progress-link {
+    border-color: #a9d9d5;
+    color: #a9d9d5;
+}
+
+body.dark-mode .tasks-progress-link:hover {
+    background-color: #a9d9d5;
+    color: #182426;
+}
+
+body.dark-mode .task-table>thead>tr>th {
+    background-color: #30484b;
+    color: #a9d9d5;
+}
+
+@media (max-width: 991.98px) {
+    .tasks-introduction {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .task-planning-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .tasks-page {
+        padding-bottom: 40px;
+    }
+
+    .tasks-introduction h1 {
+        font-size: 32px;
+    }
+
+    .task-stat {
+        padding: 20px;
+    }
+
+    .task-stat strong {
+        font-size: 34px;
+    }
+
+    .task-panel,
+    .task-inspiration-content {
+        padding: 24px;
+    }
+
+    .task-list-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .task-toolbar {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Keep empty-list guidance distinct from ordinary task rows. */
+.task-table>tbody>tr>td.task-empty {
+    padding: 36px 24px;
+    color: #626660;
+    font-weight: normal;
+    text-align: center;
+}
+
+body.dark-mode .task-table>tbody>tr>td.task-empty {
+    color: #c4cecb;
+}
+
+/* Let the page scroll vertically while retaining horizontal table scrolling. */
+.tasks-page .table-responsive {
+    height: auto;
+    max-height: none;
+    overflow: auto;
+    border: 1px solid #dedbd5;
+    border-radius: 10px;
+}
+
+.task-table {
+    min-width: 860px;
+}
+
+.task-table>thead>tr>th {
+    padding: 16px;
+    font-size: 12px;
+    letter-spacing: 0.3px;
+}
+
+.task-table>tbody>tr>td {
+    padding: 20px 16px;
+    line-height: 1.6;
+}
+
+.task-table>tbody>tr:last-child>td {
+    border-bottom: 0;
+}
+
+.task-table th:first-child {
+    width: 22%;
+}
+
+.task-table th:nth-child(2) {
+    width: 31%;
+}
+
+.task-table th:nth-child(3) {
+    width: 13%;
+}
+
+.task-table th:nth-child(4) {
+    width: 13%;
+}
+
+.task-table th:last-child {
+    width: 21%;
+}
+
+.task-table td:nth-child(2) {
+    color: #626660;
+}
+
+.task-table td:nth-child(3) {
+    white-space: nowrap;
+    font-size: 13px;
+}
+
+/* Group actions consistently instead of spacing individual buttons. */
+.task-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+.task-actions .btn {
+    min-height: 36px;
+    margin: 0 !important;
+    padding: 7px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.task-actions .btn-outline-secondary {
+    --bs-btn-color: #175e63;
+    --bs-btn-border-color: #bdcfcb;
+    --bs-btn-hover-bg: #edf3ef;
+    --bs-btn-hover-color: #11474b;
+    --bs-btn-hover-border-color: #175e63;
+}
+
+.task-actions .btn-outline-success {
+    --bs-btn-color: #ffffff;
+    --bs-btn-bg: #175e63;
+    --bs-btn-border-color: #175e63;
+    --bs-btn-hover-bg: #11474b;
+    --bs-btn-hover-color: #ffffff;
+    --bs-btn-hover-border-color: #11474b;
+}
+
+.task-actions .btn-outline-danger {
+    --bs-btn-color: #a23d35;
+    --bs-btn-border-color: #e1c8c4;
+    --bs-btn-hover-bg: #a23d35;
+    --bs-btn-hover-color: #ffffff;
+    --bs-btn-hover-border-color: #a23d35;
+}
+
+.task-actions .btn:focus-visible {
+    outline: 3px solid #b85c38;
+    outline-offset: 3px;
+}
+
+/* Preserve readable action colours against dark table rows. */
+body.dark-mode .tasks-page .table-responsive {
+    border-color: #526467;
+}
+
+body.dark-mode .task-table td:nth-child(2) {
+    color: #c4cecb;
+}
+
+body.dark-mode .task-actions .btn-outline-secondary {
+    --bs-btn-color: #a9d9d5;
+    --bs-btn-border-color: #829597;
+    --bs-btn-hover-bg: #30484b;
+    --bs-btn-hover-color: #ffffff;
+    --bs-btn-hover-border-color: #a9d9d5;
+}
+
+body.dark-mode .task-actions .btn-outline-danger {
+    --bs-btn-color: #ffabb3;
+    --bs-btn-border-color: #a8757b;
+    --bs-btn-hover-bg: #ffabb3;
+    --bs-btn-hover-color: #182426;
+    --bs-btn-hover-border-color: #ffabb3;
 }

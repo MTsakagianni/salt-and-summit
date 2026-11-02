@@ -16,6 +16,9 @@ function initialiseAdventures() {
     const modalDuration = document.querySelector("#adventure-modal-duration");
     const modalDifficulty = document.querySelector("#adventure-modal-difficulty");
     const modalPrice = document.querySelector("#adventure-modal-price");
+    const modalExpect = document.querySelector("#adventure-modal-expect");
+    const modalBring = document.querySelector("#adventure-modal-bring");
+    const modalBefore = document.querySelector("#adventure-modal-before");
 
     const planForm = document.querySelector("#adventure-plan-form");
     const adventureDate = document.querySelector("#adventure-date");
@@ -175,23 +178,190 @@ function initialiseAdventures() {
         }
     ];
 
-    // Category images are kept separately so shared presentation data
-    // does not need to be repeated in every adventure object.
+
+
+    // Keep category labels consistent across the cards and shared modal.
     const categories = {
         water: {
-            label: "On the water",
-            image: "images/sup-800.webp",
-            alt: "Paddleboarders in a coastal bay"
+            label: "On the water"
         },
         mountain: {
-            label: "Into the mountains",
-            image: "images/hiking.webp",
-            alt: "Hikers on a rocky trail above the sea"
+            label: "Into the mountains"
         },
         cycling: {
-            label: "On two wheels",
-            image: "images/cycling.webp",
-            alt: "Cyclists following a coastal road"
+            label: "On two wheels"
+        }
+    };
+
+    // Keep detailed information separate from the short card summaries.
+    // These are illustrative experiences for the coursework catalogue.
+    const adventureDetails = {
+        rafting: {
+            expect:
+                "Start with a briefing and an introduction to paddling together. " +
+                "Follow a scenic river route with small rapids and quieter stretches.",
+            bring: [
+                "Swimwear and a towel",
+                "Secure footwear suitable for getting wet",
+                "Dry clothes for afterwards"
+            ],
+            before:
+                "Confirm the river conditions, swimming requirements and supplied " +
+                "equipment with the organiser before making arrangements."
+        },
+
+        sup: {
+            expect:
+                "Get familiar with the board in sheltered water, then practise " +
+                "paddling and turning while exploring the coastline.",
+            bring: [
+                "Swimwear and a towel",
+                "Sun protection",
+                "Drinking water"
+            ],
+            before:
+                "Check the wind forecast and confirm the meeting point, " +
+                "buoyancy equipment and suitability for your experience."
+        },
+
+        kayaking: {
+            expect:
+                "Learn basic paddle strokes before following the shoreline. " +
+                "Discover rocky coves and take a break along the route.",
+            bring: [
+                "Clothes suitable for getting wet",
+                "A hat and sun protection",
+                "Water and a dry change of clothes"
+            ],
+            before:
+                "Confirm the route, sea conditions and required paddling experience " +
+                "with the organiser."
+        },
+
+        "river-trekking": {
+            expect:
+                "Follow shaded riverbanks and walk through shallow sections of " +
+                "clear water, with pauses to enjoy the surrounding landscape.",
+            bring: [
+                "Secure shoes with good grip that can get wet",
+                "Quick-drying clothing",
+                "A towel and dry clothes"
+            ],
+            before:
+                "Water depth, temperature and footing vary. Confirm current " +
+                "conditions and route suitability before setting out."
+        },
+
+        snorkelling: {
+            expect:
+                "Get familiar with the mask and snorkel before exploring a " +
+                "sheltered bay from the surface, with time to observe marine life.",
+            bring: [
+                "Swimwear and a towel",
+                "Sun protection",
+                "Water and dry clothes"
+            ],
+            before:
+                "Confirm swimming requirements, sea conditions and available " +
+                "equipment. Observe marine life without touching or disturbing it."
+        },
+
+        canyoning: {
+            expect:
+                "Explore a rocky gorge with a specialist guide. The planned route " +
+                "combines walking through water and supervised rope descents.",
+            bring: [
+                "Swimwear",
+                "Footwear approved by the organiser",
+                "A towel and a complete change of clothes"
+            ],
+            before:
+                "Ask about fitness and swimming requirements, specialist equipment " +
+                "and weather restrictions before choosing this experience."
+        },
+
+        hiking: {
+            expect:
+                "Follow a mountain trail through changing scenery, with a steady " +
+                "group pace and breaks for water, snacks and viewpoints.",
+            bring: [
+                "Walking shoes or boots with good grip",
+                "Water and snacks",
+                "Layers and a weatherproof jacket"
+            ],
+            before:
+                "Check the route distance, elevation gain and forecast to make " +
+                "sure the walk matches your fitness and experience."
+        },
+
+        "trail-running": {
+            expect:
+                "Run natural paths with a small group, moving between forest " +
+                "sections and open views, with regrouping stops along the way.",
+            bring: [
+                "Trail-running shoes",
+                "Water or a hydration vest",
+                "A light layer and a small snack"
+            ],
+            before:
+                "Confirm the distance, elevation and expected pace. Uneven " +
+                "ground makes this different from running on roads."
+        },
+
+        climbing: {
+            expect:
+                "Begin with an equipment and technique briefing, then try " +
+                "supervised climbs on natural rock with time to rest between attempts.",
+            bring: [
+                "Comfortable clothing that allows movement",
+                "Closed shoes for the approach",
+                "Water and sun protection"
+            ],
+            before:
+                "Confirm the climbing location, instructor arrangements and supplied " +
+                "equipment. Ask whether the session suits first-time climbers."
+        },
+
+        camping: {
+            expect:
+                "Arrive with time to settle into camp and enjoy the evening " +
+                "landscape. Stay overnight and wake up to a slower morning outdoors.",
+            bring: [
+                "Warm layers and a torch",
+                "Personal overnight essentials",
+                "Water and any agreed food supplies"
+            ],
+            before:
+                "Confirm the designated campsite, facilities and sleeping equipment. " +
+                "Check local rules and leave the site clean."
+        },
+
+        "mountain-biking": {
+            expect:
+                "Start with a bike check before riding forest tracks and uneven " +
+                "trails, with breaks to regroup and enjoy the views.",
+            bring: [
+                "Comfortable cycling clothing",
+                "Closed shoes and water",
+                "A light layer and a snack"
+            ],
+            before:
+                "Confirm bike and helmet availability, terrain difficulty and " +
+                "required riding experience before arranging your outing."
+        },
+
+        "road-cycling": {
+            expect:
+                "Follow a scenic coastal route at a steady group pace, with " +
+                "planned stops for water and views along the way.",
+            bring: [
+                "Comfortable cycling clothing",
+                "Water and snacks",
+                "Sun protection and a light layer"
+            ],
+            before:
+                "Check the route distance, elevation and traffic conditions. " +
+                "Confirm the bicycle, helmet and expected group pace."
         }
     };
 
@@ -208,6 +378,19 @@ function initialiseAdventures() {
             : adventure.duration + " hours";
         modalDifficulty.textContent = adventure.difficulty;
         modalPrice.textContent = "€" + adventure.price;
+        const details = adventureDetails[adventure.id];
+
+        modalExpect.textContent = details.expect;
+        modalBefore.textContent = details.before;
+
+        // Clear the previous adventure's list because all cards share one modal.
+        modalBring.textContent = "";
+
+        for (const item of details.bring) {
+            const listItem = document.createElement("li");
+            listItem.textContent = item;
+            modalBring.appendChild(listItem);
+        }
         selectedAdventure = adventure;
         planForm.reset();
         planFeedback.textContent = "";
@@ -308,6 +491,58 @@ function initialiseAdventures() {
             " Open My tasks to review your deadlines.";
     }
 
+    // Match each adventure to its own photograph and descriptive alternative text.
+    const adventureImages = {
+        rafting: {
+            src: "images/rafting.webp",
+            alt: "A group rafting through a wooded river gorge"
+        },
+        sup: {
+            src: "images/sup-800.webp",
+            alt: "Paddleboarders exploring a clear coastal bay"
+        },
+        kayaking: {
+            src: "images/sea-kayaking.webp",
+            alt: "Two kayakers paddling beside a rocky coastline"
+        },
+        "river-trekking": {
+            src: "images/river-trekking.webp",
+            alt: "Three friends walking through a clear river beneath leafy trees"
+        },
+        snorkelling: {
+            src: "images/snorkelling.webp",
+            alt: "Two snorkellers exploring the clear water of a rocky bay"
+        },
+        canyoning: {
+            src: "images/canyoning.webp",
+            alt: "A helmeted adventurer descending a waterfall using a rope"
+        },
+        hiking: {
+            src: "images/hiking.webp",
+            alt: "Three hikers following a mountain trail overlooking the sea"
+        },
+        "trail-running": {
+            src: "images/trail-running.webp",
+            alt: "Two trail runners on a sunlit mountain path"
+        },
+        climbing: {
+            src: "images/rock-climbing.webp",
+            alt: "A climber and belayer beside towering Meteora-inspired rock formations"
+        },
+        camping: {
+            src: "images/camping.webp",
+            alt: "Two friends relaxing beside their tents at sunset"
+        },
+        "mountain-biking": {
+            src: "images/mountain-biking.webp",
+            alt: "Three helmeted mountain bikers riding along a rocky forest trail"
+        },
+        "road-cycling": {
+            src: "images/cycling.webp",
+            alt: "Three cyclists riding along a coastal road above the sea"
+        }
+    };
+
     function createAdventureCard(adventure) {
         const category = categories[adventure.category];
 
@@ -318,10 +553,12 @@ function initialiseAdventures() {
         card.classList.add("adventure-card");
 
         const image = document.createElement("img");
-        image.src = category.image;
-        image.alt = category.alt;
-        image.width = 800;
-        image.height = 450;
+        image.src = adventureImages[adventure.id].src;
+        image.alt = adventureImages[adventure.id].alt;
+
+        // Reserve space before the photograph loads to reduce layout shifts.
+        image.width = 1000;
+        image.height = 563;
         image.loading = "lazy";
 
         const content = document.createElement("div");

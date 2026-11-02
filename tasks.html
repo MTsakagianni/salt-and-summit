@@ -80,107 +80,168 @@
         Dark mode
     </button>
 
-    <main class="container">
-        <section class="welcome" aria-labelledby="tasks-title">
-            <h1 id="tasks-title">Your tasks</h1>
-            <p>A little preparation for your next adventure.</p>
-
-            <div class="row g-4 align-items-center">
-                <div class="col-lg-6">
-                    <form id="task-form">
-                        <div class="mb-3">
-                            <label class="form-label" for="task-name">
-                                Task name
-                            </label>
-                            <input class="form-control" type="text" id="task-name" name="name" maxlength="100" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label" for="task-description">
-                                Description
-                            </label>
-                            <textarea class="form-control" id="task-description" name="description" rows="3"
-                                maxlength="1000" required></textarea>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label" for="task-date">
-                                Due date
-                            </label>
-                            <input class="form-control" type="date" id="task-date" name="dueDate" required>
-                        </div>
-
-                        <button class="btn adventure-button" type="submit">
-                            Add task
-                        </button>
-                    </form>
-                </div>
-
-                <div class="col-lg-6 d-none d-lg-block">
-                    <img class="landscape" src="images/hiking.webp" width="1672" height="941"
-                        alt="Three friends hiking on a mountain trail above the sea">
-                </div>
+    <main class="container tasks-page">
+        <section class="welcome tasks-introduction" aria-labelledby="tasks-title">
+            <div>
+                <p class="section-eyebrow">A LITTLE PREPARATION. MORE FREEDOM.</p>
+                <h1 id="tasks-title">Make room for the adventure.</h1>
+                <p>
+                    Your plans, one step at a time.
+                    Keep the essentials together and head outdoors feeling ready.
+                </p>
             </div>
+
+            <a class="btn tasks-progress-link" href="analytics.html">
+                View your progress →
+            </a>
         </section>
 
-        <section class="activity-section" aria-labelledby="summary-title">
-            <h2 id="summary-title">Task summary</h2>
+        <section class="task-summary-section" aria-labelledby="summary-title">
+            <h2 class="visually-hidden" id="summary-title">Task summary</h2>
 
             <div class="row g-3">
                 <div class="col-6 col-lg-3">
-                    <p>Total: <strong id="total-tasks">0</strong></p>
+                    <div class="task-stat">
+                        <span class="task-stat-label">Total tasks</span>
+                        <strong id="total-tasks">0</strong>
+                        <span class="task-stat-note">Everything on your list</span>
+                    </div>
                 </div>
 
                 <div class="col-6 col-lg-3">
-                    <p>Pending: <strong id="pending-tasks">0</strong></p>
+                    <div class="task-stat task-stat-pending">
+                        <span class="task-stat-label">Pending</span>
+                        <strong id="pending-tasks">0</strong>
+                        <span class="task-stat-note">Ready to get started</span>
+                    </div>
                 </div>
 
                 <div class="col-6 col-lg-3">
-                    <p>In progress: <strong id="progress-tasks">0</strong></p>
+                    <div class="task-stat task-stat-progress">
+                        <span class="task-stat-label">In progress</span>
+                        <strong id="progress-tasks">0</strong>
+                        <span class="task-stat-note">Already on your way</span>
+                    </div>
                 </div>
 
                 <div class="col-6 col-lg-3">
-                    <p>Completed: <strong id="completed-tasks">0</strong></p>
+                    <div class="task-stat task-stat-completed">
+                        <span class="task-stat-label">Completed</span>
+                        <strong id="completed-tasks">0</strong>
+                        <span class="task-stat-note">One less thing to think about</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="activity-section" aria-labelledby="task-list-title">
-            <h2 id="task-list-title">Task list</h2>
+        <div class="task-planning-layout">
+            <section class="task-panel" aria-labelledby="task-form-title">
+                <p class="section-eyebrow">START WITH THE ESSENTIALS</p>
+                <h2 id="task-form-title">Add to your plans.</h2>
+                <p class="task-panel-intro">
+                    From arranging transport to packing your favourite walking shoes.
+                </p>
 
-            <div class="mb-3">
-                <label class="form-label" for="task-search">
-                    Search tasks
-                </label>
-                <input class="form-control" type="search" id="task-search"
-                    placeholder="Search by task name or description">
+                <form id="task-form">
+                    <div class="mb-3">
+                        <label class="form-label" for="task-name">
+                            Task name
+                        </label>
+                        <input class="form-control" type="text" id="task-name" name="name" maxlength="100"
+                            placeholder="For example, organise transport" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="task-description">
+                            Description
+                        </label>
+                        <textarea class="form-control" id="task-description" name="description" rows="3"
+                            maxlength="1000" placeholder="What needs to be done?" required></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="task-date">
+                            Due date
+                        </label>
+                        <input class="form-control" type="date" id="task-date" name="dueDate" required>
+                    </div>
+
+                    <div class="d-flex flex-wrap align-items-center gap-3">
+                        <button class="btn adventure-button" type="submit">
+                            Add task
+                        </button>
+
+                        <button class="btn btn-outline-secondary mt-2" type="button" id="cancel-edit" hidden>
+                            Cancel editing
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <aside class="task-inspiration" aria-labelledby="task-inspiration-title">
+                <img src="images/trip-preparation.webp" width="1000" height="563"
+                    alt="Packing a hiking backpack with a jacket, water and walking essentials" loading="lazy">
+
+                <div class="task-inspiration-content">
+                    <p class="section-eyebrow">SOMETHING TO LOOK FORWARD TO</p>
+                    <h2 id="task-inspiration-title">
+                        A good day starts before you leave.
+                    </h2>
+                    <p>
+                        Still choosing your next escape? Explore the adventures
+                        and add a preparation list directly from an experience.
+                    </p>
+                    <a class="collection-link" href="adventures.html">
+                        Explore adventures →
+                    </a>
+                </div>
+            </aside>
+        </div>
+
+        <section class="task-panel task-list-panel" aria-labelledby="task-list-title">
+            <div class="task-list-heading">
+                <div>
+                    <p class="section-eyebrow">KEEP EVERYTHING TOGETHER</p>
+                    <h2 id="task-list-title">Your preparation list.</h2>
+                </div>
+                <p>Small steps towards your next day outside.</p>
             </div>
 
-            <div class="mb-3">
-                <label class="form-label" for="status-filter">
-                    Filter by status
-                </label>
-                <select class="form-select" id="status-filter">
-                    <option value="all">All tasks</option>
-                    <option value="pending">Pending</option>
-                    <option value="in-progress">In progress</option>
-                    <option value="completed">Completed</option>
-                </select>
-            </div>
+            <div class="task-toolbar">
+                <div>
+                    <label class="form-label" for="task-search">
+                        Search tasks
+                    </label>
+                    <input class="form-control" type="search" id="task-search"
+                        placeholder="Search by name or description">
+                </div>
 
-            <div class="mb-3">
-                <label class="form-label" for="task-sort">
-                    Sort by
-                </label>
-                <select class="form-select" id="task-sort">
-                    <option value="default">Order added</option>
-                    <option value="name">Task name (A–Z)</option>
-                    <option value="date">Due date (earliest first)</option>
-                </select>
+                <div>
+                    <label class="form-label" for="status-filter">
+                        Filter by status
+                    </label>
+                    <select class="form-select" id="status-filter">
+                        <option value="all">All tasks</option>
+                        <option value="pending">Pending</option>
+                        <option value="in-progress">In progress</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="form-label" for="task-sort">
+                        Sort by
+                    </label>
+                    <select class="form-select" id="task-sort">
+                        <option value="default">Order added</option>
+                        <option value="name">Task name (A–Z)</option>
+                        <option value="date">Due date (earliest first)</option>
+                    </select>
+                </div>
             </div>
 
             <div class="table-responsive">
-                <table class="table">
+                <table class="table task-table">
                     <caption class="visually-hidden">
                         Tasks for your outdoor activities
                     </caption>
@@ -193,8 +254,7 @@
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
-                    <tbody id="task-list">
-                    </tbody>
+                    <tbody id="task-list"></tbody>
                 </table>
             </div>
         </section>

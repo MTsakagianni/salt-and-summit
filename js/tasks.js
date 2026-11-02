@@ -17,12 +17,23 @@ function initialiseTasks() {
     const pendingTasks = document.querySelector("#pending-tasks");
     const progressTasks = document.querySelector("#progress-tasks");
     const completedTasks = document.querySelector("#completed-tasks");
+    const cancelEditButton = document.querySelector("#cancel-edit");
+    const formTitle = document.querySelector("#task-form-title");
 
     // Keep a reference to the edited task so one form can support both adding and editing.
     let editingTask = null;
 
     function saveTasks() {
         localStorage.setItem("tasks", JSON.stringify(tasks));
+    }
+
+    // Return to add mode without saving changes to the selected task.
+    function resetTaskForm() {
+        editingTask = null;
+        taskForm.reset();
+        submitButton.textContent = "Add task";
+        formTitle.textContent = "Add to your plans.";
+        cancelEditButton.hidden = true;
     }
 
     function updateSummary() {
@@ -79,6 +90,21 @@ function initialiseTasks() {
             });
         }
 
+        // Explain whether the list is empty or the active filters found no matches.
+        if (visibleTasks.length === 0) {
+            const row = document.createElement("tr");
+            const cell = document.createElement("td");
+
+            cell.colSpan = 5;
+            cell.classList.add("task-empty");
+
+            cell.textContent = tasks.length === 0
+                ? "No tasks yet. Add your first task or explore an adventure to start planning."
+                : "No tasks match your search and filters. Try changing your selections.";
+
+            row.appendChild(cell);
+            taskList.appendChild(row);
+        }
         for (const task of visibleTasks) {
             const row = document.createElement("tr");
 
@@ -129,6 +155,8 @@ function initialiseTasks() {
             }
 
             const actionsCell = document.createElement("td");
+            const actionsGroup = document.createElement("div");
+            actionsGroup.classList.add("task-actions");
             const completeButton = document.createElement("button");
 
             completeButton.type = "button";
@@ -156,22 +184,34 @@ function initialiseTasks() {
             deleteButton.textContent = "Delete";
 
             function deleteTask() {
-                // Find the task in the original array because its displayed
-                // position may have changed through filtering or sorting.
+                // Give the user a chance to cancel before removing a saved task.
+                const confirmed = window.confirm(
+                    'Delete "' + task.name + '"? This cannot be undone.'
+                );
+
+                if (!confirmed) {
+                    return;
+                }
+
+                // Use the original array because filters and sorting change row positions.
                 const taskIndex = tasks.indexOf(task);
+
+                if (taskIndex === -1) {
+                    return;
+                }
 
                 tasks.splice(taskIndex, 1);
 
-                // Leave edit mode if the task being edited has been deleted.
                 if (editingTask === task) {
-                    editingTask = null;
-                    taskForm.reset();
-                    submitButton.textContent = "Add task";
+                    resetTaskForm();
                 }
 
                 saveTasks();
                 recordActivity("Deleted task: " + task.name);
                 renderTasks();
+
+                // The deleted button no longer exists, so move focus to a stable control.
+                searchInput.focus();
             }
 
             deleteButton.addEventListener("click", deleteTask);
@@ -187,20 +227,27 @@ function initialiseTasks() {
             function editTask() {
                 editingTask = task;
 
-                // Reuse the form and move focus to it so editing can begin immediately.
                 nameInput.value = task.name;
                 descriptionInput.value = task.description;
                 dateInput.value = task.dueDate;
 
+                formTitle.textContent = "Edit your task.";
                 submitButton.textContent = "Save changes";
+                cancelEditButton.hidden = false;
+
                 nameInput.focus();
             }
-
             editButton.addEventListener("click", editTask);
 
-            actionsCell.appendChild(editButton);
-            actionsCell.appendChild(completeButton);
-            actionsCell.appendChild(deleteButton);
+            actionsGroup.appendChild(editButton);
+
+            // Completed tasks already show their status, so omit the inactive action.
+            if (task.status !== "completed") {
+                actionsGroup.appendChild(completeButton);
+            }
+
+            actionsGroup.appendChild(deleteButton);
+            actionsCell.appendChild(actionsGroup);
             row.appendChild(actionsCell);
             taskList.appendChild(row);
         }
@@ -244,9 +291,12 @@ function initialiseTasks() {
 
         saveTasks();
         renderTasks();
-        taskForm.reset();
+        resetTaskForm();
     }
-
+    cancelEditButton.addEventListener("click", function () {
+        resetTaskForm();
+        nameInput.focus();
+    });
     taskForm.addEventListener("submit", handleTaskSubmit);
 
     // The input event updates search results as the user types.
