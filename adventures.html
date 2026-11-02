@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Explore outdoor adventures with Salt &amp; Summit. Find experiences on the water, in the mountains and on two wheels.">
+    <meta name="keywords" content="outdoor activities, hiking, SUP, cycling, task management">
+    <meta name="author" content="Maria Tsakagianni">
+
+    <title>Salt &amp; Summit | Adventures</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"
+        defer></script>
+
+    <script src="js/main.js" defer></script>
+    <script src="js/adventures.js" defer></script>
+</head>
+
+<body>
+    <header class="site-header sticky-top">
+        <nav class="navbar navbar-expand-md" aria-label="Main navigation">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <img class="brand-logo" src="images/logo.webp" width="168" height="168" alt="">
+
+                    <span class="brand-text">
+                        <span class="brand-name">
+                            SALT <span class="brand-symbol">&amp;</span> SUMMIT
+                        </span>
+                        <span class="brand-description">
+                            OUTDOOR ADVENTURES
+                        </span>
+                    </span>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-menu"
+                    aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="adventures.html" aria-current="page">
+                                Adventures
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="tasks.html">Tasks</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="analytics.html">
+                                Analytics
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false">
+        Dark mode
+    </button>
+
+    <main class="container">
+        <section class="welcome" aria-labelledby="adventures-title">
+            <p class="section-eyebrow">MAKE ROOM FOR SOMETHING DIFFERENT</p>
+            <h1 id="adventures-title">Choose your next adventure.</h1>
+            <p>
+                Quiet bays, flowing rivers and open trails.
+                Find an experience that feels like you.
+            </p>
+        </section>
+
+        <section aria-labelledby="browse-title">
+            <h2 id="browse-title" class="visually-hidden">
+                Browse adventures
+            </h2>
+
+            <div class="adventure-toolbar">
+                <div>
+                    <label class="form-label" for="adventure-search">
+                        Search experiences
+                    </label>
+                    <input class="form-control" type="search" id="adventure-search"
+                        placeholder="Try rafting, hiking or a destination">
+                </div>
+
+                <div>
+                    <label class="form-label" for="adventure-category">
+                        Your kind of outside
+                    </label>
+                    <select class="form-select" id="adventure-category">
+                        <option value="all">All activities</option>
+                        <option value="water">On the water</option>
+                        <option value="mountain">Into the mountains</option>
+                        <option value="cycling">On two wheels</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="form-label" for="adventure-sort">
+                        Sort by
+                    </label>
+                    <select class="form-select" id="adventure-sort">
+                        <option value="featured">Featured</option>
+                        <option value="price">Price: low to high</option>
+                        <option value="duration">Duration: shortest first</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="favourites-only">
+
+                <label class="form-check-label" for="favourites-only">
+                    Show saved adventures only
+                </label>
+            </div>
+
+            <p id="adventure-count" role="status"></p>
+
+            <div id="adventure-grid" class="row g-4"></div>
+
+            <p id="adventure-empty" hidden>
+                No adventures match your search. Try another activity or destination.
+            </p>
+        </section>
+    </main>
+
+    <div class="modal fade" id="adventure-modal" tabindex="-1" aria-labelledby="adventure-modal-title"
+        aria-hidden="true">
+
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content adventure-modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title fs-4" id="adventure-modal-title"></h2>
+
+                    <button class="btn-close" type="button" data-bs-dismiss="modal"
+                        aria-label="Close adventure details">
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <p class="collection-label" id="adventure-modal-category"></p>
+                    <p id="adventure-modal-description"></p>
+
+                    <dl class="adventure-facts">
+                        <div>
+                            <dt>Location</dt>
+                            <dd id="adventure-modal-location"></dd>
+                        </div>
+
+                        <div>
+                            <dt>Duration</dt>
+                            <dd id="adventure-modal-duration"></dd>
+                        </div>
+
+                        <div>
+                            <dt>Level</dt>
+                            <dd id="adventure-modal-difficulty"></dd>
+                        </div>
+
+                        <div>
+                            <dt>From / person</dt>
+                            <dd id="adventure-modal-price"></dd>
+                        </div>
+                    </dl>
+
+                    <section aria-labelledby="plan-title">
+                        <h3 class="h5" id="plan-title">Make it your next adventure</h3>
+
+                        <p id="plan-help">
+                            Choose your adventure date and add three preparation tasks:
+                            confirm the arrangements, organise transport and prepare your kit.
+                            You can edit their deadlines on the Tasks page.
+                        </p>
+
+                        <form id="adventure-plan-form">
+                            <label class="form-label" for="adventure-date">
+                                Adventure date
+                            </label>
+
+                            <input class="form-control" type="date" id="adventure-date" name="adventureDate"
+                                aria-describedby="plan-help" required>
+
+                            <button class="btn adventure-button mt-3" type="submit">
+                                Add preparation tasks
+                            </button>
+                        </form>
+
+                        <p id="adventure-plan-feedback" class="mt-3" role="status"></p>
+
+                        <a href="tasks.html" class="adventure-tasks-link">
+                            View my tasks →
+                        </a>
+                    </section>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-outline-secondary" type="button" data-bs-dismiss="modal">
+                        Keep exploring
+                    </button>
+
+                    <a class="btn adventure-button mt-0" href="contact.html">
+                        Ask about this adventure
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <a class="footer-brand" href="index.html">
+            <img class="footer-logo" src="images/logo.webp" width="168" height="168" alt="">
+            <span>Salt &amp; Summit</span>
+        </a>
+        <p>Get outside. Go together.</p>
+
+        <p>
+            Contact us:
+            <a href="mailto:hello@saltandsummit.example">
+                hello@saltandsummit.example
+            </a>
+        </p>
+
+        <p>&copy; 2026 Salt &amp; Summit</p>
+    </footer>
+
+
+</body>
+
+</html>
