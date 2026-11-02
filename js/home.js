@@ -6,15 +6,17 @@ function initialiseActivity() {
 
     activityEmpty.hidden = activities.length > 0;
 
+    // recordActivity in main.js stores the newest action first.
+    // Display up to five entries to keep the overview short.
     for (const activity of activities.slice(0, 5)) {
         const item = document.createElement("li");
 
+        // Activity messages contain task names entered by the user,
+        // so display them as text rather than interpreting them as HTML.
         item.textContent = activity.message;
         activityList.appendChild(item);
     }
 }
-
-initialiseActivity();
 
 async function initialiseWeather() {
     const weatherStatus = document.querySelector("#weather-status");
@@ -24,6 +26,8 @@ async function initialiseWeather() {
     const weatherIcon = document.querySelector("#weather-icon");
     const weatherDescription = document.querySelector("#weather-description");
 
+    // Request current conditions near the company's base in Glyki.
+    // Explicit units keep the displayed values consistent.
     const url = "https://api.open-meteo.com/v1/forecast"
         + "?latitude=39.33&longitude=20.61"
         + "&current=temperature_2m,wind_speed_10m,weather_code,is_day"
@@ -32,6 +36,8 @@ async function initialiseWeather() {
     try {
         const response = await fetch(url);
 
+        // fetch does not reject HTTP error responses automatically.
+        // Route those responses to the same fallback as network failures.
         if (!response.ok) {
             throw new Error("Weather request failed");
         }
@@ -40,9 +46,12 @@ async function initialiseWeather() {
         const code = data.current.weather_code;
         const isDay = data.current.is_day === 1;
 
+        // Keep a fallback for weather codes not covered by the conditions below.
         let icon = "🌡️";
         let description = "Current conditions";
 
+        // Translate the API's weather codes into readable descriptions.
+        // Use day/night icons where the distinction is relevant.
         if (code === 0 || code === 1) {
             icon = isDay ? "☀️" : "🌙";
             description = code === 0 ? "Clear sky" : "Mainly clear";
@@ -80,12 +89,15 @@ async function initialiseWeather() {
         weatherIcon.textContent = icon;
         weatherDescription.textContent = description;
 
+        // Reveal the details only after the values have been populated.
         weatherStatus.textContent = "";
         weatherDetails.hidden = false;
     } catch (error) {
+        // Keep the rest of Home usable when the external service is unavailable.
         weatherStatus.textContent =
             "Weather is unavailable right now. Please try again later.";
     }
 }
 
+initialiseActivity();
 initialiseWeather();

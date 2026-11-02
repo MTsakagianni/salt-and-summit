@@ -1,4 +1,5 @@
 function initialiseAnalytics() {
+    // Read the same stored data as the Tasks page to keep both pages consistent.
     const savedTasks = localStorage.getItem("tasks");
     const tasks = savedTasks ? JSON.parse(savedTasks) : [];
 
@@ -9,6 +10,7 @@ function initialiseAnalytics() {
     const upcomingTasks = document.querySelector("#upcoming-tasks");
     const deadlinesEmpty = document.querySelector("#deadlines-empty");
 
+    // Reuse one set of status values and labels in the chart and card controls.
     const statuses = [
         { value: "pending", label: "To do" },
         { value: "in-progress", label: "In progress" },
@@ -16,6 +18,7 @@ function initialiseAnalytics() {
     ];
 
     function renderChart() {
+        // Remove previous rows so refreshing the chart does not duplicate them.
         taskChart.textContent = "";
 
         for (const status of statuses) {
@@ -27,13 +30,16 @@ function initialiseAnalytics() {
             const label = document.createElement("label");
             const bar = document.createElement("meter");
 
-            chartRow.className = "chart-row";
+            chartRow.classList.add("chart-row");
             bar.id = "chart-" + status.value;
 
+            // Link each meter to its label for accessibility and show the exact count.
             label.htmlFor = bar.id;
             label.textContent = status.label + ": " + count;
 
             bar.min = 0;
+
+            // Use a common scale for comparison, with a valid range even when empty.
             bar.max = tasks.length || 1;
             bar.value = count;
             bar.textContent = count + " tasks";
@@ -47,6 +53,7 @@ function initialiseAnalytics() {
     function renderDeadlines() {
         upcomingTasks.textContent = "";
 
+        // Compare dates at local midnight so tasks due today are still included.
         const today = new Date();
         today.setHours(0, 0, 0, 0);
 
@@ -56,6 +63,8 @@ function initialiseAnalytics() {
             return task.status !== "completed" && dueDate >= today;
         });
 
+        // YYYY-MM-DD strings sort chronologically.
+        // Sorting the filtered array preserves the original task order.
         upcoming.sort(function (firstTask, secondTask) {
             return firstTask.dueDate.localeCompare(secondTask.dueDate);
         });
@@ -78,6 +87,7 @@ function initialiseAnalytics() {
     }
 
     function renderBoard() {
+        // Refresh all dashboard components from the current task data.
         renderChart();
         renderDeadlines();
 
@@ -90,8 +100,10 @@ function initialiseAnalytics() {
             const title = document.createElement("h4");
             const description = document.createElement("p");
 
-            card.className = "card team-card p-3 mb-3";
-            title.className = "h6";
+            card.classList.add("card", "team-card", "p-3", "mb-3");
+            title.classList.add("h6");
+
+            // Display user input as text so it cannot be interpreted as HTML.
             title.textContent = task.name;
             description.textContent = task.description;
 
@@ -100,7 +112,9 @@ function initialiseAnalytics() {
 
             const statusSelect = document.createElement("select");
 
-            statusSelect.className = "form-select mt-3";
+            statusSelect.classList.add("form-select", "mt-3");
+
+            // Give each repeated status control a task-specific accessible name.
             statusSelect.setAttribute("aria-label", "Status for " + task.name);
 
             for (const status of statuses) {
@@ -114,18 +128,25 @@ function initialiseAnalytics() {
             statusSelect.value = task.status;
 
             function changeTaskStatus() {
+                // Persist the change before refreshing so it survives a page reload.
                 task.status = statusSelect.value;
                 localStorage.setItem("tasks", JSON.stringify(tasks));
 
-                const selectedLabel = statusSelect.options[statusSelect.selectedIndex].textContent;
+                const selectedLabel =
+                    statusSelect.options[statusSelect.selectedIndex].textContent;
 
-                recordActivity("Changed task status: " + task.name + " → " + selectedLabel);
+                // Use the shared function from main.js to update Home's activity history.
+                recordActivity(
+                    "Changed task status: " + task.name + " → " + selectedLabel
+                );
 
                 renderBoard();
             }
+
             statusSelect.addEventListener("change", changeTaskStatus);
             card.appendChild(statusSelect);
 
+            // Place each card in the column matching its saved status.
             if (task.status === "completed") {
                 doneTasks.appendChild(card);
             } else if (task.status === "in-progress") {
