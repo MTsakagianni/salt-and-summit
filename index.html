@@ -13,19 +13,19 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=weekly-forecast-11">
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"
         defer></script>
 
     <script src="js/main.js" defer></script>
-    <script src="js/home.js" defer></script>
+    <script src="js/home.js?v=weekly-forecast-11" defer></script>
 </head>
 
 <body>
     <header class="site-header sticky-top">
-        <nav class="navbar navbar-expand-md" aria-label="Main navigation">
+        <nav class="navbar navbar-expand-lg" aria-label="Main navigation">
             <div class="container">
                 <a class="navbar-brand" href="index.html">
                     <img class="brand-logo" src="images/logo.webp" width="168" height="168" alt="">
@@ -80,173 +80,111 @@
         Dark mode
     </button>
 
-    <main class="container">
+    <main class="home-page">
         <section class="home-hero" aria-labelledby="welcome-title">
-            <img class="home-hero-image" src="images/coast.webp" width="1672" height="941" fetchpriority="high"
-                alt="A coastal hiking trail overlooking the sea and mountains">
-
-            <div class="home-hero-content">
-                <p class="hero-eyebrow">FROM RIVER BENDS TO MOUNTAIN TRAILS</p>
-
-                <h1 id="welcome-title">
-                    Your next adventure.<br>
-                    A little closer.
-                </h1>
-
-                <p class="hero-description">
-                    Days on the water. Trails worth taking.
-                    Discover outdoor experiences and bring
-                    your next escape together with Salt &amp; Summit.
-                </p>
-
-                <div class="hero-actions">
-                    <a class="btn hero-primary" href="adventures.html">
-                        Find your adventure
-                        <span aria-hidden="true">↗</span>
-                    </a>
-
-                    <a class="btn hero-secondary" href="tasks.html">
-                        Organise your trip
-                    </a>
-                </div>
-            </div>
-
-            <div class="hero-caption">
-                <span class="hero-caption-label">THE SALT &amp; SUMMIT WAY</span>
-                <span>Good company. Open skies. Something to look forward to.</span>
-            </div>
-        </section>
-
-        <section class="home-introduction" id="explore" aria-labelledby="explore-title">
-
-            <div>
+            <img class="home-hero-image" src="images/home-myrtos-coast.webp" width="1920" height="1280" fetchpriority="high"
+                alt="The rugged coastline near Myrtos Beach in Kefalonia, with blue sea and mountains">
+            <div class="container home-hero-content">
                 <p class="section-eyebrow">LESS PLANNING. MORE OUTDOORS.</p>
-                <h2 id="explore-title">Find your kind of outside.</h2>
-            </div>
-
-            <p>
-                Follow the river, take the coastal road or head for higher ground.
-                From your first paddle to your next mountain trail,
-                make room for a different kind of day.
-            </p>
-        </section>
-
-        <section class="home-collections" aria-labelledby="collections-title">
-            <h2 id="collections-title" class="visually-hidden">
-                Explore our outdoor activities
-            </h2>
-
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <article class="collection-card">
-                        <img src="images/sup-800.webp" width="800" height="450" loading="lazy"
-                            alt="Two paddleboarders exploring a calm coastal bay">
-
-                        <div class="collection-card-content">
-                            <p class="collection-label">ON THE WATER</p>
-                            <h3>A different point of view.</h3>
-                            <p>
-                                Paddle quiet bays, follow the river
-                                and discover somewhere new.
-                            </p>
-                            <span class="collection-activities">
-                                SUP · Kayaking · Rafting
-                            </span>
-                            <a class="collection-link" href="adventures.html?category=water">
-                                Explore water adventures →
-                            </a>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="col-md-4">
-                    <article class="collection-card">
-                        <img src="images/hiking.webp" width="1672" height="941" loading="lazy"
-                            alt="Three hikers following a rocky trail above the sea">
-
-                        <div class="collection-card-content">
-                            <p class="collection-label">INTO THE MOUNTAINS</p>
-                            <h3>Take the scenic route.</h3>
-                            <p>
-                                Find forest paths, rocky ridgelines
-                                and a reason to keep exploring.
-                            </p>
-                            <span class="collection-activities">
-                                Hiking · Climbing · Trail running
-                            </span>
-                            <a class="collection-link" href="adventures.html?category=mountain">
-                                Explore mountain adventures →
-                            </a>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="col-md-4">
-                    <article class="collection-card">
-                        <img src="images/cycling.webp" width="1672" height="941" loading="lazy"
-                            alt="Three cyclists riding along a sunny coastal road">
-
-                        <div class="collection-card-content">
-                            <p class="collection-label">OUT ON TWO WHEELS</p>
-                            <h3>Go a little further.</h3>
-                            <p>
-                                Coastal roads and mountain tracks,
-                                with good company along the way.
-                            </p>
-                            <span class="collection-activities">
-                                Road cycling · Mountain biking
-                            </span>
-                            <a class="collection-link" href="adventures.html?category=cycling">
-                                Explore cycling adventures →
-                            </a>
-                        </div>
-                    </article>
+                <h1 class="page-title-accent" id="welcome-title">Your kind of outside.</h1>
+                <p class="hero-description">Quiet escapes. Bigger challenges.<br>Days worth making room for.</p>
+                <div class="hero-actions">
+                    <a class="btn hero-primary" href="adventures.html">Explore adventures </a>
+                    <a class="hero-secondary" href="tasks.html">My preparation list </a>
                 </div>
             </div>
+            <p class="home-photo-credit">Photo: <a href="https://unsplash.com/photos/xKzwZpbpYko">Christian Harb / Unsplash</a></p>
         </section>
 
-        <div class="home-dashboard"></div>
-
-        <section class="activity-section" aria-labelledby="activity-title">
-            <h2 id="activity-title">Latest activity</h2>
-
-            <ul id="activity-list"></ul>
-
-            <p id="activity-empty">
-                No activity yet. Add your first task to get started.
-            </p>
-        </section>
-
-        <section class="activity-section" aria-labelledby="weather-title">
-            <h2 id="weather-title">Weather in Acheron</h2>
-            <p>Check the current conditions before heading outdoors.</p>
-
-            <p id="weather-status" role="status">Loading weather...</p>
-
-            <div id="weather-details" hidden>
-                <div class="weather-overview">
-                    <span id="weather-icon" class="weather-icon" aria-hidden="true"></span>
-
-                    <div>
-                        <p class="weather-temperature">
-                            <span class="visually-hidden">Temperature:</span>
-                            <strong id="weather-temperature"></strong>
-                        </p>
-                        <p id="weather-description" class="weather-description"></p>
+        <div class="container">
+            <section class="home-discover" aria-labelledby="explore-title">
+                <div class="home-section-heading">
+                    <p class="section-eyebrow">FIND YOUR PACE</p>
+                    <h2 id="explore-title">Some days, slow down. Others, go further.</h2>
+                    <p>Discover outdoor experiences in Greece, from easygoing coastal days to high-energy challenges.</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <article class="home-collection">
+                            <a class="home-photo-link" href="adventures.html?pace=slow">
+                                <img src="images/home-sup-matched.webp" width="1200" height="800" loading="lazy"
+                                    alt="An athletic man paddleboarding in open turquoise water, away from the distant shore">
+                                <div class="home-photo-caption"><h3>Slow &amp; Explore</h3><span>6 experiences </span></div>
+                            </a>
+                            <p>Coastal routes, hidden coves and easygoing outdoor days.</p>
+                        </article>
+                    </div>
+                    <div class="col-md-6">
+                        <article class="home-collection">
+                            <a class="home-photo-link" href="adventures.html?pace=challenge">
+                                <img src="images/home-climbing-matched.webp" width="1200" height="800" loading="lazy"
+                                    alt="An athletic blonde climber on a limestone rock face above the Greek coast">
+                                <div class="home-photo-caption"><h3>Challenge &amp; Explore</h3><span>6 experiences </span></div>
+                            </a>
+                            <p>Move higher, go further and explore Greece’s wilder terrain.</p>
+                        </article>
                     </div>
                 </div>
+            </section>
+        </div>
 
-                <p class="weather-wind">
-                    <span aria-hidden="true">🍃</span>
-                    Wind speed: <strong id="weather-wind"></strong>
-                </p>
+        <section class="home-planning" aria-labelledby="planning-title">
+            <div class="container home-planning-inner">
+                <div class="home-planning-copy">
+                    <h2 id="planning-title">A little preparation.<br>A better day out.</h2>
+                    <p>Keep the details together, then leave them behind.</p>
+                    <a class="btn hero-primary" href="tasks.html">Open my preparation list </a>
+                </div>
+                <div class="home-checklist-preview" role="img" aria-label="Example preparation list: Check the meeting point and Pack your essentials are ticked; Ready to go is still to do.">
+                    <p class="home-checklist-label">THE LITTLE THINGS, SORTED.</p>
+                    <ul aria-hidden="true">
+                        <li><span class="preview-tick">✓</span>Check the meeting point</li>
+                        <li><span class="preview-tick">✓</span>Pack your essentials</li>
+                        <li><span class="preview-tick preview-tick-empty"></span>Ready to go</li>
+                    </ul>
+                </div>
             </div>
-
-            <p>
-                Weather data by
-                <a href="https://open-meteo.com/">Open-Meteo</a>
-            </p>
         </section>
+
+        <div class="container">
+        <div class="home-section-heading home-dashboard-heading">
+            <div><p class="section-eyebrow">A LITTLE CHECK-IN</p><h2>A little check-in before you go.</h2></div>
+        </div>
+        <div class="home-dashboard">
+            <section class="activity-section" aria-labelledby="activity-title">
+                <div class="home-panel-heading"><h2 id="activity-title">Latest activity</h2><span class="home-panel-label">YOUR PLANS</span></div>
+                <p class="home-panel-intro">The latest changes to your outdoor plans.</p>
+                <ul id="activity-list"></ul>
+                <p id="activity-empty">Your story starts here. Choose an adventure or add your first task to get going.</p>
+                <a class="collection-link" href="tasks.html">Go to my tasks </a>
+            </section>
+            <section class="activity-section home-weather" aria-labelledby="weather-title">
+                <div class="home-panel-heading"><h2 id="weather-title">Weather in Acheron</h2><span class="home-panel-label">GLYKI, GREECE</span></div>
+                <p class="home-panel-intro">Current conditions near our river adventures.</p>
+                <p id="weather-status" role="status">Loading weather…</p>
+                <div id="weather-details" hidden>
+                    <div class="weather-overview">
+                        <span id="weather-icon" class="weather-icon" aria-hidden="true"></span>
+                        <div>
+                            <p class="weather-temperature"><span class="visually-hidden">Temperature:</span><strong id="weather-temperature"></strong></p>
+                            <p id="weather-description" class="weather-description"></p>
+                        </div>
+                    </div>
+                    <p class="weather-wind">Wind speed: <strong id="weather-wind"></strong></p>
+                </div>
+                <button id="weather-retry" class="home-weather-retry" type="button" hidden>Try again</button>
+                <button id="forecast-toggle" class="home-weather-retry forecast-toggle" type="button"
+                    aria-expanded="false" aria-controls="weekly-forecast">View 7-day forecast</button>
+                <section id="weekly-forecast" class="weekly-forecast" aria-labelledby="forecast-title" hidden>
+                    <h3 id="forecast-title">7-day forecast · Acheron</h3>
+                    <p class="forecast-note">Today and the next six days. Dates use local time in Greece.</p>
+                    <p id="forecast-status" role="status"></p>
+                    <ul id="forecast-days" class="forecast-days"></ul>
+                    <button id="forecast-retry" class="home-weather-retry" type="button" hidden>Try forecast again</button>
+                </section>
+                <p class="home-weather-source">Weather data by <a href="https://open-meteo.com/">Open-Meteo</a></p>
+            </section>
+        </div>
         </div>
     </main>
 
@@ -255,7 +193,7 @@
             <img class="footer-logo" src="images/logo.webp" width="168" height="168" alt="">
             <span>Salt &amp; Summit</span>
         </a>
-        <p>Get outside. Go together.</p>
+        <p>From sea level to summit.</p>
 
         <p>
             Contact us:
