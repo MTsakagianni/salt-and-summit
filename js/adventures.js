@@ -365,6 +365,9 @@ function initialiseAdventures() {
         }
     };
 
+    // Carry the selected adventure and date to the new-task form.
+
+
     function showAdventureDetails(adventure, openingButton) {
         const category = categories[adventure.category];
 
@@ -396,347 +399,284 @@ function initialiseAdventures() {
         planFeedback.textContent = "";
         adventureDate.min = getTodayDate();
 
+
         lastDetailsButton = openingButton;
         adventureModal.show();
     }
 
     function handleAdventurePlan(event) {
         event.preventDefault();
-
-        if (selectedAdventure === null) {
-            return;
-        }
-
-        // Refresh the minimum date in case the page stayed open overnight.
         adventureDate.min = getTodayDate();
+        if (!selectedAdventure || !planForm.reportValidity()) return;
 
-        if (!planForm.reportValidity()) {
-            return;
-        }
-
-        const tripDate = adventureDate.value;
-        const adventure = selectedAdventure;
-
-        // Read the latest task data at submission time so existing tasks
-        // are preserved, including changes made in another page.
-        const savedTasks = localStorage.getItem("tasks");
-        const tasks = savedTasks ? JSON.parse(savedTasks) : [];
-
-        const preparationItems = [
-            {
-                key: "arrangements",
-                name: "Confirm arrangements",
-                description:
-                    "Confirm the meeting point, availability and arrangements for " +
-                    adventure.name + " in " + adventure.location + "."
-            },
-            {
-                key: "transport",
-                name: "Organise transport",
-                description:
-                    "Arrange travel to and from " + adventure.location +
-                    " for " + adventure.name + "."
-            },
-            {
-                key: "kit",
-                name: "Prepare activity kit",
-                description:
-                    "Check the organiser's equipment list for " + adventure.name +
-                    " and prepare the items you need to bring."
-            }
-        ];
-
-        let addedCount = 0;
-
-        for (const item of preparationItems) {
-            // Identify each generated task independently of its editable name
-            // or deadline, preventing duplicate tasks for the same dated adventure.
-            const preparationKey =
-                adventure.id + ":" + tripDate + ":" + item.key;
-
-            const alreadyExists = tasks.some(function (task) {
-                return task.preparationKey === preparationKey;
+        // A dated plan groups tasks, but creates no tasks and makes no booking.
+        // Reopening the same adventure and date reuses the existing plan.
+        const trips = JSON.parse(localStorage.getItem("adventureTrips") || "[]");
+        const tripKey = selectedAdventure.id + ":" + adventureDate.value;
+        const exists = trips.some(function (trip) { return trip.key === tripKey; });
+        if (!exists) {
+            trips.push({
+                key: tripKey,
+                adventureId: selectedAdventure.id,
+                name: selectedAdventure.name,
+                location: selectedAdventure.location,
+                date: adventureDate.value
             });
-
-            if (!alreadyExists) {
-                const task = {
-                    name: adventure.name + " — " + item.name,
-                    description: item.description,
-                    dueDate: tripDate,
-                    status: "pending",
-                    preparationKey: preparationKey
-                };
-
-                tasks.push(task);
-                addedCount++;
-            }
+            localStorage.setItem("adventureTrips", JSON.stringify(trips));
         }
-
-        if (addedCount === 0) {
-            planFeedback.textContent =
-                "Preparation tasks already exist for this adventure and date. " +
-                "You can review them on the Tasks page.";
-            return;
-        }
-
-        localStorage.setItem("tasks", JSON.stringify(tasks));
-
-        recordActivity(
-            "Planned adventure: " + adventure.name + " on " + tripDate
-        );
-
-        planFeedback.textContent =
-            addedCount + " preparation " +
-            (addedCount === 1 ? "task added." : "tasks added.") +
-            " Open My tasks to review your deadlines.";
+        const parameters = new URLSearchParams();
+        parameters.set("trip", tripKey);
+        window.location.href = "tasks.html?" + parameters.toString() + "#preparation-list";
     }
 
-    // Match each adventure to its own photograph and descriptive alternative text.
-    const adventureImages = {
-        rafting: {
-            src: "images/rafting.webp",
-            alt: "A group rafting through a wooded river gorge"
-        },
-        sup: {
-            src: "images/sup-800.webp",
-            alt: "Paddleboarders exploring a clear coastal bay"
-        },
-        kayaking: {
-            src: "images/sea-kayaking.webp",
-            alt: "Two kayakers paddling beside a rocky coastline"
-        },
-        "river-trekking": {
-            src: "images/river-trekking.webp",
-            alt: "Three friends walking through a clear river beneath leafy trees"
-        },
-        snorkelling: {
-            src: "images/snorkelling.webp",
-            alt: "Two snorkellers exploring the clear water of a rocky bay"
-        },
-        canyoning: {
-            src: "images/canyoning.webp",
-            alt: "A helmeted adventurer descending a waterfall using a rope"
-        },
-        hiking: {
-            src: "images/hiking.webp",
-            alt: "Three hikers following a mountain trail overlooking the sea"
-        },
-        "trail-running": {
-            src: "images/trail-running.webp",
-            alt: "Two trail runners on a sunlit mountain path"
-        },
-        climbing: {
-            src: "images/rock-climbing.webp",
-            alt: "A climber and belayer beside towering Meteora-inspired rock formations"
-        },
-        camping: {
-            src: "images/camping.webp",
-            alt: "Two friends relaxing beside their tents at sunset"
-        },
-        "mountain-biking": {
-            src: "images/mountain-biking.webp",
-            alt: "Three helmeted mountain bikers riding along a rocky forest trail"
-        },
-        "road-cycling": {
-            src: "images/cycling.webp",
-            alt: "Three cyclists riding along a coastal road above the sea"
-        }
-    };
+        // Match each adventure to its own photograph and descriptive alternative text.
+        const adventureImages = {
+            rafting: {
+                src: "images/rafting.webp",
+                alt: "A group rafting through a wooded river gorge"
+            },
+            sup: {
+                src: "images/sup-800.webp",
+                alt: "Paddleboarders exploring a clear coastal bay"
+            },
+            kayaking: {
+                src: "images/sea-kayaking.webp",
+                alt: "Two kayakers paddling beside a rocky coastline"
+            },
+            "river-trekking": {
+                src: "images/river-trekking.webp",
+                alt: "Three friends walking through a clear river beneath leafy trees"
+            },
+            snorkelling: {
+                src: "images/snorkelling.webp",
+                alt: "Two snorkellers exploring the clear water of a rocky bay"
+            },
+            canyoning: {
+                src: "images/canyoning.webp",
+                alt: "A helmeted adventurer descending a waterfall using a rope"
+            },
+            hiking: {
+                src: "images/hiking.webp",
+                alt: "Three hikers following a mountain trail overlooking the sea"
+            },
+            "trail-running": {
+                src: "images/trail-running.webp",
+                alt: "Two trail runners on a sunlit mountain path"
+            },
+            climbing: {
+                src: "images/rock-climbing.webp",
+                alt: "A climber and belayer beside towering Meteora-inspired rock formations"
+            },
+            camping: {
+                src: "images/camping.webp",
+                alt: "Two friends relaxing beside their tents at sunset"
+            },
+            "mountain-biking": {
+                src: "images/mountain-biking.webp",
+                alt: "Three helmeted mountain bikers riding along a rocky forest trail"
+            },
+            "road-cycling": {
+                src: "images/cycling.webp",
+                alt: "Three cyclists riding along a coastal road above the sea"
+            }
+        };
 
-    function createAdventureCard(adventure) {
-        const category = categories[adventure.category];
+        function createAdventureCard(adventure) {
+            const category = categories[adventure.category];
 
-        const column = document.createElement("div");
-        column.classList.add("col-md-6", "col-xl-4");
+            const column = document.createElement("div");
+            column.classList.add("col-md-6", "col-xl-4");
 
-        const card = document.createElement("article");
-        card.classList.add("adventure-card");
+            const card = document.createElement("article");
+            card.classList.add("adventure-card");
 
-        const image = document.createElement("img");
-        image.src = adventureImages[adventure.id].src;
-        image.alt = adventureImages[adventure.id].alt;
+            const image = document.createElement("img");
+            image.src = adventureImages[adventure.id].src;
+            image.alt = adventureImages[adventure.id].alt;
 
-        // Reserve space before the photograph loads to reduce layout shifts.
-        image.width = 1000;
-        image.height = 563;
-        image.loading = "lazy";
+            // Reserve space before the photograph loads to reduce layout shifts.
+            image.width = 1000;
+            image.height = 563;
+            image.loading = "lazy";
 
-        const content = document.createElement("div");
-        content.classList.add("adventure-card-content");
+            const content = document.createElement("div");
+            content.classList.add("adventure-card-content");
 
-        const categoryLabel = document.createElement("p");
-        categoryLabel.classList.add("collection-label");
-        categoryLabel.textContent = category.label;
+            const categoryLabel = document.createElement("p");
+            categoryLabel.classList.add("collection-label");
+            categoryLabel.textContent = category.label;
 
-        const title = document.createElement("h3");
-        title.textContent = adventure.name;
+            const title = document.createElement("h3");
+            title.textContent = adventure.name;
 
-        const location = document.createElement("p");
-        location.classList.add("adventure-location");
-        location.textContent = adventure.location;
+            const location = document.createElement("p");
+            location.classList.add("adventure-location");
+            location.textContent = adventure.location;
 
-        const description = document.createElement("p");
-        description.classList.add("adventure-description");
-        description.textContent = adventure.description;
+            const description = document.createElement("p");
+            description.classList.add("adventure-description");
+            description.textContent = adventure.description;
 
-        const details = document.createElement("ul");
-        details.classList.add("adventure-meta");
+            const details = document.createElement("ul");
+            details.classList.add("adventure-meta");
 
-        const duration = document.createElement("li");
-        duration.textContent = adventure.duration === 24
-            ? "Overnight"
-            : adventure.duration + " hours";
+            const duration = document.createElement("li");
+            duration.textContent = adventure.duration === 24
+                ? "Overnight"
+                : adventure.duration + " hours";
 
-        const difficulty = document.createElement("li");
-        difficulty.textContent = adventure.difficulty;
+            const difficulty = document.createElement("li");
+            difficulty.textContent = adventure.difficulty;
 
-        details.appendChild(duration);
-        details.appendChild(difficulty);
+            details.appendChild(duration);
+            details.appendChild(difficulty);
 
-        const price = document.createElement("p");
-        price.classList.add("adventure-price");
-        price.textContent = "From €" + adventure.price + " / person";
+            const price = document.createElement("p");
+            price.classList.add("adventure-price");
+            price.textContent = "From €" + adventure.price + " / person";
 
-        content.appendChild(categoryLabel);
-        content.appendChild(title);
-        content.appendChild(location);
-        content.appendChild(description);
-        content.appendChild(details);
-        content.appendChild(price);
-        const detailsButton = document.createElement("button");
+            content.appendChild(categoryLabel);
+            content.appendChild(title);
+            content.appendChild(location);
+            content.appendChild(description);
+            content.appendChild(details);
+            content.appendChild(price);
+            const detailsButton = document.createElement("button");
 
-        detailsButton.type = "button";
-        detailsButton.classList.add("btn", "adventure-details", "mt-3");
-        detailsButton.textContent = "View adventure";
-        detailsButton.setAttribute(
-            "aria-label",
-            "View details for " + adventure.name
-        );
-
-        detailsButton.addEventListener("click", function () {
-            showAdventureDetails(adventure, detailsButton);
-        });
-
-        content.appendChild(detailsButton);
-
-        const saveButton = document.createElement("button");
-
-        saveButton.type = "button";
-        saveButton.classList.add("btn", "adventure-save", "mt-3");
-
-        function updateSaveButton() {
-            const isSaved = favourites.includes(adventure.id);
-
-            saveButton.textContent = isSaved
-                ? "♥ Saved"
-                : "♡ Save adventure";
-
-            saveButton.setAttribute("aria-pressed", String(isSaved));
-            saveButton.setAttribute(
+            detailsButton.type = "button";
+            detailsButton.classList.add("btn", "adventure-details", "mt-3");
+            detailsButton.textContent = "View adventure";
+            detailsButton.setAttribute(
                 "aria-label",
-                "Save " + adventure.name
-            );
-        }
-
-        function toggleFavourite() {
-            const savedIndex = favourites.indexOf(adventure.id);
-
-            if (savedIndex === -1) {
-                favourites.push(adventure.id);
-            } else {
-                favourites.splice(savedIndex, 1);
-            }
-
-            localStorage.setItem(
-                "favouriteAdventures",
-                JSON.stringify(favourites)
+                "View details for " + adventure.name
             );
 
-            // Keep focus on the button unless removing this card from the saved-only view.
-            if (favouritesOnly.checked && savedIndex !== -1) {
-                favouritesOnly.focus();
-                renderAdventures();
-            } else {
-                updateSaveButton();
+            detailsButton.addEventListener("click", function () {
+                showAdventureDetails(adventure, detailsButton);
+            });
+
+            content.appendChild(detailsButton);
+
+            const saveButton = document.createElement("button");
+
+            saveButton.type = "button";
+            saveButton.classList.add("btn", "adventure-save", "mt-3");
+
+            function updateSaveButton() {
+                const isSaved = favourites.includes(adventure.id);
+
+                saveButton.textContent = isSaved
+                    ? "♥ Saved"
+                    : "♡ Save adventure";
+
+                saveButton.setAttribute("aria-pressed", String(isSaved));
+                saveButton.setAttribute(
+                    "aria-label",
+                    "Save " + adventure.name
+                );
             }
+
+            function toggleFavourite() {
+                const savedIndex = favourites.indexOf(adventure.id);
+
+                if (savedIndex === -1) {
+                    favourites.push(adventure.id);
+                } else {
+                    favourites.splice(savedIndex, 1);
+                }
+
+                localStorage.setItem(
+                    "favouriteAdventures",
+                    JSON.stringify(favourites)
+                );
+
+                // Keep focus on the button unless removing this card from the saved-only view.
+                if (favouritesOnly.checked && savedIndex !== -1) {
+                    favouritesOnly.focus();
+                    renderAdventures();
+                } else {
+                    updateSaveButton();
+                }
+            }
+
+            updateSaveButton();
+            saveButton.addEventListener("click", toggleFavourite);
+            content.appendChild(saveButton);
+
+            card.appendChild(image);
+            card.appendChild(content);
+            column.appendChild(card);
+
+            return column;
         }
 
-        updateSaveButton();
-        saveButton.addEventListener("click", toggleFavourite);
-        content.appendChild(saveButton);
+        function renderAdventures() {
+            const searchText = searchInput.value.trim().toLowerCase();
+            const selectedCategory = categorySelect.value;
 
-        card.appendChild(image);
-        card.appendChild(content);
-        column.appendChild(card);
+            // Combine both filters, leaving the original catalogue unchanged.
+            const visibleAdventures = adventures.filter(function (adventure) {
+                const searchableText =
+                    adventure.name + " " +
+                    adventure.location + " " +
+                    adventure.description;
 
-        return column;
-    }
+                const matchesSearch =
+                    searchableText.toLowerCase().includes(searchText);
 
-    function renderAdventures() {
-        const searchText = searchInput.value.trim().toLowerCase();
-        const selectedCategory = categorySelect.value;
+                const matchesCategory =
+                    selectedCategory === "all" ||
+                    adventure.category === selectedCategory;
 
-        // Combine both filters, leaving the original catalogue unchanged.
-        const visibleAdventures = adventures.filter(function (adventure) {
-            const searchableText =
-                adventure.name + " " +
-                adventure.location + " " +
-                adventure.description;
+                const matchesFavourites =
+                    !favouritesOnly.checked || favourites.includes(adventure.id);
 
-            const matchesSearch =
-                searchableText.toLowerCase().includes(searchText);
-
-            const matchesCategory =
-                selectedCategory === "all" ||
-                adventure.category === selectedCategory;
-
-            const matchesFavourites =
-                !favouritesOnly.checked || favourites.includes(adventure.id);
-
-            return matchesSearch && matchesCategory && matchesFavourites;
-        });
-
-        // Sort only the filtered copy so "Featured" restores catalogue order.
-        if (sortSelect.value === "price") {
-            visibleAdventures.sort(function (first, second) {
-                return first.price - second.price;
+                return matchesSearch && matchesCategory && matchesFavourites;
             });
-        } else if (sortSelect.value === "duration") {
-            visibleAdventures.sort(function (first, second) {
-                return first.duration - second.duration;
-            });
+
+            // Sort only the filtered copy so "Featured" restores catalogue order.
+            if (sortSelect.value === "price") {
+                visibleAdventures.sort(function (first, second) {
+                    return first.price - second.price;
+                });
+            } else if (sortSelect.value === "duration") {
+                visibleAdventures.sort(function (first, second) {
+                    return first.duration - second.duration;
+                });
+            }
+
+            adventureGrid.textContent = "";
+
+            for (const adventure of visibleAdventures) {
+                adventureGrid.appendChild(createAdventureCard(adventure));
+            }
+
+            const count = visibleAdventures.length;
+            adventureCount.textContent =
+                count + (count === 1 ? " experience found" : " experiences found");
+
+            adventureEmpty.hidden = count > 0;
         }
 
-        adventureGrid.textContent = "";
+        searchInput.addEventListener("input", renderAdventures);
+        categorySelect.addEventListener("change", renderAdventures);
+        sortSelect.addEventListener("change", renderAdventures);
+        favouritesOnly.addEventListener("change", renderAdventures);
+        planForm.addEventListener("submit", handleAdventurePlan);
 
-        for (const adventure of visibleAdventures) {
-            adventureGrid.appendChild(createAdventureCard(adventure));
+
+
+        // Home category links open the catalogue with the matching filter selected.
+        // Accept only known category values from the URL.
+        const parameters = new URLSearchParams(window.location.search);
+        const requestedCategory = parameters.get("category");
+
+        if (requestedCategory &&
+            Object.hasOwn(categories, requestedCategory)) {
+            categorySelect.value = requestedCategory;
         }
 
-        const count = visibleAdventures.length;
-        adventureCount.textContent =
-            count + (count === 1 ? " experience found" : " experiences found");
-
-        adventureEmpty.hidden = count > 0;
+        renderAdventures();
     }
 
-    searchInput.addEventListener("input", renderAdventures);
-    categorySelect.addEventListener("change", renderAdventures);
-    sortSelect.addEventListener("change", renderAdventures);
-    favouritesOnly.addEventListener("change", renderAdventures);
-    planForm.addEventListener("submit", handleAdventurePlan);
-
-    // Home category links open the catalogue with the matching filter selected.
-    // Accept only known category values from the URL.
-    const parameters = new URLSearchParams(window.location.search);
-    const requestedCategory = parameters.get("category");
-
-    if (requestedCategory &&
-        Object.hasOwn(categories, requestedCategory)) {
-        categorySelect.value = requestedCategory;
-    }
-
-    renderAdventures();
-}
-
-initialiseAdventures();
+    initialiseAdventures();
