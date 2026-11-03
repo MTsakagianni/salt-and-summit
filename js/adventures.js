@@ -57,128 +57,152 @@ function initialiseAdventures() {
     // Numeric prices and durations allow sorting without parsing display text.
     const adventures = [
         {
-            id: "rafting",
-            name: "River Rafting",
-            category: "water",
-            location: "Epirus",
-            description: "A shared adventure through flowing water and green river scenery.",
-            duration: 3,
-            price: 55,
-            difficulty: "Moderate"
+                "id": "sup",
+                "name": "Coastal SUP",
+                "category": "water",
+                "location": "Ionian coast",
+                "description": "Find your balance in a sheltered bay, with an unhurried paddle along the coast.",
+                "duration": 2,
+                "price": 35,
+                "difficulty": "Easy",
+                "pace": "slow"
         },
         {
-            id: "sup",
-            name: "Coastal SUP",
-            category: "water",
-            location: "Ionian coast",
-            description: "Find your balance and enjoy a different view of the coastline.",
-            duration: 2,
-            price: 35,
-            difficulty: "Easy"
+                "id": "kayaking",
+                "name": "Sea Kayaking",
+                "category": "water",
+                "location": "Ionian coast",
+                "description": "Paddle between quiet coves, pause for a swim and discover the shoreline at an easy pace.",
+                "duration": 3,
+                "price": 45,
+                "difficulty": "Easy",
+                "pace": "slow"
         },
         {
-            id: "kayaking",
-            name: "Sea Kayaking",
-            category: "water",
-            location: "Ionian coast",
-            description: "Explore sheltered bays and discover the coast one paddle at a time.",
-            duration: 3,
-            price: 45,
-            difficulty: "Moderate"
+                "id": "river-trekking",
+                "name": "River Trekking",
+                "category": "water",
+                "location": "Acheron",
+                "description": "Wade through clear water and follow shaded riverbanks, with time to stop and take it all in.",
+                "duration": 2,
+                "price": 30,
+                "difficulty": "Moderate",
+                "pace": "slow"
         },
         {
-            id: "river-trekking",
-            name: "River Trekking",
-            category: "water",
-            location: "Acheron",
-            description: "Follow the river through a landscape of clear water and shaded banks.",
-            duration: 2,
-            price: 30,
-            difficulty: "Moderate"
+                "id": "snorkelling",
+                "name": "Blue Water Snorkelling",
+                "category": "water",
+                "location": "Ionian coast",
+                "description": "Float above clear turquoise water and discover the quieter world beneath the surface.",
+                "duration": 2,
+                "price": 30,
+                "difficulty": "Easy",
+                "pace": "slow"
         },
         {
-            id: "snorkelling",
-            name: "Blue Water Snorkelling",
-            category: "water",
-            location: "Ionian coast",
-            description: "Slow down and discover the colours beneath the surface.",
-            duration: 2,
-            price: 30,
-            difficulty: "Easy"
+                "id": "hiking",
+                "name": "Scenic Hiking",
+                "category": "mountain",
+                "location": "Epirus",
+                "description": "Follow a scenic trail at a relaxed group pace, with generous stops for views and conversation.",
+                "duration": 3,
+                "price": 35,
+                "difficulty": "Moderate",
+                "pace": "slow"
         },
         {
-            id: "canyoning",
-            name: "Canyon Discovery",
-            category: "water",
-            location: "Epirus",
-            description: "Explore dramatic rock formations on an adventurous canyon outing.",
-            duration: 4,
-            price: 75,
-            difficulty: "Challenging"
+                "id": "camping",
+                "name": "Camp Under the Stars",
+                "category": "mountain",
+                "location": "Epirus",
+                "description": "Settle into an overnight escape, share a slow evening and wake up close to nature.",
+                "duration": 24,
+                "price": 85,
+                "difficulty": "Easy",
+                "pace": "slow"
         },
         {
-            id: "hiking",
-            name: "Mountain Hiking",
-            category: "mountain",
-            location: "Epirus",
-            description: "Leave the everyday behind on a trail through mountain scenery.",
-            duration: 4,
-            price: 35,
-            difficulty: "Moderate"
+                "id": "rafting",
+                "name": "River Rafting",
+                "category": "water",
+                "location": "Epirus",
+                "description": "Paddle as a team through lively rapids and flowing river sections on an energetic guided descent.",
+                "duration": 4,
+                "price": 55,
+                "difficulty": "Moderate",
+                "pace": "challenge"
         },
         {
-            id: "trail-running",
-            name: "Trail Running",
-            category: "mountain",
-            location: "Epirus",
-            description: "Find your rhythm on natural paths with a small group.",
-            duration: 2,
-            price: 25,
-            difficulty: "Challenging"
+                "id": "trail-running",
+                "name": "Trail Running",
+                "category": "mountain",
+                "location": "Epirus",
+                "description": "Take on uneven trails and sustained climbs, with a small group that enjoys moving in the mountains.",
+                "duration": 4,
+                "price": 35,
+                "difficulty": "Challenging",
+                "pace": "challenge"
         },
         {
-            id: "climbing",
-            name: "Rock Climbing",
-            category: "mountain",
-            location: "Epirus",
-            description: "Try a new challenge with an introduction to climbing on natural rock.",
-            duration: 3,
-            price: 60,
-            difficulty: "Moderate"
+                "id": "climbing",
+                "name": "Rock Climbing",
+                "category": "mountain",
+                "location": "Meteora",
+                "description": "Work on your technique, trust your feet and take on supervised routes among dramatic rock towers.",
+                "duration": 4,
+                "price": 65,
+                "difficulty": "Challenging",
+                "pace": "challenge"
         },
         {
-            id: "camping",
-            name: "Camp Under the Stars",
-            category: "mountain",
-            location: "Epirus",
-            description: "Make time for an overnight escape and a slower morning outdoors.",
-            duration: 24,
-            price: 85,
-            difficulty: "Easy"
+                "id": "canyoning",
+                "name": "Canyon Discovery",
+                "category": "water",
+                "location": "Epirus",
+                "description": "Navigate a rocky gorge, tackle rope descents and move through water on a demanding guided outing.",
+                "duration": 5,
+                "price": 75,
+                "difficulty": "Challenging",
+                "pace": "challenge"
         },
         {
-            id: "mountain-biking",
-            name: "Mountain Bike Escape",
-            category: "cycling",
-            location: "Epirus",
-            description: "Explore forest tracks and changing terrain on two wheels.",
-            duration: 3,
-            price: 50,
-            difficulty: "Challenging"
+                "id": "mountain-biking",
+                "name": "Mountain Biking",
+                "category": "cycling",
+                "location": "Epirus",
+                "description": "Ride technical forest trails, tackle rocky sections and earn the views with a series of climbs.",
+                "duration": 4,
+                "price": 55,
+                "difficulty": "Challenging",
+                "pace": "challenge"
         },
         {
-            id: "road-cycling",
-            name: "Coastal Road Cycling",
-            category: "cycling",
-            location: "Ionian coast",
-            description: "Follow scenic roads with sea views and time to enjoy the journey.",
-            duration: 4,
-            price: 45,
-            difficulty: "Moderate"
+                "id": "road-cycling",
+                "name": "Endurance Road Cycling",
+                "category": "cycling",
+                "location": "Ionian coast",
+                "description": "Settle into a longer coastal ride with sustained effort, rolling climbs and rewarding sea views.",
+                "duration": 6,
+                "price": 55,
+                "difficulty": "Challenging",
+                "pace": "challenge"
         }
-    ];
+];
 
-
+    const collections = {
+        slow: {title: 'Slow & Explore', eyebrow: 'TAKE YOUR TIME',
+            description: 'Quiet water, scenic paths and room to pause. Choose a relaxed pace and enjoy the surroundings.'},
+        challenge: {title: 'Challenge & Explore', eyebrow: 'BRING YOUR ENERGY',
+            description: 'Longer efforts, technical terrain and active days. Find a challenge that matches your experience.'}
+    };
+    const paceButtons = {
+        all: document.querySelector('#pace-all'),
+        slow: document.querySelector('#pace-slow'),
+        challenge: document.querySelector('#pace-challenge')
+    };
+    const resetButton = document.querySelector('#reset-adventure-filters');
+    let selectedPace = 'all';
 
     // Keep category labels consistent across the cards and shared modal.
     const categories = {
@@ -198,8 +222,8 @@ function initialiseAdventures() {
     const adventureDetails = {
         rafting: {
             expect:
-                "Start with a briefing and an introduction to paddling together. " +
-                "Follow a scenic river route with small rapids and quieter stretches.",
+                "Start with a safety briefing and practise paddling together before " +
+                "following a lively river descent with rapids and quieter recovery sections.",
             bring: [
                 "Swimwear and a towel",
                 "Secure footwear suitable for getting wet",
@@ -282,8 +306,8 @@ function initialiseAdventures() {
 
         hiking: {
             expect:
-                "Follow a mountain trail through changing scenery, with a steady " +
-                "group pace and breaks for water, snacks and viewpoints.",
+                "Follow a scenic trail at an unhurried group pace, with regular " +
+                "breaks for water, snacks and viewpoints.",
             bring: [
                 "Walking shoes or boots with good grip",
                 "Water and snacks",
@@ -296,8 +320,8 @@ function initialiseAdventures() {
 
         "trail-running": {
             expect:
-                "Run natural paths with a small group, moving between forest " +
-                "sections and open views, with regrouping stops along the way.",
+                "Run a longer route across uneven mountain paths and sustained climbs. " +
+                "The group regroups at planned checkpoints between demanding sections.",
             bring: [
                 "Trail-running shoes",
                 "Water or a hydration vest",
@@ -310,16 +334,16 @@ function initialiseAdventures() {
 
         climbing: {
             expect:
-                "Begin with an equipment and technique briefing, then try " +
-                "supervised climbs on natural rock with time to rest between attempts.",
+                "Begin with an equipment check and technique briefing, then work through " +
+                "supervised natural-rock routes chosen for your climbing experience.",
             bring: [
                 "Comfortable clothing that allows movement",
                 "Closed shoes for the approach",
                 "Water and sun protection"
             ],
             before:
-                "Confirm the climbing location, instructor arrangements and supplied " +
-                "equipment. Ask whether the session suits first-time climbers."
+                "Confirm the exact routes, instructor arrangements and supplied equipment. " +
+                "Check required climbing experience and approach difficulty before choosing this outing."
         },
 
         camping: {
@@ -338,8 +362,8 @@ function initialiseAdventures() {
 
         "mountain-biking": {
             expect:
-                "Start with a bike check before riding forest tracks and uneven " +
-                "trails, with breaks to regroup and enjoy the views.",
+                "Start with a bike check, then ride technical forest trails and rocky " +
+                "sections, combining sustained climbs with controlled descents.",
             bring: [
                 "Comfortable cycling clothing",
                 "Closed shoes and water",
@@ -352,8 +376,8 @@ function initialiseAdventures() {
 
         "road-cycling": {
             expect:
-                "Follow a scenic coastal route at a steady group pace, with " +
-                "planned stops for water and views along the way.",
+                "Follow a longer coastal route with rolling climbs and sustained riding. " +
+                "Planned breaks allow time to refuel, regroup and enjoy the views.",
             bring: [
                 "Comfortable cycling clothing",
                 "Water and snacks",
@@ -373,7 +397,7 @@ function initialiseAdventures() {
 
         // Reuse one modal for the entire catalogue instead of duplicating its HTML.
         modalTitle.textContent = adventure.name;
-        modalCategory.textContent = category.label;
+        modalCategory.textContent = collections[adventure.pace].title + " · " + category.label;
         modalDescription.textContent = adventure.description;
         modalLocation.textContent = adventure.location;
         modalDuration.textContent = adventure.duration === 24
@@ -429,254 +453,315 @@ function initialiseAdventures() {
         window.location.href = "tasks.html?" + parameters.toString() + "#preparation-list";
     }
 
-        // Match each adventure to its own photograph and descriptive alternative text.
-        const adventureImages = {
-            rafting: {
-                src: "images/rafting.webp",
-                alt: "A group rafting through a wooded river gorge"
-            },
-            sup: {
-                src: "images/sup-800.webp",
-                alt: "Paddleboarders exploring a clear coastal bay"
-            },
-            kayaking: {
-                src: "images/sea-kayaking.webp",
-                alt: "Two kayakers paddling beside a rocky coastline"
-            },
-            "river-trekking": {
-                src: "images/river-trekking.webp",
-                alt: "Three friends walking through a clear river beneath leafy trees"
-            },
-            snorkelling: {
-                src: "images/snorkelling.webp",
-                alt: "Two snorkellers exploring the clear water of a rocky bay"
-            },
-            canyoning: {
-                src: "images/canyoning.webp",
-                alt: "A helmeted adventurer descending a waterfall using a rope"
-            },
-            hiking: {
-                src: "images/hiking.webp",
-                alt: "Three hikers following a mountain trail overlooking the sea"
-            },
-            "trail-running": {
-                src: "images/trail-running.webp",
-                alt: "Two trail runners on a sunlit mountain path"
-            },
-            climbing: {
-                src: "images/rock-climbing.webp",
-                alt: "A climber and belayer beside towering Meteora-inspired rock formations"
-            },
-            camping: {
-                src: "images/camping.webp",
-                alt: "Two friends relaxing beside their tents at sunset"
-            },
-            "mountain-biking": {
-                src: "images/mountain-biking.webp",
-                alt: "Three helmeted mountain bikers riding along a rocky forest trail"
-            },
-            "road-cycling": {
-                src: "images/cycling.webp",
-                alt: "Three cyclists riding along a coastal road above the sea"
-            }
-        };
+    // Match each adventure to its own photograph and descriptive alternative text.
+    const adventureImages = {
+        rafting: {
+            src: "images/rafting.webp",
+            alt: "A group rafting through a wooded river gorge"
+        },
+        sup: {
+            src: "images/sup-800.webp",
+            alt: "Paddleboarders exploring a clear coastal bay"
+        },
+        kayaking: {
+            src: "images/sea-kayaking.webp",
+            alt: "Two kayakers paddling beside a rocky coastline"
+        },
+        "river-trekking": {
+            src: "images/river-trekking.webp",
+            alt: "Three friends walking through a clear river beneath leafy trees"
+        },
+        snorkelling: {
+            src: "images/snorkelling.webp",
+            alt: "Two snorkellers exploring the clear water of a rocky bay"
+        },
+        canyoning: {
+            src: "images/canyoning.webp",
+            alt: "A helmeted adventurer descending a waterfall using a rope"
+        },
+        hiking: {
+            src: "images/hiking.webp",
+            alt: "Three hikers following a mountain trail overlooking the sea"
+        },
+        "trail-running": {
+            src: "images/trail-running.webp",
+            alt: "Two trail runners on a sunlit mountain path"
+        },
+        climbing: {
+            src: "images/rock-climbing.webp",
+            alt: "A climber and belayer beside towering Meteora-inspired rock formations"
+        },
+        camping: {
+            src: "images/camping.webp",
+            alt: "Two friends relaxing beside their tents at sunset"
+        },
+        "mountain-biking": {
+            src: "images/mountain-biking.webp",
+            alt: "Three helmeted mountain bikers riding along a rocky forest trail"
+        },
+        "road-cycling": {
+            src: "images/endurance-road-cycling.webp",
+            alt: "Three helmeted road cyclists climbing a coastal road with focused effort"
+        }
+    };
 
-        function createAdventureCard(adventure) {
-            const category = categories[adventure.category];
+    function createAdventureCard(adventure) {
+        const category = categories[adventure.category];
 
-            const column = document.createElement("div");
-            column.classList.add("col-md-6", "col-xl-4");
+        const column = document.createElement("div");
+        column.classList.add("col-md-6", "col-xl-4");
 
-            const card = document.createElement("article");
-            card.classList.add("adventure-card");
+        const card = document.createElement("article");
+        card.classList.add("adventure-card", "adventure-card-" + adventure.pace);
 
-            const image = document.createElement("img");
-            image.src = adventureImages[adventure.id].src;
-            image.alt = adventureImages[adventure.id].alt;
+        const image = document.createElement("img");
+        image.src = adventureImages[adventure.id].src;
+        image.alt = adventureImages[adventure.id].alt;
 
-            // Reserve space before the photograph loads to reduce layout shifts.
-            image.width = 1000;
-            image.height = 563;
-            image.loading = "lazy";
+        // Reserve space before the photograph loads to reduce layout shifts.
+        image.width = 1000;
+        image.height = 563;
+        image.loading = "lazy";
 
-            const content = document.createElement("div");
-            content.classList.add("adventure-card-content");
+        const content = document.createElement("div");
+        content.classList.add("adventure-card-content");
 
-            const categoryLabel = document.createElement("p");
-            categoryLabel.classList.add("collection-label");
-            categoryLabel.textContent = category.label;
+        const categoryLabel = document.createElement("p");
+        categoryLabel.classList.add("collection-label");
+        categoryLabel.textContent = collections[adventure.pace].title + " · " + category.label;
 
-            const title = document.createElement("h3");
-            title.textContent = adventure.name;
+        const title = document.createElement("h3");
+        title.textContent = adventure.name;
 
-            const location = document.createElement("p");
-            location.classList.add("adventure-location");
-            location.textContent = adventure.location;
+        const location = document.createElement("p");
+        location.classList.add("adventure-location");
+        location.textContent = adventure.location;
 
-            const description = document.createElement("p");
-            description.classList.add("adventure-description");
-            description.textContent = adventure.description;
+        const description = document.createElement("p");
+        description.classList.add("adventure-description");
+        description.textContent = adventure.description;
 
-            const details = document.createElement("ul");
-            details.classList.add("adventure-meta");
+        const details = document.createElement("ul");
+        details.classList.add("adventure-meta");
 
-            const duration = document.createElement("li");
-            duration.textContent = adventure.duration === 24
-                ? "Overnight"
-                : adventure.duration + " hours";
+        const duration = document.createElement("li");
+        duration.textContent = adventure.duration === 24
+            ? "Overnight"
+            : adventure.duration + " hours";
 
-            const difficulty = document.createElement("li");
-            difficulty.textContent = adventure.difficulty;
+        const difficulty = document.createElement("li");
+        difficulty.textContent = adventure.difficulty;
 
-            details.appendChild(duration);
-            details.appendChild(difficulty);
+        details.appendChild(duration);
+        details.appendChild(difficulty);
 
-            const price = document.createElement("p");
-            price.classList.add("adventure-price");
-            price.textContent = "From €" + adventure.price + " / person";
+        const price = document.createElement("p");
+        price.classList.add("adventure-price");
+        price.textContent = "From €" + adventure.price + " / person";
 
-            content.appendChild(categoryLabel);
-            content.appendChild(title);
-            content.appendChild(location);
-            content.appendChild(description);
-            content.appendChild(details);
-            content.appendChild(price);
-            const detailsButton = document.createElement("button");
+        content.appendChild(categoryLabel);
+        content.appendChild(title);
+        content.appendChild(location);
+        content.appendChild(description);
+        content.appendChild(details);
+        content.appendChild(price);
+        const detailsButton = document.createElement("button");
 
-            detailsButton.type = "button";
-            detailsButton.classList.add("btn", "adventure-details", "mt-3");
-            detailsButton.textContent = "View adventure";
-            detailsButton.setAttribute(
+        detailsButton.type = "button";
+        detailsButton.classList.add("btn", "adventure-details");
+        detailsButton.textContent = "View adventure";
+        detailsButton.setAttribute(
+            "aria-label",
+            "View details for " + adventure.name
+        );
+
+        detailsButton.addEventListener("click", function () {
+            showAdventureDetails(adventure, detailsButton);
+        });
+
+        const actions = document.createElement("div");
+        actions.classList.add("adventure-card-actions");
+        actions.appendChild(detailsButton);
+
+        const saveButton = document.createElement("button");
+
+        saveButton.type = "button";
+        saveButton.classList.add("btn", "adventure-save");
+
+        function updateSaveButton() {
+            const isSaved = favourites.includes(adventure.id);
+
+            // In the saved-only view, describe the action instead of just the state.
+            saveButton.textContent = isSaved
+                ? (favouritesOnly.checked ? "Remove from saved" : "♥ Saved")
+                : "♡ Save";
+
+            saveButton.setAttribute("aria-pressed", String(isSaved));
+            saveButton.setAttribute(
                 "aria-label",
-                "View details for " + adventure.name
+                (isSaved ? "Remove from saved: " : "Save ") + adventure.name
+            );
+        }
+
+        function toggleFavourite() {
+            const savedIndex = favourites.indexOf(adventure.id);
+
+            if (savedIndex === -1) {
+                favourites.push(adventure.id);
+            } else {
+                favourites.splice(savedIndex, 1);
+            }
+
+            localStorage.setItem(
+                "favouriteAdventures",
+                JSON.stringify(favourites)
             );
 
-            detailsButton.addEventListener("click", function () {
-                showAdventureDetails(adventure, detailsButton);
-            });
-
-            content.appendChild(detailsButton);
-
-            const saveButton = document.createElement("button");
-
-            saveButton.type = "button";
-            saveButton.classList.add("btn", "adventure-save", "mt-3");
-
-            function updateSaveButton() {
-                const isSaved = favourites.includes(adventure.id);
-
-                saveButton.textContent = isSaved
-                    ? "♥ Saved"
-                    : "♡ Save adventure";
-
-                saveButton.setAttribute("aria-pressed", String(isSaved));
-                saveButton.setAttribute(
-                    "aria-label",
-                    "Save " + adventure.name
-                );
+            // Keep focus on the button unless removing this card from the saved-only view.
+            if (favouritesOnly.checked && savedIndex !== -1) {
+                favouritesOnly.focus();
+                renderAdventures();
+            } else {
+                updateSaveButton();
             }
-
-            function toggleFavourite() {
-                const savedIndex = favourites.indexOf(adventure.id);
-
-                if (savedIndex === -1) {
-                    favourites.push(adventure.id);
-                } else {
-                    favourites.splice(savedIndex, 1);
-                }
-
-                localStorage.setItem(
-                    "favouriteAdventures",
-                    JSON.stringify(favourites)
-                );
-
-                // Keep focus on the button unless removing this card from the saved-only view.
-                if (favouritesOnly.checked && savedIndex !== -1) {
-                    favouritesOnly.focus();
-                    renderAdventures();
-                } else {
-                    updateSaveButton();
-                }
-            }
-
-            updateSaveButton();
-            saveButton.addEventListener("click", toggleFavourite);
-            content.appendChild(saveButton);
-
-            card.appendChild(image);
-            card.appendChild(content);
-            column.appendChild(card);
-
-            return column;
         }
 
-        function renderAdventures() {
-            const searchText = searchInput.value.trim().toLowerCase();
-            const selectedCategory = categorySelect.value;
+        updateSaveButton();
+        saveButton.addEventListener("click", toggleFavourite);
+        actions.appendChild(saveButton);
+        content.appendChild(actions);
 
-            // Combine both filters, leaving the original catalogue unchanged.
-            const visibleAdventures = adventures.filter(function (adventure) {
-                const searchableText =
-                    adventure.name + " " +
-                    adventure.location + " " +
-                    adventure.description;
+        card.appendChild(image);
+        card.appendChild(content);
+        column.appendChild(card);
 
-                const matchesSearch =
-                    searchableText.toLowerCase().includes(searchText);
-
-                const matchesCategory =
-                    selectedCategory === "all" ||
-                    adventure.category === selectedCategory;
-
-                const matchesFavourites =
-                    !favouritesOnly.checked || favourites.includes(adventure.id);
-
-                return matchesSearch && matchesCategory && matchesFavourites;
-            });
-
-            // Sort only the filtered copy so "Featured" restores catalogue order.
-            if (sortSelect.value === "price") {
-                visibleAdventures.sort(function (first, second) {
-                    return first.price - second.price;
-                });
-            } else if (sortSelect.value === "duration") {
-                visibleAdventures.sort(function (first, second) {
-                    return first.duration - second.duration;
-                });
-            }
-
-            adventureGrid.textContent = "";
-
-            for (const adventure of visibleAdventures) {
-                adventureGrid.appendChild(createAdventureCard(adventure));
-            }
-
-            const count = visibleAdventures.length;
-            adventureCount.textContent =
-                count + (count === 1 ? " experience found" : " experiences found");
-
-            adventureEmpty.hidden = count > 0;
-        }
-
-        searchInput.addEventListener("input", renderAdventures);
-        categorySelect.addEventListener("change", renderAdventures);
-        sortSelect.addEventListener("change", renderAdventures);
-        favouritesOnly.addEventListener("change", renderAdventures);
-        planForm.addEventListener("submit", handleAdventurePlan);
-
-
-
-        // Home category links open the catalogue with the matching filter selected.
-        // Accept only known category values from the URL.
-        const parameters = new URLSearchParams(window.location.search);
-        const requestedCategory = parameters.get("category");
-
-        if (requestedCategory &&
-            Object.hasOwn(categories, requestedCategory)) {
-            categorySelect.value = requestedCategory;
-        }
-
-        renderAdventures();
+        return column;
     }
 
-    initialiseAdventures();
+    function renderAdventures() {
+        const searchText = searchInput.value.trim().toLowerCase();
+        const selectedCategory = categorySelect.value;
+
+        // Combine both filters, leaving the original catalogue unchanged.
+        const visibleAdventures = adventures.filter(function (adventure) {
+            const searchableText =
+                adventure.name + " " +
+                adventure.location + " " +
+                collections[adventure.pace].title + " " +
+                adventure.description;
+
+            const matchesSearch =
+                searchableText.toLowerCase().includes(searchText);
+
+            const matchesCategory =
+                selectedCategory === "all" ||
+                adventure.category === selectedCategory;
+
+            const matchesFavourites =
+                !favouritesOnly.checked || favourites.includes(adventure.id);
+
+            const matchesPace = selectedPace === "all" || adventure.pace === selectedPace;
+            return matchesSearch && matchesCategory && matchesFavourites && matchesPace;
+        });
+
+        // Sort only the filtered copy so "Featured" restores catalogue order.
+        if (sortSelect.value === "price") {
+            visibleAdventures.sort(function (first, second) {
+                return first.price - second.price;
+            });
+        } else if (sortSelect.value === "duration") {
+            visibleAdventures.sort(function (first, second) {
+                return first.duration - second.duration;
+            });
+        }
+
+        adventureGrid.textContent = "";
+
+        for (const pace of Object.keys(collections)) {
+            const matches = visibleAdventures.filter(function (adventure) { return adventure.pace === pace; });
+            if (!matches.length) continue;
+            const section = document.createElement("section");
+            section.classList.add("adventure-collection", "adventure-collection-" + pace);
+            const headingId = "collection-" + pace;
+            section.setAttribute("aria-labelledby", headingId);
+            const header = document.createElement("div");
+            header.classList.add("adventure-collection-heading");
+            const headingContent = document.createElement("div");
+            const eyebrow = document.createElement("p");
+            eyebrow.classList.add("section-eyebrow");
+            eyebrow.textContent = collections[pace].eyebrow;
+            const title = document.createElement("h2");
+            title.id = headingId;
+            title.textContent = collections[pace].title;
+            const description = document.createElement("p");
+            description.textContent = collections[pace].description;
+            headingContent.appendChild(eyebrow);
+            headingContent.appendChild(title);
+            headingContent.appendChild(description);
+            const countLabel = document.createElement("span");
+            countLabel.classList.add("adventure-collection-count");
+            countLabel.textContent = matches.length + (matches.length === 1 ? " experience" : " experiences");
+            header.appendChild(headingContent);
+            header.appendChild(countLabel);
+            section.appendChild(header);
+            const grid = document.createElement("div");
+            grid.classList.add("row", "g-4", "justify-content-center");
+            for (const adventure of matches) grid.appendChild(createAdventureCard(adventure));
+            section.appendChild(grid);
+            adventureGrid.appendChild(section);
+        }
+        for (const pace of Object.keys(paceButtons)) {
+            paceButtons[pace].setAttribute("aria-pressed", String(selectedPace === pace));
+        }
+        resetButton.hidden = selectedPace === "all" && !searchText &&
+            selectedCategory === "all" && !favouritesOnly.checked && sortSelect.value === "featured";
+
+        const count = visibleAdventures.length;
+        adventureCount.textContent =
+            count + (count === 1 ? " experience found" : " experiences found");
+
+        adventureEmpty.hidden = count > 0;
+    }
+
+    function resetFilters() {
+        selectedPace = "all";
+        searchInput.value = "";
+        categorySelect.value = "all";
+        sortSelect.value = "featured";
+        favouritesOnly.checked = false;
+        renderAdventures();
+        searchInput.focus();
+    }
+    for (const pace of Object.keys(paceButtons)) {
+        function choosePace() {
+            selectedPace = pace;
+            renderAdventures();
+        }
+        paceButtons[pace].addEventListener("click", choosePace);
+    }
+    resetButton.addEventListener("click", resetFilters);
+
+    searchInput.addEventListener("input", renderAdventures);
+    categorySelect.addEventListener("change", renderAdventures);
+    sortSelect.addEventListener("change", renderAdventures);
+    favouritesOnly.addEventListener("change", renderAdventures);
+    planForm.addEventListener("submit", handleAdventurePlan);
+
+
+
+    // Home category links open the catalogue with the matching filter selected.
+    // Accept only known category values from the URL.
+    const parameters = new URLSearchParams(window.location.search);
+    const requestedCategory = parameters.get("category");
+
+    if (requestedCategory &&
+        Object.hasOwn(categories, requestedCategory)) {
+        categorySelect.value = requestedCategory;
+    }
+
+    const requestedPace = parameters.get("pace");
+    if (requestedPace && Object.hasOwn(collections, requestedPace)) selectedPace = requestedPace;
+    renderAdventures();
+}
+
+initialiseAdventures();
