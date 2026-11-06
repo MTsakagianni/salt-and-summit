@@ -1168,7 +1168,7 @@ body.dark-mode .home-page .hero-secondary {
     background: #e7eee6;
 }
 
-.adventures-hero>img {
+.adventures-hero>picture>img {
     position: absolute;
     z-index: -2;
     inset: 0;
@@ -1733,7 +1733,8 @@ body.dark-mode .adventure-next-step .collection-link {
         display: none;
     }
 
-    .adventures-hero>img {
+    .adventures-hero>picture>img {
+        display: block;
         position: static;
         z-index: auto;
         height: 200px;

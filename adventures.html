@@ -84,8 +84,13 @@
 
     <main class="container adventures-page">
         <section class="adventures-hero" aria-labelledby="adventures-title">
-            <img src="images/adventures-hero.webp" width="1774" height="887"
-                alt="Two hikers following a sunlit Greek coastal trail above turquoise water">
+            <picture>
+                <source media="(max-width: 767.98px)"
+                    srcset="images/adventures-hero-480.webp 480w, images/adventures-hero-960.webp 960w"
+                    sizes="(min-width: 576px) 540px, calc(100vw - 24px)">
+                <img src="images/adventures-hero.webp" width="1774" height="887"
+                    alt="Two hikers following a sunlit Greek coastal trail above turquoise water">
+            </picture>
             <div class="adventures-hero-copy">
                 <p class="section-eyebrow">SALT AIR. OPEN TRAILS. YOUR KIND OF OUTSIDE.</p>
                 <h1 class="page-title-accent" id="adventures-title">Find your pace.<br>Follow your curiosity.</h1>
