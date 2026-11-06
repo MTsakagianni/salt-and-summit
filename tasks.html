@@ -58,16 +58,17 @@
                             <a class="nav-link active" aria-current="page" href="tasks.html">Tasks</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="analytics.html">
+                                Analytics
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
                             <a class="nav-link" href="about.html">About</a>
 
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="contact.html">Contact</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="analytics.html">
-                                Analytics
-                            </a>
                         </li>
 
                     </ul>
@@ -85,8 +86,9 @@
             <div class="tasks-hero-copy">
                 <p class="section-eyebrow">LESS PLANNING. MORE OUTDOORS.</p>
                 <h1 class="page-title-accent" id="tasks-title">Ready for your<br>next adventure?</h1>
-                
-                <p>Keep your preparation in one place.<br>Add a task, set a priority and tick it off when you are ready.</p>
+
+                <p>Keep your preparation in one place.<br>Add a task, set a priority and tick it off when you are ready.
+                </p>
                 <a href="adventures.html" class="tasks-explore">Explore adventures </a>
             </div>
             <img src="images/trip-preparation.webp" width="1000" height="563"
@@ -96,8 +98,10 @@
         <section class="tasks-overview" aria-label="Summary of all your tasks">
             <div class="task-stat"><span>Total tasks</span><strong id="total-tasks">0</strong></div>
             <div class="task-stat task-stat-pending"><span>Pending</span><strong id="pending-tasks">0</strong></div>
-            <div class="task-stat task-stat-progress"><span>In progress</span><strong id="progress-tasks">0</strong></div>
-            <div class="task-stat task-stat-completed"><span>Completed</span><strong id="completed-tasks">0</strong></div>
+            <div class="task-stat task-stat-progress"><span>In progress</span><strong id="progress-tasks">0</strong>
+            </div>
+            <div class="task-stat task-stat-completed"><span>Completed</span><strong id="completed-tasks">0</strong>
+            </div>
         </section>
 
         <section class="tasks-workspace" id="preparation-list" aria-labelledby="task-list-title">
@@ -124,7 +128,8 @@
             <div class="task-toolbar">
                 <div class="task-search-field">
                     <label class="form-label" for="task-search">Search tasks &amp; adventures</label>
-                    <input class="form-control" type="search" id="task-search" placeholder="Task, adventure or location">
+                    <input class="form-control" type="search" id="task-search"
+                        placeholder="Task, adventure or location">
                 </div>
                 <div>
                     <label class="form-label" for="status-filter">Status</label>
@@ -160,9 +165,11 @@
                 <button class="task-text-button" id="clear-task-filters" type="button" hidden>Clear filters</button>
             </div>
             <p class="visually-hidden" id="task-feedback" role="status" aria-live="polite"></p>
-            <div class="task-checklist-viewport" tabindex="0" role="region" aria-label="Preparation checklist; scroll horizontally on small screens">
+            <div class="task-checklist-viewport" tabindex="0" role="region"
+                aria-label="Preparation checklist; scroll horizontally on small screens">
                 <table class="table task-table">
-                    <caption class="visually-hidden">Your preparation tasks, descriptions, deadlines, priorities and statuses</caption>
+                    <caption class="visually-hidden">Your preparation tasks, descriptions, deadlines, priorities and
+                        statuses</caption>
                     <thead>
                         <tr>
                             <th scope="col"><span class="visually-hidden">Complete</span></th>
@@ -197,8 +204,10 @@
                     <div class="modal-body">
                         <div class="mb-3">
                             <label class="form-label" for="task-trip">Adventure</label>
-                            <select class="form-select" id="task-trip" name="trip" aria-describedby="task-trip-help"></select>
-                            <p class="form-text" id="task-trip-help">Choose an existing plan, or keep this as a general reminder.</p>
+                            <select class="form-select" id="task-trip" name="trip"
+                                aria-describedby="task-trip-help"></select>
+                            <p class="form-text" id="task-trip-help">Choose an existing plan, or keep this as a general
+                                reminder.</p>
                             <p class="task-adventure-date" id="task-adventure-date" hidden></p>
                         </div>
                         <div class="mb-3">
@@ -215,7 +224,8 @@
                             <label class="form-label" for="task-date">Due date</label>
                             <input class="form-control" id="task-date" name="dueDate" type="date" required
                                 aria-describedby="due-date-help">
-                            <p class="form-text" id="due-date-help">The deadline for this task, which can be before your adventure.</p>
+                            <p class="form-text" id="due-date-help">The deadline for this task, which can be before your
+                                adventure.</p>
                         </div>
                         <div class="row g-3">
                             <div class="col-sm-6">

@@ -1183,7 +1183,11 @@ body.dark-mode .home-page .hero-secondary {
     position: absolute;
     z-index: -1;
     inset: 0;
-    background: linear-gradient(90deg, #faf8f5f5 0%, #faf8f5df 24%, #faf8f58c 43%, #faf8f500 68%);
+    background: linear-gradient(90deg,
+            rgb(244 238 228 / 50%) 0%,
+            rgb(244 238 228 / 35%) 24%,
+            rgb(244 238 228 / 12%) 43%,
+            rgb(244 238 228 / 0%) 50%);
 }
 
 .adventures-hero-copy {
@@ -4426,5 +4430,16 @@ body.dark-mode .contact-panel .form-control {
         height: 10px;
         border-radius: 50%;
         background: #fff;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .adventures-hero p.adventures-hero-description {
+        max-width: 28ch;
+        text-wrap: balance;
+    }
+
+    .adventures-hero-description br {
+        display: none;
     }
 }

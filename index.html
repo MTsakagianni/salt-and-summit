@@ -59,16 +59,17 @@
                             <a class="nav-link" href="tasks.html">Tasks</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="analytics.html">
+                                Analytics
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="about.html">About</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="contact.html">Contact</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="analytics.html">
-                                Analytics
-                            </a>
-                        </li>
+
 
                     </ul>
                 </div>
@@ -86,7 +87,8 @@
                 <source media="(max-width: 767.98px)"
                     srcset="images/home-myrtos-coast-768.webp 768w, images/home-myrtos-coast-1152.webp 1152w"
                     sizes="810px">
-                <img class="home-hero-image" src="images/home-myrtos-coast.webp" width="1920" height="1280" fetchpriority="high"
+                <img class="home-hero-image" src="images/home-myrtos-coast.webp" width="1920" height="1280"
+                    fetchpriority="high"
                     alt="The rugged coastline near Myrtos Beach in Kefalonia, with blue sea and mountains">
             </picture>
             <div class="container home-hero-content">
@@ -98,7 +100,8 @@
                     <a class="hero-secondary" href="tasks.html">My preparation list </a>
                 </div>
             </div>
-            <p class="home-photo-credit">Photo: <a href="https://unsplash.com/photos/xKzwZpbpYko">Christian Harb / Unsplash</a></p>
+            <p class="home-photo-credit">Photo: <a href="https://unsplash.com/photos/xKzwZpbpYko">Christian Harb /
+                    Unsplash</a></p>
         </section>
 
         <div class="container">
@@ -106,7 +109,8 @@
                 <div class="home-section-heading">
                     <p class="section-eyebrow">FIND YOUR PACE</p>
                     <h2 id="explore-title">Some days, slow down. Others, go further.</h2>
-                    <p>Discover outdoor experiences in Greece, from easygoing coastal days to high-energy challenges.</p>
+                    <p>Discover outdoor experiences in Greece, from easygoing coastal days to high-energy challenges.
+                    </p>
                 </div>
                 <div class="row g-4">
                     <div class="col-md-6">
@@ -119,7 +123,9 @@
                                     <img src="images/home-sup-matched.webp" width="1200" height="800" loading="lazy"
                                         alt="An athletic man paddleboarding in open turquoise water, away from the distant shore">
                                 </picture>
-                                <div class="home-photo-caption"><h3>Slow &amp; Explore</h3><span>6 experiences </span></div>
+                                <div class="home-photo-caption">
+                                    <h3>Slow &amp; Explore</h3><span>6 experiences </span>
+                                </div>
                             </a>
                             <p>Coastal routes, hidden coves and easygoing outdoor days.</p>
                         </article>
@@ -131,10 +137,13 @@
                                     <source media="(max-width: 767.98px)"
                                         srcset="images/home-climbing-matched-480.webp 480w, images/home-climbing-matched-768.webp 768w"
                                         sizes="(min-width: 576px) 516px, calc(100vw - 24px)">
-                                    <img src="images/home-climbing-matched.webp" width="1200" height="800" loading="lazy"
+                                    <img src="images/home-climbing-matched.webp" width="1200" height="800"
+                                        loading="lazy"
                                         alt="An athletic blonde climber on a limestone rock face above the Greek coast">
                                 </picture>
-                                <div class="home-photo-caption"><h3>Challenge &amp; Explore</h3><span>6 experiences </span></div>
+                                <div class="home-photo-caption">
+                                    <h3>Challenge &amp; Explore</h3><span>6 experiences </span>
+                                </div>
                             </a>
                             <p>Move higher, go further and explore Greece’s wilder terrain.</p>
                         </article>
@@ -150,7 +159,8 @@
                     <p>Keep the details together, then leave them behind.</p>
                     <a class="btn hero-primary" href="tasks.html">Open my preparation list </a>
                 </div>
-                <div class="home-checklist-preview" role="img" aria-label="Example preparation list: Check the meeting point and Pack your essentials are ticked; Ready to go is still to do.">
+                <div class="home-checklist-preview" role="img"
+                    aria-label="Example preparation list: Check the meeting point and Pack your essentials are ticked; Ready to go is still to do.">
                     <p class="home-checklist-label">THE LITTLE THINGS, SORTED.</p>
                     <ul aria-hidden="true">
                         <li><span class="preview-tick">✓</span>Check the meeting point</li>
@@ -162,44 +172,55 @@
         </section>
 
         <div class="container">
-        <div class="home-section-heading home-dashboard-heading">
-            <div><p class="section-eyebrow">A LITTLE CHECK-IN</p><h2>A little check-in before you go.</h2></div>
-        </div>
-        <div class="home-dashboard">
-            <section class="activity-section" aria-labelledby="activity-title">
-                <div class="home-panel-heading"><h2 id="activity-title">Latest activity</h2><span class="home-panel-label">YOUR PLANS</span></div>
-                <p class="home-panel-intro">The latest changes to your outdoor plans.</p>
-                <ul id="activity-list"></ul>
-                <p id="activity-empty">Your story starts here. Choose an adventure or add your first task to get going.</p>
-                <a class="collection-link" href="tasks.html">Go to my tasks </a>
-            </section>
-            <section class="activity-section home-weather" aria-labelledby="weather-title">
-                <div class="home-panel-heading"><h2 id="weather-title">Weather in Acheron</h2><span class="home-panel-label">GLYKI, GREECE</span></div>
-                <p class="home-panel-intro">Current conditions near our river adventures.</p>
-                <p id="weather-status" role="status">Loading weather…</p>
-                <div id="weather-details" hidden>
-                    <div class="weather-overview">
-                        <span id="weather-icon" class="weather-icon" aria-hidden="true"></span>
-                        <div>
-                            <p class="weather-temperature"><span class="visually-hidden">Temperature:</span><strong id="weather-temperature"></strong></p>
-                            <p id="weather-description" class="weather-description"></p>
-                        </div>
-                    </div>
-                    <p class="weather-wind">Wind speed: <strong id="weather-wind"></strong></p>
+            <div class="home-section-heading home-dashboard-heading">
+                <div>
+                    <p class="section-eyebrow">A LITTLE CHECK-IN</p>
+                    <h2>A little check-in before you go.</h2>
                 </div>
-                <button id="weather-retry" class="home-weather-retry" type="button" hidden>Try again</button>
-                <button id="forecast-toggle" class="home-weather-retry forecast-toggle" type="button"
-                    aria-expanded="false" aria-controls="weekly-forecast">View 7-day forecast</button>
-                <section id="weekly-forecast" class="weekly-forecast" aria-labelledby="forecast-title" hidden>
-                    <h3 id="forecast-title">7-day forecast · Acheron</h3>
-                    <p class="forecast-note">Today and the next six days. Dates use local time in Greece.</p>
-                    <p id="forecast-status" role="status"></p>
-                    <ul id="forecast-days" class="forecast-days"></ul>
-                    <button id="forecast-retry" class="home-weather-retry" type="button" hidden>Try forecast again</button>
+            </div>
+            <div class="home-dashboard">
+                <section class="activity-section" aria-labelledby="activity-title">
+                    <div class="home-panel-heading">
+                        <h2 id="activity-title">Latest activity</h2><span class="home-panel-label">YOUR PLANS</span>
+                    </div>
+                    <p class="home-panel-intro">The latest changes to your outdoor plans.</p>
+                    <ul id="activity-list"></ul>
+                    <p id="activity-empty">Your story starts here. Choose an adventure or add your first task to get
+                        going.</p>
+                    <a class="collection-link" href="tasks.html">Go to my tasks </a>
                 </section>
-                <p class="home-weather-source">Weather data by <a href="https://open-meteo.com/">Open-Meteo</a></p>
-            </section>
-        </div>
+                <section class="activity-section home-weather" aria-labelledby="weather-title">
+                    <div class="home-panel-heading">
+                        <h2 id="weather-title">Weather in Acheron</h2><span class="home-panel-label">GLYKI,
+                            GREECE</span>
+                    </div>
+                    <p class="home-panel-intro">Current conditions near our river adventures.</p>
+                    <p id="weather-status" role="status">Loading weather…</p>
+                    <div id="weather-details" hidden>
+                        <div class="weather-overview">
+                            <span id="weather-icon" class="weather-icon" aria-hidden="true"></span>
+                            <div>
+                                <p class="weather-temperature"><span class="visually-hidden">Temperature:</span><strong
+                                        id="weather-temperature"></strong></p>
+                                <p id="weather-description" class="weather-description"></p>
+                            </div>
+                        </div>
+                        <p class="weather-wind">Wind speed: <strong id="weather-wind"></strong></p>
+                    </div>
+                    <button id="weather-retry" class="home-weather-retry" type="button" hidden>Try again</button>
+                    <button id="forecast-toggle" class="home-weather-retry forecast-toggle" type="button"
+                        aria-expanded="false" aria-controls="weekly-forecast">View 7-day forecast</button>
+                    <section id="weekly-forecast" class="weekly-forecast" aria-labelledby="forecast-title" hidden>
+                        <h3 id="forecast-title">7-day forecast · Acheron</h3>
+                        <p class="forecast-note">Today and the next six days. Dates use local time in Greece.</p>
+                        <p id="forecast-status" role="status"></p>
+                        <ul id="forecast-days" class="forecast-days"></ul>
+                        <button id="forecast-retry" class="home-weather-retry" type="button" hidden>Try forecast
+                            again</button>
+                    </section>
+                    <p class="home-weather-source">Weather data by <a href="https://open-meteo.com/">Open-Meteo</a></p>
+                </section>
+            </div>
         </div>
     </main>
 
