@@ -957,6 +957,11 @@ body.dark-mode main a:not(.btn):hover {
     font-size: 12px;
 }
 
+.home-dashboard .home-weather-source a {
+    color: var(--home-ink);
+    text-decoration: underline;
+}
+
 .home-weather-retry {
     margin-top: 12px;
     padding: 7px 14px;
