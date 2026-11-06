@@ -87,7 +87,13 @@
                     <p class="about-lead">Different paces. One shared direction.</p>
                     <p>Discover outdoor experiences and keep your preparation in one place. Salt &amp; Summit makes room for the day ahead.</p>
                 </div>
-                <img class="about-landscape-art" src="images/about-coastal-illustration.webp" width="1200" height="800" alt="" aria-hidden="true">
+                <picture class="about-landscape-art">
+                    <source media="(max-width: 767.98px)"
+                        srcset="images/about-coastal-illustration-480.webp 480w, images/about-coastal-illustration-880.webp 880w"
+                        sizes="(min-width: 464px) 440px, calc(100vw - 24px)">
+                    <img class="about-landscape-art" src="images/about-coastal-illustration.webp"
+                        width="1200" height="800" fetchpriority="high" alt="" aria-hidden="true">
+                </picture>
             </section>
 
             <section class="about-purpose" aria-labelledby="purpose-title">

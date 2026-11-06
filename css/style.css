@@ -4407,3 +4407,24 @@ body.dark-mode .contact-panel .form-control {
     background: #182729;
     color: var(--contact-ink);
 }
+
+@media (max-width: 767.98px) {
+    .about-feedback #feedback-carousel .carousel-indicators button {
+        display: grid;
+        place-items: center;
+        box-sizing: border-box;
+        width: 32px;
+        height: 32px;
+        margin: 0;
+        padding: 0;
+        background: transparent;
+    }
+
+    .about-feedback #feedback-carousel .carousel-indicators button::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #fff;
+    }
+}
