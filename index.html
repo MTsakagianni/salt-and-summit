@@ -82,8 +82,13 @@
 
     <main class="home-page">
         <section class="home-hero" aria-labelledby="welcome-title">
-            <img class="home-hero-image" src="images/home-myrtos-coast.webp" width="1920" height="1280" fetchpriority="high"
-                alt="The rugged coastline near Myrtos Beach in Kefalonia, with blue sea and mountains">
+            <picture>
+                <source media="(max-width: 767.98px)"
+                    srcset="images/home-myrtos-coast-768.webp 768w, images/home-myrtos-coast-1152.webp 1152w"
+                    sizes="810px">
+                <img class="home-hero-image" src="images/home-myrtos-coast.webp" width="1920" height="1280" fetchpriority="high"
+                    alt="The rugged coastline near Myrtos Beach in Kefalonia, with blue sea and mountains">
+            </picture>
             <div class="container home-hero-content">
                 <p class="section-eyebrow">LESS PLANNING. MORE OUTDOORS.</p>
                 <h1 class="page-title-accent" id="welcome-title">Your kind of outside.</h1>
@@ -107,8 +112,13 @@
                     <div class="col-md-6">
                         <article class="home-collection">
                             <a class="home-photo-link" href="adventures.html?pace=slow">
-                                <img src="images/home-sup-matched.webp" width="1200" height="800" loading="lazy"
-                                    alt="An athletic man paddleboarding in open turquoise water, away from the distant shore">
+                                <picture>
+                                    <source media="(max-width: 767.98px)"
+                                        srcset="images/home-sup-matched-480.webp 480w, images/home-sup-matched-768.webp 768w"
+                                        sizes="(min-width: 576px) 516px, calc(100vw - 24px)">
+                                    <img src="images/home-sup-matched.webp" width="1200" height="800" loading="lazy"
+                                        alt="An athletic man paddleboarding in open turquoise water, away from the distant shore">
+                                </picture>
                                 <div class="home-photo-caption"><h3>Slow &amp; Explore</h3><span>6 experiences </span></div>
                             </a>
                             <p>Coastal routes, hidden coves and easygoing outdoor days.</p>
@@ -117,8 +127,13 @@
                     <div class="col-md-6">
                         <article class="home-collection">
                             <a class="home-photo-link" href="adventures.html?pace=challenge">
-                                <img src="images/home-climbing-matched.webp" width="1200" height="800" loading="lazy"
-                                    alt="An athletic blonde climber on a limestone rock face above the Greek coast">
+                                <picture>
+                                    <source media="(max-width: 767.98px)"
+                                        srcset="images/home-climbing-matched-480.webp 480w, images/home-climbing-matched-768.webp 768w"
+                                        sizes="(min-width: 576px) 516px, calc(100vw - 24px)">
+                                    <img src="images/home-climbing-matched.webp" width="1200" height="800" loading="lazy"
+                                        alt="An athletic blonde climber on a limestone rock face above the Greek coast">
+                                </picture>
                                 <div class="home-photo-caption"><h3>Challenge &amp; Explore</h3><span>6 experiences </span></div>
                             </a>
                             <p>Move higher, go further and explore Greece’s wilder terrain.</p>
