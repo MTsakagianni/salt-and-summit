@@ -214,7 +214,7 @@ function initialiseTasks() {
             saveTasks(message + task.name);
             renderTasks();
             // A status filter may remove the updated row. Keep keyboard focus usable.
-            const replacement = document.getElementById(checkbox.id);
+            const replacement = document.querySelector('#' + checkbox.id);
             (replacement || statusFilter).focus();
         }
         checkbox.addEventListener('change', toggleCompletion);

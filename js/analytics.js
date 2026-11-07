@@ -195,7 +195,7 @@ function initialiseAnalytics() {
                 );
 
                 renderBoard();
-                document.getElementById(statusSelect.id).focus();
+                document.querySelector('#' + statusSelect.id).focus();
             }
 
             statusSelect.addEventListener("change", changeTaskStatus);
