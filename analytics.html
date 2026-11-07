@@ -14,20 +14,20 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=analytics-13">
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"
         defer></script>
 
     <script src="js/main.js" defer></script>
-    <script src="js/analytics.js" defer></script>
+    <script src="js/analytics.js?v=analytics-13" defer></script>
 
 </head>
 
 <body>
     <header class="site-header sticky-top">
-        <nav class="navbar navbar-expand-md" aria-label="Main navigation">
+        <nav class="navbar navbar-expand-lg" aria-label="Main navigation">
             <div class="container">
                 <a class="navbar-brand" href="index.html">
                     <img class="brand-logo" src="images/logo.webp" width="168" height="168" alt="">
@@ -53,7 +53,13 @@
 
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="adventures.html">Adventures</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="tasks.html">Tasks</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="analytics.html">Analytics</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="about.html">About</a>
@@ -62,9 +68,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="contact.html">Contact</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="analytics.html">Analytics</a>
-                        </li>
+
 
                     </ul>
                 </div>
@@ -76,53 +80,101 @@
         Dark mode
     </button>
 
-    <main class="container">
-        <section class="welcome" aria-labelledby="analytics-title">
-            <h1 id="analytics-title">Your progress</h1>
-            <p>See how your plans are coming together.</p>
-        </section>
-
-        <section class="activity-section" aria-labelledby="chart-title">
-            <h2 id="chart-title">Tasks by status</h2>
-            <p>The number of tasks at each stage.</p>
-
-            <div id="task-chart" class="task-chart"></div>
-        </section>
-
-        <section class="activity-section" aria-labelledby="board-title">
-            <h2 id="board-title">Task board</h2>
-            <p>Keep track of each step of your preparation.</p>
-
-            <div class="row g-4 mt-2">
-                <div class="col-md-4">
-                    <h3 class="h5">To do</h3>
-                    <div id="todo-tasks"></div>
-                </div>
-
-                <div class="col-md-4">
-                    <h3 class="h5">In progress</h3>
-                    <div id="progress-tasks"></div>
-                </div>
-
-                <div class="col-md-4">
-                    <h3 class="h5">Completed</h3>
-                    <div id="done-tasks"></div>
-                </div>
+    <main class="container analytics-page">
+        <section class="analytics-intro" aria-labelledby="analytics-title">
+            <div>
+                <p class="section-eyebrow">SMALL STEPS. GOOD DAYS AHEAD.</p>
+                <h1 class="page-title-accent" id="analytics-title">See your plans take shape.</h1>
+                <p>A little progress brings your next adventure closer.</p>
+            </div>
+            <div class="analytics-intro-side">
+                <img class="analytics-route" src="images/preparation-route.svg" width="400" height="160" alt=""
+                    aria-hidden="true">
+                <a class="btn analytics-tasks-link" href="tasks.html">My preparation list</a>
             </div>
         </section>
 
-        <section class="activity-section" aria-labelledby="deadlines-title">
-            <h2 id="deadlines-title">Upcoming deadlines</h2>
-            <p>What needs to be ready next.</p>
-
-            <ul id="upcoming-tasks" class="deadline-list"></ul>
-
-            <p id="deadlines-empty">
-                No upcoming deadlines.
-            </p>
+        <section class="analytics-overview" aria-labelledby="overview-title">
+            <div class="analytics-progress-copy">
+                <p class="section-eyebrow">YOUR PREPARATION, AT A GLANCE</p>
+                <h2 id="overview-title"><span id="completion-percent">0</span>% ready</h2>
+                <p id="completion-summary" role="status" aria-live="polite"></p>
+                <progress id="completion-progress" max="100" value="0" aria-label="Tasks completed"></progress>
+                <p class="analytics-progress-note">Based on completed tasks across all your plans.</p>
+            </div>
+            <dl class="analytics-stats">
+                <div>
+                    <dt>Total tasks</dt>
+                    <dd id="analytics-total">0</dd>
+                </div>
+                <div>
+                    <dt>To do</dt>
+                    <dd id="analytics-pending">0</dd>
+                </div>
+                <div>
+                    <dt>In progress</dt>
+                    <dd id="analytics-progress">0</dd>
+                </div>
+                <div>
+                    <dt>Completed</dt>
+                    <dd id="analytics-completed">0</dd>
+                </div>
+            </dl>
         </section>
 
-        <span hidden>666</span>
+        <div class="row g-4 analytics-detail-row">
+            <div class="col-lg-6">
+                <section class="analytics-panel" aria-labelledby="chart-title">
+                    <p class="section-eyebrow">ONE STEP AT A TIME</p>
+                    <h2 id="chart-title">Where things stand.</h2>
+                    <p>See how your tasks are spread across the three stages.</p>
+                    <div id="task-chart" class="task-chart"></div>
+                </section>
+            </div>
+            <div class="col-lg-6">
+                <section class="analytics-panel" aria-labelledby="deadlines-title">
+                    <p class="section-eyebrow">COMING UP NEXT</p>
+                    <h2 id="deadlines-title">A little heads-up.</h2>
+                    <p>Your five nearest deadlines, starting with today.</p>
+                    <ul id="upcoming-tasks" class="deadline-list"></ul>
+                    <a class="collection-link analytics-deadlines-link" href="tasks.html#preparation-list">View all
+                        tasks</a>
+                    <p id="deadlines-empty">No upcoming deadlines. Your preparation list is here whenever you need it.
+                    </p>
+                </section>
+            </div>
+        </div>
+
+        <section class="analytics-board" aria-labelledby="board-title">
+            <div class="analytics-board-heading">
+                <div>
+                    <p class="section-eyebrow">KEEP YOUR PLANS MOVING</p>
+                    <h2 id="board-title">Your preparation board.</h2>
+                </div>
+                <p>Change a task’s status to move it to another column.<br>Changes are saved to your preparation list.
+                </p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <section class="analytics-column analytics-column-pending" aria-labelledby="todo-title">
+                        <h3 id="todo-title">To do <span id="board-pending-count">0</span></h3>
+                        <div id="todo-tasks"></div>
+                    </section>
+                </div>
+                <div class="col-lg-4">
+                    <section class="analytics-column analytics-column-progress" aria-labelledby="progress-title">
+                        <h3 id="progress-title">In progress <span id="board-progress-count">0</span></h3>
+                        <div id="progress-tasks"></div>
+                    </section>
+                </div>
+                <div class="col-lg-4">
+                    <section class="analytics-column analytics-column-completed" aria-labelledby="done-title">
+                        <h3 id="done-title">Completed <span id="board-completed-count">0</span></h3>
+                        <div id="done-tasks"></div>
+                    </section>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="site-footer">
@@ -130,7 +182,7 @@
             <img src="images/logo.webp" class="footer-logo" width="168" height="168" alt="Salt &amp; Summit logo">
             <span>Salt &amp; Summit</span>
         </a>
-        <p>Get outside. Go together.</p>
+        <p>From sea level to summit.</p>
 
         <p>
             Contact us:

@@ -3,18 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Contact Salt & Summit with questions about the app or your outdoor plans.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Contact Salt &amp; Summit about the app or your outdoor plans.">
     <meta name="keywords" content="outdoor activities, hiking, SUP, cycling, task management">
     <meta name="author" content="Maria Tsakagianni">
-
     <title>Salt &amp; Summit | Contact</title>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=contact-refresh-1">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"
         defer></script>
@@ -24,48 +21,28 @@
 
 <body>
     <header class="site-header sticky-top">
-        <nav class="navbar navbar-expand-md" aria-label="Main navigation">
+        <nav class="navbar navbar-expand-lg" aria-label="Main navigation">
             <div class="container">
                 <a class="navbar-brand" href="index.html">
                     <img class="brand-logo" src="images/logo.webp" width="168" height="168" alt="">
                     <span class="brand-text">
-                        <span class="brand-name">
-                            SALT <span class="brand-symbol">&amp;</span> SUMMIT
-                        </span>
-                        <span class="brand-description">
-                            OUTDOOR ADVENTURES
-                        </span>
+                        <span class="brand-name">SALT <span class="brand-symbol">&amp;</span> SUMMIT</span>
+                        <span class="brand-description">OUTDOOR ADVENTURES</span>
                     </span>
                 </a>
-
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-menu"
                     aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation menu">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse" id="main-menu">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
-
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="tasks.html">Tasks</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="about.html">About</a>
-
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="contact.html" aria-current="page">
-                                Contact
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="analytics.html">
-                                Analytics
-                            </a>
-                        </li>
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="adventures.html">Adventures</a></li>
+                        <li class="nav-item"><a class="nav-link" href="tasks.html">Tasks</a></li>
+                        <li class="nav-item"><a class="nav-link" href="analytics.html">Analytics</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="contact.html"
+                                aria-current="page">Contact</a></li>
 
                     </ul>
                 </div>
@@ -73,99 +50,67 @@
         </nav>
     </header>
 
-    <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false">
-        Dark mode
-    </button>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false">Dark mode</button>
 
-    <main class="container">
-        <div class="contact-layout">
-            <div class="row g-4">
-                <div class="col-lg-6">
-                    <section class="contact-form-section" aria-labelledby="contact-title">
-                        <h1 id="contact-title">Contact us</h1>
-
-                        <p>
-                            Have a question or an idea for your next adventure?
-                            We would love to hear from you.
-                        </p>
-
-                        <form id="contact-form">
-                            <div class="mb-3">
-                                <label class="form-label" for="contact-name">
-                                    Your name
-                                </label>
+    <main class="container contact-page">
+        <header class="contact-intro">
+            <p class="section-eyebrow">GOOD DAYS START WITH A CONVERSATION</p>
+            <h1 class="page-title-accent">Let’s talk outdoors.</h1>
+            <p>Have a question about Salt &amp; Summit or an idea for your next adventure? We’d love to hear from you.
+            </p>
+        </header>
+        <div class="row g-4 g-xl-5">
+            <div class="col-lg-6">
+                <section class="contact-panel" aria-labelledby="contact-title">
+                    <h2 id="contact-title">Send us a message</h2>
+                    <p id="contact-form-note">This demo form shows a confirmation on this page.</p>
+                    <form id="contact-form" aria-describedby="contact-form-note">
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <label class="form-label" for="contact-name">Your name</label>
                                 <input class="form-control" type="text" id="contact-name" name="name"
                                     autocomplete="name" maxlength="100" required>
                             </div>
-
-                            <div class="mb-3">
-                                <label class="form-label" for="contact-email">
-                                    Email
-                                </label>
+                            <div class="col-sm-6">
+                                <label class="form-label" for="contact-email">Email</label>
                                 <input class="form-control" type="email" id="contact-email" name="email"
                                     autocomplete="email" maxlength="254" required>
                             </div>
-
-                            <div class="mb-3">
-                                <label class="form-label" for="contact-subject">
-                                    Subject
-                                </label>
+                            <div class="col-12">
+                                <label class="form-label" for="contact-subject">Subject</label>
                                 <input class="form-control" type="text" id="contact-subject" name="subject"
                                     maxlength="150" required>
                             </div>
-
-                            <div class="mb-3">
-                                <label class="form-label" for="contact-message">
-                                    Message
-                                </label>
+                            <div class="col-12">
+                                <label class="form-label" for="contact-message">Message</label>
                                 <textarea class="form-control" id="contact-message" name="message" rows="5"
                                     maxlength="2000" required></textarea>
                             </div>
-
-                            <button class="btn adventure-button" type="submit">
-                                Send message
-                            </button>
-                        </form>
-                    </section>
-                </div>
-
-                <div class="col-lg-6">
-                    <section class="location-section" aria-labelledby="location-title">
-                        <h2 id="location-title">Find us by the river</h2>
-
-                        <p>
-                            Our base is in Glyki, near the springs
-                            of the Acheron River.
-                        </p>
-
-                        <iframe class="location-map" title="Map showing the Acheron Springs near Glyki"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3086.249191206566!2d20.618321726367615!3d39.327939371185295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x135c710039599505%3A0xb47273f8bce8c7e0!2zzqDOt86zzq3PgiDOkc-Hzq3Pgc6_zr3PhM6xIC0gzqbOsc-BzqzOs86zzrkgzpHPh86tz4HOv869z4TOsSAtIM6TzrvPhc66zq4!5e0!3m2!1sen!2sgr!4v1792870538757!5m2!1sen!2sgr"
-                            allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin">
-                        </iframe>
-                        <div class="mt-4">
-                            <h3 class="h5">Social links</h3>
-
-                           <p class="small">
-    Explore photos of the Acheron area on Instagram.
-    This external profile is not affiliated with Salt &amp; Summit.
-    The Facebook link below leads to the platform homepage.
-</p>
-
-                            <div class="social-links">
-
-                                <a href="https://www.instagram.com/acheronsprings/">
-                                    <i class="bi bi-instagram" aria-hidden="true"></i>
-                                    Acheron Springs on Instagram
-                                </a>
-
-                                <a href="https://www.facebook.com/">
-                                    <i class="bi bi-facebook" aria-hidden="true"></i>
-                                    Facebook
-                                </a>
+                            <div class="col-12">
+                                <button class="btn contact-submit" type="submit">Send message</button>
                             </div>
                         </div>
-                    </section>
-                </div>
+                    </form>
+                </section>
+            </div>
+            <div class="col-lg-6">
+                <section class="contact-panel contact-river" aria-labelledby="location-title">
+                    <h2 id="location-title">Find us by the river</h2>
+                    <p>Explore the Acheron Springs near Glyki, Epirus.</p>
+                    <iframe class="contact-map" title="Map showing the Acheron Springs near Glyki"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3086.249191206566!2d20.618321726367615!3d39.327939371185295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x135c710039599505%3A0xb47273f8bce8c7e0!2zzqDOt86zzq3PgiDOkc-Hzq3Pgc6_zr3PhM6xIC0gzqbOsc-BzqzOs86zzrkgzpHPh86tz4HOv869z4TOsSAtIM6TzrvPhc66zq4!5e0!3m2!1sen!2sgr!4v1792870538757!5m2!1sen!2sgr"
+                        allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    <h3 class="h5 mt-4">Around Acheron</h3>
+                    <p class="small">The Acheron Springs Instagram is an independent local profile.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/acheronsprings/">
+                            <i class="bi bi-instagram" aria-hidden="true"></i> Acheron Springs on Instagram
+                        </a>
+                        <a href="https://www.facebook.com/">
+                            <i class="bi bi-facebook" aria-hidden="true"></i> Facebook homepage
+                        </a>
+                    </div>
+                </section>
             </div>
         </div>
     </main>
@@ -175,19 +120,10 @@
             <img class="footer-logo" src="images/logo.webp" width="168" height="168" alt="">
             <span>Salt &amp; Summit</span>
         </a>
-        <p>Get outside. Go together.</p>
-
-        <p>
-            Contact us:
-            <a href="mailto:hello@saltandsummit.example">
-                hello@saltandsummit.example
-            </a>
-        </p>
-
+        <p>From sea level to summit.</p>
+        <p>Contact us: <a href="mailto:hello@saltandsummit.example">hello@saltandsummit.example</a></p>
         <p>&copy; 2026 Salt &amp; Summit</p>
     </footer>
-
-
 </body>
 
 </html>

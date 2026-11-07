@@ -14,7 +14,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=about-21">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"
         defer></script>
@@ -23,7 +23,7 @@
 
 <body>
     <header class="site-header sticky-top">
-        <nav class="navbar navbar-expand-md" aria-label="Main navigation">
+        <nav class="navbar navbar-expand-lg" aria-label="Main navigation">
             <div class="container">
                 <a class="navbar-brand" href="index.html">
                     <img class="brand-logo" src="images/logo.webp" width="168" height="168" alt="">
@@ -49,7 +49,15 @@
 
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="adventures.html">Adventures</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="tasks.html">Tasks</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="analytics.html">
+                                Analytics</a>
+
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="about.html" aria-current="page">
@@ -59,11 +67,8 @@
                         <li class="nav-item">
                             <a class="nav-link" href="contact.html">Contact</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="analytics.html">
-                                Analytics
-                            </a>
-                        </li>
+
+
 
                     </ul>
                 </div>
@@ -75,145 +80,216 @@
         Dark mode
     </button>
 
-    <main class="container">
-        <div class="about-intro">
-            <div class="row align-items-center g-4">
-                <div class="col-lg-6">
-                    <section aria-labelledby="about-title">
-                        <h1 id="about-title">About Salt &amp; Summit</h1>
-
-                        <p class="welcome-tagline">
-                            Good company. A little organisation.
-                        </p>
-
-                        <p>
-                            A day outdoors should be something to look forward to.
-                            Salt &amp; Summit helps you keep the preparation simple,
-                            whether you are heading for the mountains or the sea.
-                        </p>
-
-                        <p>
-                            Create tasks, set due dates and keep track of your
-                            progress. From arranging transport to checking your
-                            equipment, everything stays in one place.
-                        </p>
-                    </section>
+    <main class="about-page">
+        <div class="container">
+            <section class="about-introduction" aria-labelledby="about-title">
+                <div class="about-introduction-copy">
+                    <p class="section-eyebrow">THE PEOPLE. THE PURPOSE. THE OUTDOORS.</p>
+                    <h1 class="page-title-accent" id="about-title">A shared love of<br>getting outside.</h1>
+                    <p class="about-lead">Different paces. One shared direction.</p>
+                    <p>Discover outdoor experiences and keep your preparation in one place. Salt &amp; Summit makes room
+                        for the day ahead.</p>
                 </div>
+                <picture class="about-landscape-art">
+                    <source media="(max-width: 767.98px)"
+                        srcset="images/about-coastal-illustration-480.webp 480w, images/about-coastal-illustration-880.webp 880w"
+                        sizes="(min-width: 464px) 440px, calc(100vw - 24px)">
+                    <img class="about-landscape-art" src="images/about-coastal-illustration.webp" width="1200"
+                        height="800" fetchpriority="high" alt="" aria-hidden="true">
+                </picture>
+            </section>
 
-                <div class="col-lg-6">
-                    <section class="activities-section" aria-labelledby="activities-title">
-                        <h2 id="activities-title">Find your next adventure</h2>
-                        <p>On the water, along the trails or out on two wheels.</p>
+            <section class="about-purpose" aria-labelledby="purpose-title">
+                <h2 id="purpose-title">A little organisation. More room for adventure.</h2>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <article class="about-feature"><img src="images/about-wave.svg" width="56" height="56" alt="">
+                            <h3>Find your pace.</h3>
+                            <p>Explore relaxed days by the water or more active adventures in the hills — there’s room
+                                for both.</p>
+                        </article>
+                    </div>
+                    <div class="col-md-4">
+                        <article class="about-feature"><img src="images/about-checklist.svg" width="56" height="56"
+                                alt="">
+                            <h3>Make a plan.</h3>
+                            <p>Use a preparation list for each adventure to cover the essentials, set deadlines and
+                                choose your priorities.</p>
+                        </article>
+                    </div>
+                    <div class="col-md-4">
+                        <article class="about-feature"><img src="images/about-signpost.svg" width="56" height="56"
+                                alt="">
+                            <h3>See your progress.</h3>
+                            <p>Tick things off as you go and follow your progress, so you can head out feeling ready.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+            </section>
 
-                        <div id="activities-carousel" class="carousel slide" aria-label="Outdoor activities">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src="images/sup.webp" srcset="images/sup-800.webp 800w,
-            images/sup.webp 1672w" sizes="(min-width: 1400px) 636px,
-           (min-width: 1200px) 546px,
-           (min-width: 992px) 456px,
-           (min-width: 768px) 696px,
-           (min-width: 576px) 516px,
-           calc(100vw - 24px)" width="1672" height="941" fetchpriority="high"
-                                        alt="Two friends paddleboarding in a calm coastal bay">
+            <section class="about-team" aria-labelledby="team-title">
+                <p class="section-eyebrow">GOOD COMPANY MAKES THE DIFFERENCE</p>
+                <h2 id="team-title">Meet the people behind the plans.</h2>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <article class="card about-person h-100">
+                            <div class="card-body">
+                                <img class="about-avatar" src="images/maria.webp" width="360" height="360"
+                                    loading="lazy" alt="Izzi with her paddleboarding equipment">
+                                <div class="about-person-heading">
+                                    <h3>Izzi Gomez</h3>
+                                    <p class="about-person-role">Founder</p>
                                 </div>
-
-                                <div class="carousel-item">
-                                    <img src="images/hiking.webp" width="1672" height="941" loading="lazy"
-                                        alt="Three friends hiking on a mountain trail above the sea">
-                                </div>
-
-                                <div class="carousel-item">
-                                    <img src="images/cycling.webp" width="1672" height="941" loading="lazy"
-                                        alt="Three cyclists riding along a coastal road">
-                                </div>
+                                <p class="about-person-bio">In the founder role, Izzi represents a simple idea:
+                                    <strong>make room for the outdoors</strong>, whatever your pace. This profile brings
+                                    the water-loving side of Salt &amp; Summit, from an easy paddle to a day exploring
+                                    the coast.
+                                </p>
+                                <p class="about-person-bio">That spirit shapes the project: inviting experiences, clear
+                                    information and <strong>a little preparation</strong> to help turn a good idea into
+                                    a day out.</p>
+                                <a class="about-instagram" href="https://www.instagram.com/izzigomez_/" target="_blank"
+                                    rel="noopener noreferrer" aria-label="Izzi Gomez on Instagram (opens in a new tab)">
+                                    <img src="images/about-instagram.svg" width="22" height="22" alt="">Instagram
+                                </a>
                             </div>
-
-                            <button class="carousel-control-prev" type="button" data-bs-target="#activities-carousel"
-                                data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous activity</span>
-                            </button>
-
-                            <button class="carousel-control-next" type="button" data-bs-target="#activities-carousel"
-                                data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next activity</span>
-                            </button>
-                        </div>
-                    </section>
+                        </article>
+                    </div>
+                    <div class="col-md-4">
+                        <article class="card about-person h-100">
+                            <div class="card-body">
+                                <img class="about-avatar" src="images/mark.webp" width="360" height="360" loading="lazy"
+                                    alt="Mark on an outdoor running trail">
+                                <div class="about-person-heading">
+                                    <h3>Mark Dowdle</h3>
+                                    <p class="about-person-role">Activity coordinator</p>
+                                </div>
+                                <p class="about-person-bio">Mark’s activity coordinator profile brings <strong>curiosity
+                                        and a sense of challenge</strong> to the team. This profile represents the
+                                    pleasure of finding a new trail, trying something different and choosing an
+                                    adventure that suits your energy.</p>
+                                <p class="about-person-bio">The focus is on helping you compare the options, understand
+                                    the details and <strong>build your own plan</strong>, one manageable step at a time.
+                                </p>
+                                <a class="about-instagram" href="https://www.instagram.com/mark.dowdle/" target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="Mark Dowdle on Instagram (opens in a new tab)">
+                                    <img src="images/about-instagram.svg" width="22" height="22" alt="">Instagram
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-md-4">
+                        <article class="card about-person h-100">
+                            <div class="card-body">
+                                <img class="about-avatar" src="images/marianne.webp" width="360" height="360"
+                                    loading="lazy" alt="Marianne with her bicycle">
+                                <div class="about-person-heading">
+                                    <h3>Marianne Vos</h3>
+                                    <p class="about-person-role">Community coordinator</p>
+                                </div>
+                                <p class="about-person-bio">Marianne’s community coordinator profile reflects
+                                    <strong>good company and shared encouragement</strong>. Her profile represents the
+                                    social side of getting outside, whether that means a gentle ride or a more demanding
+                                    day on the road.
+                                </p>
+                                <p class="about-person-bio">It is a reminder that everyone starts somewhere. Salt &amp;
+                                    Summit makes space for <strong>different paces and personal goals</strong>, with
+                                    progress you can follow as you prepare.</p>
+                                <a class="about-instagram" href="https://www.instagram.com/mariannevosofficial/"
+                                    target="_blank" rel="noopener noreferrer"
+                                    aria-label="Marianne Vos on Instagram (opens in a new tab)">
+                                    <img src="images/about-instagram.svg" width="22" height="22" alt="">Instagram
+                                </a>
+                            </div>
+                        </article>
+                    </div>
                 </div>
-            </div>
+                <p class="about-project-note">Team roles are fictional and shown for this student project. They do not
+                    imply affiliation with or endorsement by the athletes.</p>
+            </section>
         </div>
 
-        <section class="activity-section" aria-labelledby="features-title">
-            <h2 id="features-title">What you can do</h2>
-
-            <ul>
-                <li>Create and update tasks for your next activity.</li>
-                <li>Set due dates for your tasks.</li>
-                <li>Search, filter and sort your tasks.</li>
-                <li>Track your progress with the task board and dashboard.</li>
-            </ul>
+        <section class="about-feedback" aria-labelledby="feedback-title">
+            <div class="container">
+                <p class="section-eyebrow">SMALL DETAILS. BETTER DAYS.</p>
+                <h2 id="feedback-title">A little help goes a long way.</h2>
+                <div id="feedback-carousel" class="carousel slide" data-bs-interval="false"
+                    aria-label="Illustrative user feedback" aria-roledescription="carousel">
+                    <div class="carousel-inner" aria-live="polite">
+                        <div class="carousel-item active" role="group" aria-roledescription="slide" aria-label="1 of 4">
+                            <figure class="about-testimonial">
+                                <blockquote>
+                                    <p>I love the variety of adventures — peaceful days on the water, scenic trails and
+                                        bigger challenges. There is always something that makes me want to get outside.
+                                    </p>
+                                </blockquote>
+                                <figcaption><img class="about-feedback-avatar" src="images/feedback-elena.webp"
+                                        width="72" height="72" loading="lazy" alt=""><span><strong>Elena
+                                            K.</strong><span>Finding an adventure</span></span></figcaption>
+                            </figure>
+                        </div>
+                        <div class="carousel-item" role="group" aria-roledescription="slide" aria-label="2 of 4">
+                            <figure class="about-testimonial">
+                                <blockquote>
+                                    <p>Having a separate checklist for each adventure makes it so much easier to keep
+                                        track of the little things.</p>
+                                </blockquote>
+                                <figcaption><img class="about-feedback-avatar" src="images/feedback-alex.webp"
+                                        width="72" height="72" loading="lazy" alt=""><span><strong>Alex
+                                            P.</strong><span>Preparation lists</span></span></figcaption>
+                            </figure>
+                        </div>
+                        <div class="carousel-item" role="group" aria-roledescription="slide" aria-label="3 of 4">
+                            <figure class="about-testimonial">
+                                <blockquote>
+                                    <p>Setting priorities helps me see what to sort out first, while the due dates keep
+                                        the last-minute rush in check.</p>
+                                </blockquote>
+                                <figcaption><img class="about-feedback-avatar" src="images/feedback-sofia.webp"
+                                        width="72" height="72" loading="lazy" alt=""><span><strong>Sofia
+                                            M.</strong><span>Priorities and deadlines</span></span></figcaption>
+                            </figure>
+                        </div>
+                        <div class="carousel-item" role="group" aria-roledescription="slide" aria-label="4 of 4">
+                            <figure class="about-testimonial">
+                                <blockquote>
+                                    <p>Ticking things off and seeing my progress makes getting ready feel manageable,
+                                        one small step at a time.</p>
+                                </blockquote>
+                                <figcaption><img class="about-feedback-avatar" src="images/feedback-chris.webp"
+                                        width="72" height="72" loading="lazy" alt=""><span><strong>Chris
+                                            D.</strong><span>Tracking progress</span></span></figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev about-carousel-control" type="button"
+                        data-bs-target="#feedback-carousel" data-bs-slide="prev"><span
+                            class="carousel-control-prev-icon" aria-hidden="true"></span><span
+                            class="visually-hidden">Previous feedback</span></button>
+                    <button class="carousel-control-next about-carousel-control" type="button"
+                        data-bs-target="#feedback-carousel" data-bs-slide="next"><span
+                            class="carousel-control-next-icon" aria-hidden="true"></span><span
+                            class="visually-hidden">Next feedback</span></button>
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#feedback-carousel" data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-label="Show feedback 1"></button>
+                        <button type="button" data-bs-target="#feedback-carousel" data-bs-slide-to="1"
+                            aria-label="Show feedback 2"></button>
+                        <button type="button" data-bs-target="#feedback-carousel" data-bs-slide-to="2"
+                            aria-label="Show feedback 3"></button>
+                        <button type="button" data-bs-target="#feedback-carousel" data-bs-slide-to="3"
+                            aria-label="Show feedback 4"></button>
+                    </div>
+                </div>
+                <p class="about-feedback-note">Illustrative feedback for this student project.</p>
+            </div>
         </section>
 
-        <section class="team-section" aria-labelledby="team-title">
-            <h2 id="team-title">Meet the team</h2>
-            <p>The people behind the plans.</p>
-
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card team-card h-100">
-                        <div class="card-body">
-                            <img class="team-avatar" src="images/maria.webp" width="360" height="360" loading="lazy"
-                                alt="Maria with her SUP equipment">
-                            <h3 class="card-title">Maria la del Barrio</h3>
-                            <p class="team-role">Founder</p>
-
-                            <p>
-                                Loves strength training and days on the water.
-                                Started Salt &amp; Summit to make organising
-                                outdoor plans a little easier.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card team-card h-100">
-                        <div class="card-body">
-                            <img class="team-avatar" src="images/mark.webp" width="360" height="360" loading="lazy"
-                                alt="Mark running on a coastal trail">
-                            <h3 class="card-title">Mark Dowdle</h3>
-                            <p class="team-role">Activity coordinator</p>
-
-                            <p>
-                                Enjoys finding new hiking routes.
-                                Takes care of the details before
-                                the group heads out.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card team-card h-100">
-                        <div class="card-body">
-                            <img class="team-avatar" src="images/marianne.webp" width="360" height="360" loading="lazy"
-                                alt="Marianne with her bicycle">
-
-                            <h3 class="card-title">Marianne Vos</h3>
-                            <p class="team-role">Community coordinator</p>
-
-                            <p>
-                                Always up for a cycling trip.
-                                Helps people find their next activity
-                                and feel welcome in the group.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <section class="container about-invitation" aria-labelledby="invitation-title">
+            <h2 id="invitation-title">Your next adventure starts with a little curiosity.</h2>
+            <a class="btn about-explore-button" href="adventures.html">Explore adventures</a>
         </section>
     </main>
 
@@ -222,7 +298,7 @@
             <img class="footer-logo" src="images/logo.webp" width="168" height="168" alt="">
             <span>Salt &amp; Summit</span>
         </a>
-        <p>Get outside. Go together.</p>
+        <p>From sea level to summit.</p>
 
         <p>
             Contact us:
