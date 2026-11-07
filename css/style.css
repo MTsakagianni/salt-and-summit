@@ -4443,3 +4443,115 @@ body.dark-mode .contact-panel .form-control {
         display: none;
     }
 }
+
+@media (max-width: 767.98px) {
+    .tasks-page .task-checklist-viewport {
+        overflow: visible;
+    }
+
+    .tasks-page .task-table {
+        min-width: 0;
+    }
+
+    .tasks-page .task-table thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+    }
+
+    .tasks-page .task-table tr:has(.task-actions) {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: 8px 12px;
+        padding: 14px 12px;
+        border-bottom: 1px solid var(--task-line);
+    }
+
+    .tasks-page .task-table tr:has(.task-actions) > td {
+        grid-column: 2;
+        width: auto;
+        min-width: 0;
+        padding: 0;
+        border: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .tasks-page .task-table tr:has(.task-actions) > td:first-child {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .tasks-page .task-actions,
+    .tasks-page .task-group-content,
+    .tasks-page .task-group-actions {
+        flex-wrap: wrap;
+    }
+
+    .tasks-page .task-actions .btn {
+        min-height: 44px;
+    }
+}
+
+.tasks-page .task-group-content .task-plan-title {
+    padding: 0;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+}
+
+.tasks-page .task-group-content .task-plan-link,
+.tasks-page .task-table .task-plan-delete {
+    padding: 4px 0;
+    border: 0;
+    color: var(--task-ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.tasks-page .task-group-content .task-plan-title:hover {
+    text-decoration: underline;
+}
+
+.tasks-page .task-table td.task-plan-footer {
+    width: auto;
+    min-width: 0;
+    padding: 6px 14px 14px;
+    text-align: right;
+}
+
+.tasks-page .task-table .task-plan-delete {
+    color: var(--task-ink);
+}
+
+@media (max-width: 767.98px) {
+    .tasks-page .task-group-content .task-plan-title,
+    .tasks-page .task-group-content .task-plan-link,
+    .tasks-page .task-table .task-plan-delete {
+        min-height: 44px;
+    }
+}
+
+.tasks-page .task-group-actions .task-plan-link {
+    padding: 7px 12px;
+    border: 1px solid var(--task-muted);
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.tasks-page .task-group-actions .task-plan-link:hover {
+    background-color: var(--task-ink);
+    color: var(--task-soft);
+}
+
+.tasks-page .task-group-actions .task-plan-link:focus-visible {
+    outline: 2px solid var(--task-ink);
+    outline-offset: 2px;
+}
+
+.tasks-page .task-table .task-group-focused > td {
+    padding-top: 10px;
+}

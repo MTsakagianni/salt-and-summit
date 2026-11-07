@@ -22,10 +22,11 @@ function initialiseTasks() {
     const taskModal = bootstrap.Modal.getOrCreateInstance(modalElement);
     const openButton = document.querySelector('#open-task-form');
     const parameters = new URLSearchParams(window.location.search);
-    const statusLabels = {pending: 'Pending', 'in-progress': 'In progress', completed: 'Completed'};
-    const priorityLabels = {high: 'High', medium: 'Medium', low: 'Low'};
-    const priorityOrder = {high: 0, medium: 1, low: 2};
+    const statusLabels = { pending: 'Pending', 'in-progress': 'In progress', completed: 'Completed' };
+    const priorityLabels = { high: 'High', medium: 'Medium', low: 'Low' };
+    const priorityOrder = { high: 0, medium: 1, low: 2 };
     let activeTripKey = parameters.get('trip') || '';
+    let focusedPlanKey = null;
     let editingTask = null;
     let lastTrigger = openButton;
 
@@ -61,9 +62,11 @@ function initialiseTasks() {
             const date = key.substring(separator + 1);
             if (separator < 1 || !/^\d{4}-\d{2}-\d{2}$/.test(date)) continue;
             const adventureId = key.substring(0, separator);
-            trips.push({key: key, adventureId: adventureId,
+            trips.push({
+                key: key, adventureId: adventureId,
                 name: adventureNames[adventureId] || adventureId,
-                date: date, location: ''});
+                date: date, location: ''
+            });
         }
         if (activeTripKey && !findTrip(activeTripKey)) activeTripKey = '';
     }
@@ -73,7 +76,8 @@ function initialiseTasks() {
     }
 
     function refreshSuggestionContext() {
-        const trip = findTrip(activeTripKey);
+        const trip = findTrip(focusedPlanKey) || findTrip(activeTripKey);
+        updateSuggestionBadges();
         document.querySelector('#task-suggestions-context').textContent = trip
             ? 'Adding to: ' + tripLabel(trip) + '. You can change the adventure in the form.'
             : 'Adding to: General reminders. You can choose an adventure in the form.';
@@ -82,8 +86,15 @@ function initialiseTasks() {
     function updateTripDate() {
         const trip = findTrip(tripInput.value);
         const dateLabel = document.querySelector('#task-adventure-date');
+
         dateLabel.hidden = !trip;
         dateLabel.textContent = trip ? 'Adventure date: ' + formatDate(trip.date) : '';
+
+        if (trip && trip.date) {
+            dateInput.max = trip.date;
+        } else {
+            dateInput.removeAttribute('max');
+        }
     }
 
     function populateTripOptions(key) {
@@ -138,6 +149,7 @@ function initialiseTasks() {
         }
         trips.splice(trips.indexOf(trip), 1);
         if (activeTripKey === key) activeTripKey = '';
+        if (focusedPlanKey === key) focusedPlanKey = null;
         // Remove a deleted plan from the page URL as well as from storage.
         const pageParameters = new URLSearchParams(window.location.search);
         if (pageParameters.get('trip') === key) {
@@ -267,7 +279,9 @@ function initialiseTasks() {
     }
 
     function renderTasks() {
+        const focusedPlan = findTrip(focusedPlanKey);
         updateSummary();
+        updateSuggestionBadges();
         const search = searchInput.value.trim().toLowerCase();
         const visibleTasks = tasks.filter(function (task) {
             // Search the task itself and the adventure it belongs to.
@@ -282,7 +296,8 @@ function initialiseTasks() {
             const matchesSearch = searchableText.includes(search);
             const matchesStatus = statusFilter.value === 'all' || task.status === statusFilter.value;
             const matchesPriority = priorityFilter.value === 'all' || getPriority(task) === priorityFilter.value;
-            return matchesSearch && matchesStatus && matchesPriority;
+            const matchesPlan = !focusedPlan || getTaskTripKey(task) === focusedPlan.key;
+            return matchesPlan && matchesSearch && matchesStatus && matchesPriority;
         });
         // Sort a filtered copy, preserving the original "Order added" sequence.
         if (sortSelect.value === 'name') {
@@ -296,10 +311,26 @@ function initialiseTasks() {
         }
         clearFiltersButton.hidden = !search && statusFilter.value === 'all' &&
             priorityFilter.value === 'all' && sortSelect.value === 'default';
-        document.querySelector('#task-results').textContent =
-            'Showing ' + visibleTasks.length + ' of ' + tasks.length + ' tasks';
+       const taskResults = document.querySelector('#task-results');
+
+if (focusedPlan) {
+    const planTaskCount = tasks.filter(function (task) {
+        return getTaskTripKey(task) === focusedPlan.key;
+    }).length;
+
+    if (visibleTasks.length === planTaskCount) {
+        const label = planTaskCount === 1 ? ' task' : ' tasks';
+        taskResults.textContent = planTaskCount + label + ' in this plan';
+    } else {
+        taskResults.textContent =
+            'Showing ' + visibleTasks.length + ' of ' + planTaskCount + ' tasks in this plan';
+    }
+} else {
+    taskResults.textContent =
+        'Showing ' + visibleTasks.length + ' of ' + tasks.length + ' tasks';
+}
         taskList.textContent = '';
-        if (!visibleTasks.length) {
+        if (!visibleTasks.length && !focusedPlan) {
             const row = document.createElement('tr');
             const cell = document.createElement('td');
             cell.colSpan = 6;
@@ -316,13 +347,13 @@ function initialiseTasks() {
         }
         if (tasks.length || trips.length) {
             // A selected outing comes first; all other groups remain visible.
-            const groups = trips.slice();
+            const groups = focusedPlan ? [focusedPlan] : trips.slice();
             groups.sort(function (first, second) {
                 if (first.key === activeTripKey) return -1;
                 if (second.key === activeTripKey) return 1;
                 return first.date.localeCompare(second.date);
             });
-            groups.push({key: '', name: 'General reminders'});
+            if (!focusedPlan) groups.push({ key: '', name: 'General reminders' });
             // An empty first-use message above already covers the no-plan case.
             if (!visibleTasks.length && !tasks.length) taskList.textContent = '';
             for (const group of groups) {
@@ -331,7 +362,7 @@ function initialiseTasks() {
                     return (findTrip(key) ? key : '') === group.key;
                 });
                 const hasFilters = search || statusFilter.value !== 'all' || priorityFilter.value !== 'all';
-                if (!groupTasks.length && (hasFilters || !group.key)) continue;
+                if (!focusedPlan && !groupTasks.length && (hasFilters || !group.key)) continue;
                 const headingRow = document.createElement('tr');
                 headingRow.className = 'task-group-heading';
                 const headingCell = document.createElement('td');
@@ -340,7 +371,23 @@ function initialiseTasks() {
                 headingContent.className = 'task-group-content';
                 const details = document.createElement('div');
                 const title = document.createElement('h3');
-                title.textContent = group.name;
+                if (group.key && !focusedPlan) {
+                    const planButton = makeButton(group.name, 'task-plan-title', function () {
+                        focusedPlanKey = group.key;
+                        activeTripKey = group.key;
+                        refreshSuggestionContext();
+                        clearFilters();
+                        document.querySelector('#show-all-plans').focus();
+                    });
+                    planButton.setAttribute('aria-label', 'Open plan for ' + tripLabel(group));
+                    const arrow = document.createElement('span');
+                    arrow.setAttribute('aria-hidden', 'true');
+                    arrow.textContent = ' ›';
+                    planButton.appendChild(arrow);
+                    title.appendChild(planButton);
+                } else {
+                    title.textContent = group.name;
+                }
                 const meta = document.createElement('p');
                 meta.textContent = group.key
                     ? 'Adventure date: ' + formatDate(group.date) + (group.location ? ' · ' + group.location : '')
@@ -353,16 +400,32 @@ function initialiseTasks() {
                     refreshSuggestionContext();
                     openEditor(null, groupButton);
                 }
-                const groupButton = makeButton('Add task', 'task-edit', addToGroup);
+                const groupButton = makeButton('+ Add task', 'task-primary', addToGroup);
                 groupButton.setAttribute('aria-label', 'Add task to ' + (group.key ? tripLabel(group) : group.name));
                 const groupActions = document.createElement('div');
                 groupActions.className = 'task-group-actions';
                 groupActions.appendChild(groupButton);
-                if (group.key) {
-                    function removeGroup() { deletePlan(group.key); }
-                    const deleteButton = makeButton('Delete plan', 'task-delete', removeGroup);
-                    deleteButton.setAttribute('aria-label', 'Delete plan for ' + tripLabel(group));
-                    groupActions.appendChild(deleteButton);
+                if (group.key && !focusedPlan) {
+                    const suggestionsButton = makeButton('Suggested tasks', 'task-plan-link', function () {
+                        activeTripKey = group.key;
+                        refreshSuggestionContext();
+                        const heading = document.querySelector('#task-suggestions-title');
+                        heading.tabIndex = -1;
+                        heading.focus({ preventScroll: true });
+                        heading.scrollIntoView({ block: 'center' });
+                    });
+                    suggestionsButton.setAttribute('aria-label', 'Suggested tasks for ' + tripLabel(group));
+                    groupActions.appendChild(suggestionsButton);
+                }
+                if (focusedPlan) {
+                    headingRow.classList.add('task-group-focused');
+                    const allPlansButton = makeButton('← All plans', 'task-plan-link', function () {
+                        focusedPlanKey = null;
+                        refreshSuggestionContext();
+                        clearFilters();
+                    });
+                    allPlansButton.id = 'show-all-plans';
+                    details.prepend(allPlansButton);
                 }
                 headingContent.appendChild(groupActions);
                 headingCell.appendChild(headingContent);
@@ -378,6 +441,19 @@ function initialiseTasks() {
                     emptyRow.appendChild(emptyCell);
                     taskList.appendChild(emptyRow);
                 }
+                if (group.key) {
+                    const footerRow = document.createElement('tr');
+                    const footerCell = document.createElement('td');
+                    footerCell.colSpan = 6;
+                    footerCell.className = 'task-plan-footer';
+                    const deleteButton = makeButton('Delete plan', 'task-plan-delete', function () {
+                        deletePlan(group.key);
+                    });
+                    deleteButton.setAttribute('aria-label', 'Delete plan for ' + tripLabel(group));
+                    footerCell.appendChild(deleteButton);
+                    footerRow.appendChild(footerCell);
+                    taskList.appendChild(footerRow);
+                }
             }
         }
     }
@@ -386,7 +462,9 @@ function initialiseTasks() {
         editingTask = task;
         lastTrigger = trigger;
         taskForm.reset();
-        populateTripOptions(task ? getTaskTripKey(task) : activeTripKey);
+        const focusedPlan = findTrip(focusedPlanKey);
+        const defaultTripKey = focusedPlan ? focusedPlan.key : activeTripKey;
+        populateTripOptions(task ? getTaskTripKey(task) : defaultTripKey);
         document.querySelector('#task-form-title').textContent = task ? 'Edit task' : 'Add a task';
         document.querySelector('#save-task').textContent = task ? 'Save changes' : 'Add task';
         if (task) {
@@ -399,6 +477,19 @@ function initialiseTasks() {
         taskModal.show();
     }
 
+    function normaliseTaskName(name) {
+        return name.trim().replace(/\s+/g, ' ').toLowerCase();
+    }
+
+    function hasTaskWithName(name, planKey, excludedTask) {
+        const normalisedName = normaliseTaskName(name);
+        return tasks.some(function (task) {
+            const key = getTaskTripKey(task);
+            return task !== excludedTask && (findTrip(key) ? key : '') === planKey &&
+                normaliseTaskName(task.name) === normalisedName;
+        });
+    }
+
     function handleTaskSubmit(event) {
         event.preventDefault();
         if (!taskForm.reportValidity()) return;
@@ -407,6 +498,14 @@ function initialiseTasks() {
         if (!name || !description) {
             window.alert('Please enter a task name and description, not just spaces.');
             (!name ? nameInput : descriptionInput).focus();
+            return;
+        }
+        const planKey = tripInput.value;
+        const changedNameOrPlan = !editingTask ||
+            normaliseTaskName(editingTask.name) !== normaliseTaskName(name) ||
+            (findTrip(getTaskTripKey(editingTask)) ? getTaskTripKey(editingTask) : '') !== planKey;
+        if (changedNameOrPlan && hasTaskWithName(name, planKey, editingTask) &&
+            !window.confirm('A task with this name already exists in this list. Save it anyway?')) {
             return;
         }
         const task = editingTask || {};
@@ -433,6 +532,16 @@ function initialiseTasks() {
         renderTasks();
         searchInput.focus();
     }
+    function updateSuggestionBadges() {
+        const plan = findTrip(focusedPlanKey) || findTrip(activeTripKey);
+        for (const button of document.querySelectorAll('#task-suggestions [data-suggestion-name]')) {
+            const name = button.dataset.suggestionName;
+            const alreadyAdded = hasTaskWithName(name, plan ? plan.key : '');
+            button.textContent = alreadyAdded ? name + ' · Already added' : name;
+            button.setAttribute('aria-label', 'Use suggested task: ' + button.textContent);
+        }
+    }
+
     function renderSuggestions() {
         // Suggestions are drafts, not saved tasks. The user still chooses
         // a deadline and submits the same validated form used for custom tasks.
@@ -467,7 +576,7 @@ function initialiseTasks() {
                 descriptionInput.value = suggestion.description;
             }
             const button = makeButton(suggestion.name, 'task-suggestion', useSuggestion);
-            button.setAttribute('aria-label', 'Use suggested task: ' + suggestion.name);
+            button.dataset.suggestionName = suggestion.name;
             button.setAttribute('aria-haspopup', 'dialog');
             container.appendChild(button);
         }
